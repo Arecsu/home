@@ -25,9 +25,9 @@ html {
 }
 
 body {
-   transition: background-image 0.15s cubic-bezier(0.32, 0.25, 0.15, 1.24),
+   /*transition: background-image 0.15s cubic-bezier(0.32, 0.25, 0.15, 1.24),
       background-color 0.15s cubic-bezier(0.32, 0.25, 0.15, 1.24),
-      color 0.15s cubic-bezier(0.32, 0.25, 0.15, 1.24);
+      color 0.15s cubic-bezier(0.32, 0.25, 0.15, 1.24);*/
    font-size: 0.91rem;
    padding: 3.2vw 3.5vw;
    max-width: 42rem;
