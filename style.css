@@ -1,6 +1,19 @@
 @import url('https://rsms.me/inter/inter.css');
+
+:root {
+   /* rip dark mode
+   --light-theme-background: #e7f3f3;
+   --dark-theme-background: #0e242a;
+   */
+   --color-background: #e5f3f3;
+   --color-font: #1b1b1b;
+   --color-scheme: light;
+}
+
 html {
+   min-height: 100vh;
    font-family: 'Inter', sans-serif;
+   color-scheme: var(--color-scheme);
 }
 
 @supports (font-variation-settings: normal) {
@@ -9,14 +22,49 @@ html {
    }
 }
 
+
+
 body {
-   padding: 4rem;
-   max-width: 40rem;
-   background-color: rgb(231, 243, 243);
+   font-size: .91rem;
+   padding: 3.2vw 3.5vw;
+   max-width: 42rem;
+   min-height: calc(100vh - 7vw);
+   background-color: var(--color-background);
+   margin: 0;
+   display: flex;
+   flex-flow: column;
+   color: var(--color-font);
 }
 
+/* rip dark mode
+@media (prefers-color-scheme: dark) {
+   html {
+      color-scheme: dark;
+   }
+   body {
+      background-color: var(--dark-theme-background);
+      color: #e9e9e9;
+   }
+ }
+*/
+
 p {
-   line-height: 1.5rem;
+   line-height: 1.5em;
+   margin-bottom: 1.2em;
+}
+
+.blank-space {
+   display: block;
+   width: auto;
+   margin-bottom: 3em;
+}
+
+header {
+   display: flex;
+   flex-flow: row;
+   margin: 1em 0;
+   place-content: space-between;
+   align-items: flex-start;
 }
 
 a {
@@ -32,14 +80,58 @@ a:hover {
 }
 
 .small {
-   font-size: 0.7rem;
+   margin-top: 0.4em;
+   display: block;
+   font-size: .85em;
+   line-height: 1.6em;
+}
+
+.very-small {
+   margin-top: 0.4em;
+   display: block;
+   font-size: 0.76em;
+   line-height: 1.6em;
+}
+
+.footer {
+   margin-top: auto;
 }
 
 img {
    display: block;
    height: auto;
-   max-width: 600px;
    width: 100%;
    margin-top: 2em;
    border-radius: 4px;
 }
+
+.color-random {
+   margin-top: 0.45em;
+   background-color: #ffffff00;
+   color: inherit;
+   border: 0.1em var(--color-font) solid;
+   border-radius: 0.2em;
+   box-sizing: border-box;
+   padding: 0.5em 0.5em;
+   cursor: pointer;
+   display: flex;
+   flex-flow: row;
+   align-items: center;
+   height: 2.4em;
+}
+
+.color-random:hover {
+   background-color: #ffffff2e;
+}
+.color-random svg {
+   height: 1.3em;
+   width: auto;
+}
+.color-random svg path {
+   fill: var(--color-font);
+}
+
+.color-random span {
+   margin-left: 0.3em;
+}
+
