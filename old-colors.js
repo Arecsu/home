@@ -35,3 +35,32 @@ root.style.setProperty(
    '--dark-theme-background',
    get_color(dark_colors)
 );
+
+
+let current_color;
+function random_color() {
+   let random;
+   while (true) {
+      random = Math.floor(Math.random() * colors.length);
+
+      if (current_color !== random) {
+         current_color = random;
+         break;
+      }
+   }
+   change_color(random);
+}
+
+function change_color(color) {
+   root.style.setProperty('--color-background', colors[color][0]);
+   root.style.setProperty('--color-text', colors[color][1]);
+   root.style.setProperty('--color-scheme', colors[color][2]);
+}
+
+function next_color() { }
+
+function button_color() {
+   buttonAudio.currentTime = 0;
+   buttonAudio.play();
+   change_color();
+}
