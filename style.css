@@ -119,6 +119,8 @@ img {
    transition: filter 250ms;
    -webkit-tap-highlight-color: transparent;
    user-select: none;
+   transform: translateX(3px);
+   margin-top: 0.75em;
 }
 .pushable .shadow {
    position: absolute;
