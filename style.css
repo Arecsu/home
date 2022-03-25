@@ -5,10 +5,12 @@
    --light-theme-background: #e7f3f3;
    --dark-theme-background: #0e242a;
    */
-   --color-background: #e5f3f3;
+   --color-background-1: #e5f3f3;
+   --color-background-2: #e5f3f3;
    --color-text: #1b1b1b;
    --color-scheme: dark;
    --color-text-button: #ffffff;
+   --opacity-background-2: 0;
    --img-filter: invert(0);
 }
 
@@ -25,14 +27,36 @@ html {
 }
 
 body {
-   /*transition: background-image 0.15s cubic-bezier(0.32, 0.25, 0.15, 1.24),
-      background-color 0.15s cubic-bezier(0.32, 0.25, 0.15, 1.24),
-      color 0.15s cubic-bezier(0.32, 0.25, 0.15, 1.24);*/
+   /* fix for background height 100%! */
+   display: grid;
+   min-height: calc(100vh);
+}
+
+.background-1,
+.background-2,
+main {
+   /* fix for background height 100%! */
+   grid-area: 1 / 1 / 2 / 2;
+}
+
+.background-1 {
+   z-index: 1;
+   background: var(--color-background-1);
+}
+.background-2 {
+   z-index: 2;
+   opacity: var(--opacity-background-2);
+   transition: opacity 0.27s cubic-bezier(0.32, 0.25, 0.15, 1.24);
+   background: var(--color-background-2);
+}
+
+main {
+   z-index: 3;
+   transition: color 0.2s cubic-bezier(0.32, 0.25, 0.15, 1.24);
    font-size: 0.91rem;
    padding: 3.2vw 3.5vw;
    max-width: 42rem;
    min-height: calc(100vh - 7vw);
-   background: var(--color-background);
    margin: 0;
    display: flex;
    flex-flow: column;
