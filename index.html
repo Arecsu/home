@@ -11,10 +11,23 @@
       <link rel="alternate icon" href="favicon.ico" />
       <script>
          let root = document.documentElement;
+         const buttonAudio = new Audio('press.mp3');
          // const buttonAudio = new Audio('smw_stomp.wav');
-         const buttonUp = new Audio('press-up.mp3');
-         const buttonDown = new Audio('press-down.mp3');
-         // const buttonAudio = new Audio('switch-on.mp3');
+
+         window.addEventListener('DOMContentLoaded', (event) => {
+            var imageArray = new Array(
+               'graph_paper.png',
+               'megaman2-2-min.png',
+               'clouds.jpg',
+               'computer.gif',
+               'dystopia.gif'
+            );
+
+            for (var i = 0; i < imageArray.length; i++) {
+               var tempImage = new Image();
+               tempImage.src = imageArray[i];
+            }
+         });
 
          let colors = [
             // white text
@@ -125,31 +138,11 @@
                currentIndex == amountColors - 1 ? 0 : currentIndex + 1;
             update_background(oddEven, prevIndex, currentIndex);
          }
-
-         window.addEventListener('DOMContentLoaded', (event) => {
-            var imageArray = new Array(
-               'graph_paper.png',
-               'megaman2-2-min.png',
-               'clouds.jpg',
-               'computer.gif',
-               'dystopia.gif'
-            );
-
-            for (var i = 0; i < imageArray.length; i++) {
-               var tempImage = new Image();
-               tempImage.src = imageArray[i];
-            }
-            const button_switcher = document.getElementById('button-switcher');
-            button_switcher.onmousedown = function () {
-               buttonDown.currentTime = 0;
-               buttonDown.play();
-            };
-            button_switcher.onmouseup = function () {
-               buttonUp.currentTime = 0;
-               buttonUp.play();
-               next_background();
-            };
-         });
+         function button_pressed() {
+            buttonAudio.currentTime = 0;
+            buttonAudio.play();
+            next_background();
+         }
       </script>
    </head>
 
@@ -165,7 +158,11 @@
                      esta es mi casa en el internet!11
                   </p>
                </div>
-               <button id="button-switcher" class="pushable">
+               <button
+                  onclick="button_pressed()"
+                  id="button-switcher"
+                  class="pushable"
+               >
                   <span class="shadow"></span>
                   <span class="edge"></span>
                   <div class="front">

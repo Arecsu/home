@@ -64,3 +64,33 @@ function button_color() {
    buttonAudio.play();
    change_color();
 }
+
+const button_switcher = document.getElementById('button-switcher');
+function buttonDownPlay(e) {
+   e.preventDefault();
+   buttonDown.currentTime = 0;
+   buttonDown.play();
+}
+function buttonUpPlay(e) {
+   e.preventDefault();
+   buttonUp.currentTime = 0;
+   buttonUp.play();
+   next_background();
+}
+button_switcher.addEventListener(
+   'touchstart',
+   buttonDownPlay,
+   false
+);
+button_switcher.addEventListener(
+   'mousedown',
+   buttonDownPlay,
+   false
+);
+button_switcher.addEventListener('touchend', buttonUpPlay, false);
+button_switcher.addEventListener('mouseup', buttonUpPlay, false);
+
+// const buttonAudio = new Audio('smw_stomp.wav');
+// const buttonUp = new Audio('press-up.mp3');
+// const buttonDown = new Audio('press-down.mp3');
+// const buttonAudio = new Audio('switch-on.mp3');
