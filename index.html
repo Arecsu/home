@@ -143,6 +143,10 @@
             buttonAudio.play();
             next_background();
          }
+         function killImg() {
+            document.querySelector("#img-wrapper").style.display = "none";
+            document.querySelector("#rip").style.display = "block";
+         }
       </script>
    </head>
 
@@ -221,8 +225,15 @@
                   ><i>don't be a sellout</i></a
                >
             </p>
-            <img width="1685" height="1080" src="tami.jpg" />
-            <p><span class="small">↑ el mejor Pokémon tipo fuego</span></p>
+            <div id="img-wrapper">
+               <img width="1685" height="1080" src="tami.jpg" />
+               <div class="img-control" >
+                  <span class="small">↑ TAMI</span>
+                  <span onclick="killImg()" class="small rip-img">↖</span>
+               </div>
+            </div>
+            <p id="rip">🐦</p>
+            
             <div class="blank-space"></div>
          </div>
          <p class="footer">
