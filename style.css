@@ -239,7 +239,7 @@ img {
    max-width: 34em;
    align-items: center;
 }
-.rip-img {
+.rip-img-button {
    user-select: none;
    cursor: pointer;
    padding: 6px;
@@ -247,6 +247,35 @@ img {
    transform: translate(6px, 0);
 }
 
-#rip {
+.img-text-c {
    display: none;
+}
+
+#img-wrapper {
+   transform-origin: top left;
+   transition: transform .5s cubic-bezier(.83,-0.01,.39,1.01), opacity .47s ease;
+}
+
+.show {
+   display: block;
+   animation: fadeInFromNone 1s ease-out;
+}
+
+.hide-img-wrapper {
+   transform: scale(0);
+   opacity: 0;
+}
+
+@keyframes fadeInFromNone {
+   0% {
+       opacity: 0;
+   }
+
+   1% {
+       opacity: 0;
+   }
+
+   100% {
+       opacity: 1;
+   }
 }
