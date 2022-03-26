@@ -15,7 +15,7 @@
 }
 
 html {
-   min-height: 100vh;
+   min-height: var(--real-vh);
    font-family: 'Inter', sans-serif;
    color-scheme: var(--color-scheme);
 }
@@ -29,7 +29,7 @@ html {
 body {
    /* fix for background height 100%! */
    display: grid;
-   min-height: calc(100vh);
+   min-height: var(--real-vh);
 }
 
 .background-1,
@@ -56,7 +56,7 @@ main {
    font-size: 0.91rem;
    padding: 3.2vw 3.5vw;
    max-width: 42rem;
-   min-height: calc(100vh - 7vw);
+   min-height: calc(var(--real-vh) - 7vw);
    margin: 0;
    display: flex;
    flex-flow: column;

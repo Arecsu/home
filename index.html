@@ -10,11 +10,24 @@
    <link rel="stylesheet" href="style.css?v=1.3" />
    <link rel="shortcut icon" type="image/svg+xml" href="favicon.svg" />
    <link rel="alternate icon" href="favicon.ico" />
+   <meta name="mobile-web-app-capable" content="yes">
+   <meta name="apple-mobile-web-app-capable" content="yes">
    <script>
       let root = document.documentElement;
       const buttonAudio = new Audio('press.mp3');
       const imgKillAudio = new Audio('stomp.mp3');
       // const buttonAudio = new Audio('smw_stomp.wav');
+
+
+      function realVH() {
+         root.style.setProperty('--real-vh', (window.innerHeight) + "px");
+      }
+
+      window.addEventListener('resize', () => {
+         realVH();
+      });
+      realVH();
+
 
       window.addEventListener('DOMContentLoaded', (event) => {
          var imageArray = new Array(
@@ -80,6 +93,8 @@
          ['#ffc521', '#1d1d1d', 'dark'],
       ];
 
+      let emojis = ["🐦", "🦜", "🐤", "🦗", "🐟", "🦩"]
+
       function shuffleArray(array) {
          for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -90,6 +105,7 @@
       // random array order every load
       // why calculate a random index every single time the button is pressed?
       shuffleArray(colors);
+      shuffleArray(emojis);
 
       function update_background(oddEven, prevIndex, index) {
          if (oddEven & 1) {
@@ -147,6 +163,7 @@
       }
       function killImg() {
          imgKillAudio.play();
+         document.querySelector("#img-text-hidden").innerHTML += emojis[0];
          document.querySelector("#img-wrapper").classList.add("hide-img-wrapper");
          setTimeout(() => { document.querySelector("#img-wrapper").style.display = 'none'; }, 500);
          setTimeout(() => { document.querySelector("#img-text-hidden").classList.add("show"); }, 800);
@@ -210,7 +227,9 @@
                <span onclick="killImg()" class="small rip-img-button">↖</span>
             </div>
          </div>
-         <p id="img-text-hidden" class="img-text-c">🐦</p>
+         <p id="img-text-hidden" class="img-text-c">
+            <a href="https://www.youtube.com/watch?v=ACULtdKEVdY" target="_blank">???</a>
+         </p>
 
          <div class="blank-space"></div>
       </div>
