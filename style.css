@@ -245,6 +245,8 @@ img {
    padding: 6px;
    box-sizing: border-box;
    transform: translate(6px, 0);
+   -webkit-tap-highlight-color: transparent;
+   user-select: none;
 }
 
 .img-text-c {
