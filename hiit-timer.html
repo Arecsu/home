@@ -80,17 +80,6 @@
     </main>
 
     <script>
-    /* ios audio fix */
-    function unlockAudioContext(audioCtx) {
-      if (audioCtx.state !== 'suspended') return;
-      const b = document.body;
-      const events = ['touchstart','touchend', 'mousedown','keydown'];
-      events.forEach(e => b.addEventListener(e, unlock, false));
-      function unlock() { audioCtx.resume().then(clean); }
-      function clean() { events.forEach(e => b.removeEventListener(e, unlock)); }
-    }
-    /* */
-
     const beep_long = new Audio('hiit-assets/beep-long.m4a')
     const beep_short = new Audio('hiit-assets/beep-short.m4a')
     const button_sound = new Audio('hiit-assets/button.m4a')
@@ -148,10 +137,7 @@
     // slice will get rid of the first one (ready)
     set_actions = set_actions.concat(set_actions.slice(1)).concat(set_actions.slice(1))
     async function run_actions() {
-      const audioCtx = new (window.AudioContext || window.webkitAudioContext)()
-      unlockAudioContext(audioCtx)
       button_sound.play()
-      setTimeout(() => {button_sound.pause()}, 1000)
 
       document.querySelector("button").style.display = 'none'
       for (const action of set_actions) {
@@ -159,10 +145,7 @@
           action[0] /*time*/, action[1] /*bg-color*/, action[2] /*action name*/
           )
         beep_short.pause()
-        beep_long.currentTime = 0
         beep_long.play()
-        setTimeout(() => {beep_long.pause()}, 1000)
-
       }
     }
     </script>
