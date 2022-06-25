@@ -93,6 +93,7 @@
 
       const countdown = setInterval(() => {
         if(timeleft <= 4 && timeleft > 0){
+          beep_short.pause()
           beep_short.currentTime = 0
           beep_short.play()
         } 
