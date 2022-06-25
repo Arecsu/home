@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="icon" type="image/png" href="hiit-assets/favicon.png" />
+    <title>HIIT-timer</title>
+    <style>
+      @import url('https://rsms.me/inter/inter.css');
+      html { font-family: 'Inter', sans-serif; }
+      @supports (font-variation-settings: normal) {
+        html { font-family: 'Inter var', sans-serif; }
+      }
+
+      body, main {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      body {
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        
+      }
+      main {
+        flex-flow: column;
+        text-transform: uppercase;
+        font-size: clamp(4em, 0.8em + 10vw, 10em);
+        height: calc(100% - clamp(1rem, 0.8rem + 5vw, 5rem));
+        width: calc(100% - clamp(1rem, 0.8rem + 5vw, 5rem));
+        font-weight: bold;
+        letter-spacing: -0.04em;
+        text-align: center;
+        background-color: #efefef;
+      }
+      button {
+        padding: .4em .5em;
+        background: #efefef;
+        border: none;
+        border-radius: .5rem;
+        color: #444;
+        font-size: 1em;
+        font-weight: 700;
+        text-align: center;
+        outline: none;
+        cursor: pointer;
+        transition: .2s ease-in-out;
+        box-shadow: -6px -6px 14px rgba(255, 255, 255, .7),
+                    -6px -6px 10px rgba(255, 255, 255, .5),
+                    6px 6px 8px rgba(255, 255, 255, .075),
+                    6px 6px 10px rgba(0, 0, 0, .15);
+      }
+      button:hover {
+        box-shadow: -2px -2px 6px rgba(255, 255, 255, .6),
+                    -2px -2px 4px rgba(255, 255, 255, .4),
+                    2px 2px 2px rgba(255, 255, 255, .05),
+                    2px 2px 4px rgba(0, 0, 0, .1);
+      }
+      button:active {
+        box-shadow: inset -2px -2px 6px rgba(255, 255, 255, .7),
+                    inset -2px -2px 4px rgba(255, 255, 255, .5),
+                    inset 2px 2px 2px rgba(255, 255, 255, .075),
+                    inset 2px 2px 4px rgba(0, 0, 0, .15);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <button onclick="run_actions()">🦆</button>
+      <div id="action"></div>
+      <div id="timer"></div>  
+    </main>
+
+
+
+    <script>
+  
+    const beep_long = new Audio('hiit-assets/beep-long.mp3')
+    const beep_short = new Audio('hiit-assets/beep-short.mp3')
+    const button_sound = new Audio('hiit-assets/button.mp3')
+
+    const timer_update = (time_action, action_color, action_name) => {
+
+      document.querySelector("#action").innerHTML = action_name
+      document.querySelector("#timer").innerHTML = time_action
+      document.querySelector("main").style.backgroundColor = action_color
+      
+      let timeleft = time_action - 1
+
+      const countdown = setInterval(() => {
+        if(timeleft <= 4 && timeleft > 0) beep_short.play()
+        if(timeleft == 1){
+          clearInterval(countdown)
+        }
+        document.querySelector("#timer").innerHTML = timeleft
+        timeleft -= 1;
+        
+      }, 1000)
+      
+      return new Promise(resolve => setTimeout(resolve, (time_action*1000)));
+    }
+      
+
+    set_actions = [
+      [15, "#efefef", "🚀 Ready"],
+      [20, "#ffe470", "🦘 Jump"],
+      [10, "#9fc5ff", "🍃 Rest"],
+      [20, "#ffe470", "🐸 Jump"],
+      [10, "#9fc5ff", "😴 Rest"],
+      [20, "#ffe470", "🐈 Jump"],
+      [10, "#9fc5ff", "💤 Rest"],
+      [20, "#d2ff9f", "💪 Push up"],
+      [10, "#9fc5ff", "🌃 Rest"],
+      [20, "#ffe470", "🦘 Jump"],
+      [10, "#9fc5ff", "🍃 Rest"],
+      [20, "#ffe470", "🐸 Jump"],
+      [10, "#9fc5ff", "😴 Rest"],
+      [20, "#ffe470", "🐈 Jump"],
+      [10, "#9fc5ff", "💤 Rest"],
+      [20, "#ffa19f", "🆎 Crunch"],
+      [60, "#86e6ff", "🛌🏻 Long Rest"],
+    ]
+
+    // three runs of the same set
+    // ugly af but it works
+    // slice will get rid of the first one (ready)
+    set_actions = set_actions.concat(set_actions.slice(1)).concat(set_actions.slice(1))
+    async function run_actions() {
+      button_sound.play()
+
+      document.querySelector("button").style.display = 'none'
+      for (const action of set_actions) {
+        await timer_update(
+          action[0] /*time*/, action[1] /*bg-color*/, action[2] /*action name*/
+          )
+        beep_long.play()
+      }
+    }
+    </script>
+  </body>
+</html>
