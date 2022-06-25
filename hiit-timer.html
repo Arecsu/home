@@ -141,6 +141,8 @@
         await timer_update(
           action[0] /*time*/, action[1] /*bg-color*/, action[2] /*action name*/
           )
+        beep_short.pause()
+        beep_short.currentTime = 0
         beep_long.play()
       }
     }
