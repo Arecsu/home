@@ -151,7 +151,7 @@
       const audioCtx = new (window.AudioContext || window.webkitAudioContext)()
       unlockAudioContext(audioCtx)
       button_sound.play()
-      setTimeout(button_sound.pause(), 1000)
+      setTimeout(() => {button_sound.pause()}, 1000)
 
       document.querySelector("button").style.display = 'none'
       for (const action of set_actions) {
@@ -161,7 +161,7 @@
         beep_short.pause()
         beep_long.currentTime = 0
         beep_long.play()
-        setTimeout(beep_long.pause(), 1000)
+        setTimeout(() => {beep_long.pause()}, 1000)
 
       }
     }
