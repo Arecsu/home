@@ -108,6 +108,7 @@
 
       const countdown = setInterval(() => {
         if(timeleft <= 4 && timeleft > 0){
+          beep_short.currentTime = 0
           beep_short.play()
         } 
         if(timeleft == 1){
@@ -150,13 +151,18 @@
       const audioCtx = new (window.AudioContext || window.webkitAudioContext)()
       unlockAudioContext(audioCtx)
       button_sound.play()
+      setTimeout(button_sound.pause(), 1000)
 
       document.querySelector("button").style.display = 'none'
       for (const action of set_actions) {
         await timer_update(
           action[0] /*time*/, action[1] /*bg-color*/, action[2] /*action name*/
           )
+        beep_short.pause()
+        beep_long.currentTime = 0
         beep_long.play()
+        setTimeout(beep_long.pause(), 1000)
+
       }
     }
     </script>
