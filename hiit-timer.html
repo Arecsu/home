@@ -94,6 +94,9 @@
     const beep_long = new Audio('hiit-assets/beep-long.m4a')
     const beep_short = new Audio('hiit-assets/beep-short.m4a')
     const button_sound = new Audio('hiit-assets/button.m4a')
+    beep_long.load()
+    beep_short.load()
+    button_sound.load()
 
     const timer_update = (time_action, action_color, action_name) => {
 
@@ -145,8 +148,8 @@
     // slice will get rid of the first one (ready)
     set_actions = set_actions.concat(set_actions.slice(1)).concat(set_actions.slice(1))
     async function run_actions() {
-      const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      unlockAudioContext(audioCtx);
+      const audioCtx = new (window.AudioContext || window.webkitAudioContext)()
+      unlockAudioContext(audioCtx)
       button_sound.play()
 
       document.querySelector("button").style.display = 'none'
