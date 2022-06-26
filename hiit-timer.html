@@ -71,6 +71,14 @@
                     inset 2px 2px 2px rgba(255, 255, 255, .075),
                     inset 2px 2px 4px rgba(0, 0, 0, .15);
       }
+      .volume-control {
+        margin-top: 2rem;
+        /* accent-color: black; */
+        font-size: 1.8rem;
+        letter-spacing: -0.04em;
+        display: flex;
+        flex-flow: row;
+      }
     </style>
     <script>
     function updateRealViewportDimensions() {
@@ -85,9 +93,22 @@
       <button onclick="run_actions()">🦆</button>
       <div id="action"></div>
       <div id="timer"></div>  
+      <div class="volume-control">
+        <span>🔊</span>
+        <input type="range" min="0" max="100" value="100" step="1" class="slider" id="volume-control">  
+      </div>
     </main>
 
+
     <script>
+
+    let volume = document.querySelector("#volume-control")
+    volume.addEventListener("input", function(e) {
+      beep_long.volume = e.currentTarget.value / 100;
+      beep_short.volume = e.currentTarget.value / 100;
+      button_sound.volume = e.currentTarget.value / 100;
+    })
+
     const beep_long = new Audio('hiit-assets/beep-long.m4a')
     const beep_short = new Audio('hiit-assets/beep-short.m4a')
     const button_sound = new Audio('hiit-assets/button.m4a')
