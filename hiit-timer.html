@@ -102,7 +102,7 @@
 
       const countdown = setInterval(() => {
         if(timeleft <= 4 && timeleft > 0){
-          beep_short.pause()
+          //beep_short.pause()
           beep_short.currentTime = 0
           beep_short.play()
         } 
@@ -155,7 +155,7 @@
         await timer_update(
           action[0] /*time*/, action[1] /*bg-color*/, action[2] /*action name*/
           )
-        beep_short.pause()
+        //beep_short.pause()
         beep_long.play()
       }
     }
