@@ -143,6 +143,8 @@
     // slice will get rid of the first one (ready)
     set_actions = set_actions.concat(set_actions.slice(1)).concat(set_actions.slice(1))
     async function run_actions() {
+      const AudioContext = window.AudioContext || window.webkitAudioContext
+      const audioCtx = new AudioContext()
       button_sound.play()
 
       // iOS requires sounds to be loaded inside the parent function
