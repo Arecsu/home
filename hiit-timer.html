@@ -27,7 +27,7 @@
       }
       body {
         width: 100vw;
-        height: 100vh;
+        height: calc(var(--real-vh, 100vh));
         margin: 0;
         
       }
@@ -72,6 +72,13 @@
                     inset 2px 2px 4px rgba(0, 0, 0, .15);
       }
     </style>
+    <script>
+    function updateRealViewportDimensions() {
+      document.documentElement.style.setProperty('--real-vh', (window.innerHeight) + "px")
+    }
+    updateRealViewportDimensions()
+    window.addEventListener("resize", event => updateRealViewportDimensions())
+    </script>
   </head>
   <body>
     <main>
@@ -111,7 +118,7 @@
     }
       
 
-    set_actions = [
+    let set_actions = [
       [15, "#efefef", "🚀 Ready"],
       [20, "#ffe470", "🦘 Jump"],
       [10, "#9fc5ff", "🍃 Rest"],
@@ -138,9 +145,10 @@
     async function run_actions() {
       button_sound.play()
 
+      // iOS requires sounds to be loaded inside the parent function
+      // the Apple™ way zzzzzzzz
       beep_long.load()
       beep_short.load()
-
 
       document.querySelector("button").style.display = 'none'
       for (const action of set_actions) {
@@ -153,7 +161,7 @@
     }
     </script>
 
-    <script>
+    <script> // wake-lock workaround hack
     // Create the root video element
     var video = document.createElement('video');
     video.setAttribute('loop', '');
