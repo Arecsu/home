@@ -102,7 +102,7 @@
 
       const countdown = setInterval(() => {
         if(timeleft <= 4 && timeleft > 0){
-          //beep_short.pause()
+          beep_short.pause()
           beep_short.currentTime = 0
           beep_short.play()
         } 
@@ -143,12 +143,14 @@
     // slice will get rid of the first one (ready)
     set_actions = set_actions.concat(set_actions.slice(1)).concat(set_actions.slice(1))
     async function run_actions() {
-      const AudioContext = window.AudioContext || window.webkitAudioContext
-      const audioCtx = new AudioContext()
-      button_sound.play()
 
       // iOS requires sounds to be loaded inside the parent function
       // the Apple™ way zzzzzzzz
+      const AudioContext = window.AudioContext || window.webkitAudioContext
+      const audioCtx = new AudioContext()
+
+      button_sound.play()
+
       beep_long.load()
       beep_short.load()
 
@@ -157,7 +159,7 @@
         await timer_update(
           action[0] /*time*/, action[1] /*bg-color*/, action[2] /*action name*/
           )
-        //beep_short.pause()
+        beep_short.pause()
         beep_long.play()
       }
     }
