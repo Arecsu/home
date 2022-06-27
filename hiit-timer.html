@@ -284,7 +284,7 @@
     }
 
     const start_action = [[2, "#efefef", "🚀 Listo" , "🚀 Ready"]]
-/*
+
     let set_actions = [
       [20, "#ffe470", "🦘 Saltar" , "🦘 Jump"],
       [10, "#9fc5ff", "🍃 Descanso" , "🍃 Rest"],
@@ -304,19 +304,10 @@
       [60, "#86e6ff", "🛌🏻 Descanso 1-min" , "🛌🏻 Long Rest"],
     ]
 
-*/
-
-    let set_actions = [
-      [7, "#ffe470", "🦘 Saltar" , "🦘 Jump"],
-      [60, "#86e6ff", "🛌🏻 Descanso 1-min" , "🛌🏻 Long Rest"],
-    ]
-
     // four runs of the same set
     // ugly af but it works
     // slice will get rid of last array
-    set_actions = [...start_action, ...set_actions.slice(0, -1)]
-
-    //console.log(set_actions)
+    set_actions = [...start_action, ...set_actions, ...set_actions, ...set_actions, ...set_actions.slice(0, -1)]
    
     async function run_actions() {
 
