@@ -62,9 +62,7 @@
       }
       #hiit-info p {
         font-weight: 500;
-        margin-bottom: 2rem;
         line-height: 1.4em;
-
       }
 
       #actions-container {
@@ -101,6 +99,7 @@
 
 
       button {
+        margin-top: clamp(0.5rem, -0.5rem + 5vh, 2rem);
         text-transform: uppercase;
         padding: .4em .5em;
         background: #efefef;
@@ -147,11 +146,6 @@
        color: inherit;
       }
 
-      @media screen and (max-height: 20rem) {
-        #hiit-info {
-          display: none;
-        }
-      }
       @media screen and (max-width: 50rem) {
         .volume-control {
           align-self: center;
@@ -171,7 +165,8 @@
       <main>
         <div id="hiit-info">
           <h1>20-min HIIT</h1>
-          <p>Rutina inspirada de <a href="https://www.youtube.com/watch?v=OJSvpoQgGss" target="_blank">Jump Rope Dudes</a>. Cardio super potente.</p>
+          <p>Rutina inspirada de <a href="https://www.youtube.com/watch?v=OJSvpoQgGss" target="_blank">Jump Rope Dudes</a></p>
+          <p>4 rondas de 5 minutos saltando la cuerda, flexiones de brazo y abdominales. Rápido y duro 🗿</p>
           <button onclick="run_actions()">Comenzar 🦆</button>
         </div>
         <div id="actions-container">
