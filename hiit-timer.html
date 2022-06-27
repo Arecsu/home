@@ -9,6 +9,8 @@
     <link rel="apple-touch-icon" sizes="180x180" href="hiit-assets/favicon.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <title>HIIT-timer</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>    
     <style>
       @import url('https://rsms.me/inter/inter.css');
       html { font-family: 'Inter', sans-serif; }
@@ -16,39 +18,94 @@
         html { font-family: 'Inter var', sans-serif; }
       }
 
-      body, main {
+      html, body {
         display: flex;
-        align-items: center;
         justify-content: center;
+        margin: 0;
       }
       video {
         height: 0;
         width: 0;
       }
-      body {
+      html {
+        background: white;
+        align-items: center;
         width: 100vw;
         height: calc(var(--real-vh, 100vh));
         margin: 0;
-        
       }
-      main {
+      body {
         flex-flow: column;
-        text-transform: uppercase;
-        font-size: clamp(4em, 0.8em + 10vw, 10em);
         height: calc(100% - clamp(1rem, 0.8rem + 5vw, 5rem));
         width: calc(100% - clamp(1rem, 0.8rem + 5vw, 5rem));
-        font-weight: bold;
-        letter-spacing: -0.04em;
-        text-align: center;
         background-color: #efefef;
       }
+
+      .app-container {
+        display: flex;
+        flex-flow: column;
+        padding: 2rem;
+        letter-spacing: -0.02em;
+        height: 100%;
+        justify-content: space-between;
+      }
+      main {
+        height: 100%;
+        display: flex;
+        flex-flow: column;
+      }
+
+      #hiit-info h1 {
+        text-transform: uppercase;
+        font-weight: 800;
+        margin: 0;
+      }
+      #hiit-info p {
+        font-weight: 500;
+        margin-bottom: 2rem;
+        line-height: 1.4em;
+
+      }
+
+      #actions-container {
+        display: none;
+        text-align: center;
+        height: 100%;
+        flex-flow: column;
+        justify-content: center;
+        font-size: clamp(4em, 0.8em + 10vw, 10em);
+      }
+
+      #actions-container .current-action-container {
+        text-transform: uppercase;
+
+        display: flex;
+        flex-flow: column;
+        font-weight: 700;
+      }
+      #actions-container .current-action-container #action {
+        font-size: 0.9em;
+      }
+      #actions-container .current-action-container #timer {
+        line-height: .9em;
+        font-size: 1.6em;
+      }
+
+      #actions-container .next-action-container {
+        margin-top: 5rem;
+        font-size: 0.6em;
+        font-weight: 600;
+        text-transform: lowercase;
+      }
+
+
       button {
+        text-transform: uppercase;
         padding: .4em .5em;
         background: #efefef;
         border: none;
         border-radius: .5rem;
-        color: #444;
-        font-size: 1em;
+        font-size: 1.2em;
         font-weight: 700;
         text-align: center;
         outline: none;
@@ -73,11 +130,31 @@
       }
       .volume-control {
         margin-top: 2rem;
-        /* accent-color: black; */
+        accent-color: black;
         font-size: 1.8rem;
         letter-spacing: -0.04em;
         display: flex;
         flex-flow: row;
+      }
+      .volume-control input {
+        width: 10rem;
+      }
+      .volume-control svg path {
+        fill: black;
+      }
+      a, a:visited, a:hover, a:active {
+       color: inherit;
+      }
+
+      @media screen and (max-height: 20rem) {
+        #hiit-info {
+          display: none;
+        }
+      }
+      @media screen and (max-width: 50rem) {
+        .volume-control {
+          align-self: center;
+        }
       }
     </style>
     <script>
@@ -89,42 +166,48 @@
     </script>
   </head>
   <body>
-    <main>
-      <button onclick="run_actions()">🦆</button>
-      <div id="action"></div>
-      <div id="timer"></div>  
+    <div class="app-container">
+      <main>
+        <div id="hiit-info">
+          <h1>20-min HIIT</h1>
+          <p>Rutina inspirada de <a href="https://www.youtube.com/watch?v=OJSvpoQgGss" target="_blank">Jump Rope Dudes</a>. Cardio super potente.</p>
+          <button onclick="run_actions()">Comenzar 🦆</button>
+        </div>
+        <div id="actions-container">
+          <div class="current-action-container">
+            <span id="action"></span>
+            <span id="timer"></span>    
+          </div>
+          <div class="next-action-container">↓ <span id="next-action"></span></div>
+        </div>  
+      </main>
       <div class="volume-control">
-        <span>🔊</span>
+        <svg viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg">
+          <path xmlns="http://www.w3.org/2000/svg" d="M13.4179 2.0915C13.7727 2.25469 14 2.60948 14 3.00001V21C14 21.3905 13.7727 21.7453 13.4179 21.9085C13.0631 22.0717 12.6457 22.0134 12.3492 21.7593L5.63008 16H3C2.44772 16 2 15.5523 2 15V9.00001C2 8.44773 2.44772 8.00001 3 8.00001H5.63008L12.3492 2.24076C12.6457 1.9866 13.0631 1.92832 13.4179 2.0915ZM12 5.17423L6.65079 9.75927C6.46955 9.91462 6.23871 10 6 10H4V14H6C6.23871 14 6.46955 14.0854 6.65079 14.2408L12 18.8258V5.17423ZM17.2929 5.29291C17.6834 4.90238 18.3166 4.90238 18.7071 5.29291L18.7078 5.29362L18.7086 5.29438L18.7102 5.29605L18.7141 5.29996L18.724 5.31008C18.7315 5.31784 18.7409 5.32765 18.752 5.33951C18.7742 5.36322 18.8034 5.39513 18.8385 5.43526C18.9087 5.51549 19.0028 5.62871 19.1125 5.77501C19.3318 6.06748 19.6147 6.49329 19.8944 7.0528C20.4556 8.17509 21 9.82725 21 12C21 14.1728 20.4556 15.8249 19.8944 16.9472C19.6147 17.5067 19.3318 17.9326 19.1125 18.225C19.0028 18.3713 18.9087 18.4845 18.8385 18.5648C18.8034 18.6049 18.7742 18.6368 18.752 18.6605C18.7409 18.6724 18.7315 18.6822 18.724 18.69L18.7141 18.7001L18.7102 18.704L18.7086 18.7056L18.7078 18.7064L18.7071 18.7071C18.3166 19.0976 17.6834 19.0976 17.2929 18.7071C16.904 18.3183 16.9024 17.6889 17.2879 17.2979L17.2929 17.2926C17.3 17.2851 17.3138 17.2701 17.3334 17.2478C17.3725 17.203 17.4347 17.1287 17.5125 17.025C17.6682 16.8175 17.8853 16.4933 18.1056 16.0528C18.5444 15.1751 19 13.8272 19 12C19 10.1728 18.5444 8.82494 18.1056 7.94723C17.8853 7.50674 17.6682 7.18255 17.5125 6.97501C17.4347 6.87131 17.3725 6.79704 17.3334 6.75227C17.3138 6.72989 17.3 6.71493 17.2929 6.70739L17.2879 6.70208C16.9024 6.31117 16.904 5.68176 17.2929 5.29291ZM15.2929 8.29291C15.6834 7.90238 16.3166 7.90238 16.7071 8.29291L16.7085 8.29434L16.7101 8.29587L16.7134 8.29923L16.7211 8.30715L16.7408 8.32779C16.7557 8.34369 16.7741 8.36388 16.7955 8.38838C16.8384 8.43736 16.8934 8.50371 16.9563 8.58751C17.0818 8.75498 17.2397 8.99329 17.3944 9.3028C17.7056 9.92509 18 10.8273 18 12C18 13.1728 17.7056 14.0749 17.3944 14.6972C17.2397 15.0067 17.0818 15.2451 16.9563 15.4125C16.8934 15.4963 16.8384 15.5627 16.7955 15.6116C16.7741 15.6361 16.7557 15.6563 16.7408 15.6722L16.7211 15.6929L16.7134 15.7008L16.7101 15.7042L16.7085 15.7057L16.7078 15.7064C16.3173 16.0969 15.6834 16.0976 15.2929 15.7071C14.9057 15.32 14.9024 14.6943 15.2829 14.303C15.2843 14.3015 15.2868 14.2987 15.2904 14.2946C15.3022 14.2811 15.3253 14.2537 15.3562 14.2125C15.4182 14.13 15.5103 13.9933 15.6056 13.8028C15.7944 13.4251 16 12.8272 16 12C16 11.1728 15.7944 10.5749 15.6056 10.1972C15.5103 10.0067 15.4182 9.87005 15.3562 9.78751C15.3253 9.74631 15.3022 9.71892 15.2904 9.70539C15.2868 9.70132 15.2843 9.69852 15.2829 9.69701C14.9024 9.30574 14.9057 8.68008 15.2929 8.29291Z" fill="#0D0D0D" data-darkreader-inline-fill="" style="--darkreader-inline-fill:#e0ddd9;"></path>
+          </svg>
         <input type="range" min="0" max="100" value="100" step="1" class="slider" id="volume-control">  
       </div>
-    </main>
-
-
+    </div>
     <script>
 
     let volume = document.querySelector("#volume-control")
     volume.addEventListener("input", function(e) {
-      beep_long.volume = e.currentTarget.value / 100;
-      beep_short.volume = e.currentTarget.value / 100;
-      button_sound.volume = e.currentTarget.value / 100;
+      Howler.volume(e.currentTarget.value / 100)
     })
 
-    const beep_long = new Audio('hiit-assets/beep-long.m4a')
-    const beep_short = new Audio('hiit-assets/beep-short.m4a')
-    const button_sound = new Audio('hiit-assets/button.m4a')
+    const beep_long = new Howl({ src: ['hiit-assets/beep-long3.m4a'] })
+    const beep_short = new Howl({ src: ['hiit-assets/beep-short_fix_4.m4a'] })
+    const button_sound = new Howl({ src: ['hiit-assets/button.m4a'] })
+    const finish_sound = new Howl({ src: ['hiit-assets/TADA.m4a'] })
 
-    const timer_update = (time_action, action_color, action_name) => {
+    const timer_update = (time_action) => {
 
-      document.querySelector("#action").innerHTML = action_name
       document.querySelector("#timer").innerHTML = time_action
-      document.querySelector("main").style.backgroundColor = action_color
       
       let timeleft = time_action - 1
 
       const countdown = setInterval(() => {
         if(timeleft <= 4 && timeleft > 0){
-          beep_short.pause()
-          beep_short.currentTime = 0
           beep_short.play()
         } 
         if(timeleft == 1){
@@ -135,54 +218,147 @@
         
       }, 1000)
       
-      return new Promise(resolve => setTimeout(resolve, (time_action*1000)));
+      return new Promise(resolve => setTimeout(resolve, (time_action*1000)))
     }
-      
 
+    const confetti_school = () => {
+      const end = Date.now() + (6 * 1000);
+
+      const colors = ['#bb0000', '#ffffff'];
+
+      (function frame() {
+        confetti({
+          particleCount: 2,
+          angle: 60,
+          spread: 55,
+          origin: { x: 0 },
+          colors: colors
+        });
+        confetti({
+          particleCount: 2,
+          angle: 120,
+          spread: 55,
+          origin: { x: 1 },
+          colors: colors
+        });
+
+        if (Date.now() < end) {
+          requestAnimationFrame(frame);
+        }
+      }());
+    }
+
+    const confetti_explosion = () => {
+      const count = 200;
+      const defaults = {
+        origin: { y: 0.7 }
+      };
+      function fire(particleRatio, opts) {
+        confetti(Object.assign({}, defaults, opts, {
+          particleCount: Math.floor(count * particleRatio)
+        }));
+      }
+
+      fire(0.25, {
+        spread: 26,
+        startVelocity: 55,
+      });
+      fire(0.2, {
+        spread: 60,
+      });
+      fire(0.35, {
+        spread: 100,
+        decay: 0.91,
+        scalar: 0.8
+      });
+      fire(0.1, {
+        spread: 120,
+        startVelocity: 25,
+        decay: 0.92,
+        scalar: 1.2
+      });
+      fire(0.1, {
+        spread: 120,
+        startVelocity: 45,
+      });
+    }
+
+    const start_action = [[2, "#efefef", "🚀 Listo" , "🚀 Ready"]]
+/*
     let set_actions = [
-      [15, "#efefef", "🚀 Ready"],
-      [20, "#ffe470", "🦘 Jump"],
-      [10, "#9fc5ff", "🍃 Rest"],
-      [20, "#ffe470", "🐸 Jump"],
-      [10, "#9fc5ff", "😴 Rest"],
-      [20, "#ffe470", "🐈 Jump"],
-      [10, "#9fc5ff", "💤 Rest"],
-      [20, "#d2ff9f", "💪 Push up"],
-      [10, "#9fc5ff", "🌃 Rest"],
-      [20, "#ffe470", "🦘 Jump"],
-      [10, "#9fc5ff", "🍃 Rest"],
-      [20, "#ffe470", "🐸 Jump"],
-      [10, "#9fc5ff", "😴 Rest"],
-      [20, "#ffe470", "🐈 Jump"],
-      [10, "#9fc5ff", "💤 Rest"],
-      [20, "#ffa19f", "🆎 Crunch"],
-      [60, "#86e6ff", "🛌🏻 Long Rest"],
+      [20, "#ffe470", "🦘 Saltar" , "🦘 Jump"],
+      [10, "#9fc5ff", "🍃 Descanso" , "🍃 Rest"],
+      [20, "#ffe470", "🐸 Saltar" , "🐸 Jump"],
+      [10, "#9fc5ff", "😴 Descanso" , "😴 Rest"],
+      [20, "#ffe470", "🐈 Saltar" , "🐈 Jump"],
+      [10, "#9fc5ff", "💤 Descanso" , "💤 Rest"],
+      [20, "#d2ff9f", "💪 Flexiones de brazo" , "💪 Push up"],
+      [10, "#9fc5ff", "🌃 Descanso" , "🌃 Rest"],
+      [20, "#ffe470", "🦘 Saltar" , "🦘 Jump"],
+      [10, "#9fc5ff", "🍃 Descanso" , "🍃 Rest"],
+      [20, "#ffe470", "🐸 Saltar" , "🐸 Jump"],
+      [10, "#9fc5ff", "😴 Descanso" , "😴 Rest"],
+      [20, "#ffe470", "🐈 Saltar" , "🐈 Jump"],
+      [10, "#9fc5ff", "💤 Descanso" , "💤 Rest"],
+      [20, "#ffa19f", "🆎 Abdominales" , "🆎 Crunch"],
+      [60, "#86e6ff", "🛌🏻 Descanso 1-min" , "🛌🏻 Long Rest"],
     ]
 
-    // three runs of the same set
-    // ugly af but it works
-    // slice will get rid of the first one (ready)
-    set_actions = set_actions.concat(set_actions.slice(1)).concat(set_actions.slice(1))
-    async function run_actions() {
+*/
 
-      // iOS requires sounds to be loaded inside the parent function
-      // the Apple™ way zzzzzzzz
-      const AudioContext = window.AudioContext || window.webkitAudioContext
-      const audioCtx = new AudioContext()
+    let set_actions = [
+      [7, "#ffe470", "🦘 Saltar" , "🦘 Jump"],
+      [60, "#86e6ff", "🛌🏻 Descanso 1-min" , "🛌🏻 Long Rest"],
+    ]
+
+    // four runs of the same set
+    // ugly af but it works
+    // slice will get rid of last array
+    set_actions = [...start_action, ...set_actions.slice(0, -1)]
+
+    //console.log(set_actions)
+   
+    async function run_actions() {
 
       button_sound.play()
 
-      beep_long.load()
-      beep_short.load()
+      document.querySelector("#hiit-info").style.display = 'none'
+      document.querySelector("#actions-container").style.display = 'flex'
+      for (const [index, action] of set_actions.entries()) {
 
-      document.querySelector("button").style.display = 'none'
-      for (const action of set_actions) {
-        await timer_update(
-          action[0] /*time*/, action[1] /*bg-color*/, action[2] /*action name*/
-          )
-        beep_short.pause()
-        beep_long.play()
+        const action_time = action[0]
+        const action_color = action[1]
+        const action_name = action[2]
+
+        document.querySelector("body").style.backgroundColor = action_color
+        document.querySelector("#action").innerHTML = action_name
+
+        if (index+1 < set_actions.length) {
+          const next_action_name = set_actions[index+1][2]
+          document.querySelector("#next-action").innerHTML = next_action_name
+        } else {
+          document.querySelector("#next-action").innerHTML = '🏁 Meta'
+        }
+
+        await timer_update(action_time)
+        
+        if (index+1 < set_actions.length) {
+          beep_long.play()
+        }
       }
+
+      document.querySelector("body").style.backgroundColor = '#a9f8ff'
+      document.querySelector("#action").innerHTML = '🏁 🏆'
+      document.querySelector("#action").style.fontSize = '1em'
+      document.querySelector("#timer").style.display = 'none'
+      document.querySelector(".next-action-container").style.display = 'none'
+
+      confetti_school()
+      confetti_explosion()
+
+
+      finish_sound.play()
+
     }
     </script>
 
