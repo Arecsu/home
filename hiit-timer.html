@@ -11,6 +11,7 @@
     <title>HIIT-timer</title>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>    
+    <script src="hiit-assets/NoSleep.min.js"></script>
     <style>
       @import url('https://rsms.me/inter/inter.css');
       html, * { font-family: 'Inter', sans-serif; }
@@ -243,7 +244,7 @@
         });
       };
 
-      limitLoop(frame, 40, 5);
+      limitLoop(frame, 40, 10);
     }
 
     const confetti_explosion = () => {
@@ -287,6 +288,9 @@
     </script>
     <script>
 
+    // wakelock script NoSleep call
+    const noSleep = new NoSleep()
+
     let volume = document.querySelector("#volume-control")
     volume.addEventListener("input", function(e) {
       Howler.volume(e.currentTarget.value / 100)
@@ -322,6 +326,7 @@
     const start_action = [
       [15, "#efefef", "🚀 Listo" , "🚀 Ready"],
       [60, "#efefef", "🔥 Warm Up" , "🔥 Warm Up"],
+      [10, "#9fc5ff", "🚩 Comienza en" , "🚩 Starts in"],
     ]
 
     let set_actions = [
@@ -353,10 +358,15 @@
    
     async function run_actions() {
 
+      // activate wakelock - Needs to be activated in a 
+      // user-interaction event like this function
+      noSleep.enable()
+
       button_sound.play()
 
       document.querySelector("#hiit-info").style.display = 'none'
       document.querySelector("#actions-container").style.display = 'flex'
+
       for (const [index, action] of set_actions.entries()) {
 
         const action_time = action[0]
@@ -393,42 +403,5 @@
       finish_sound.play()
 
     }
-    </script>
-
-    <script> // wake-lock workaround hack
-    // Create the root video element
-    var video = document.createElement('video');
-    video.setAttribute('loop', '');
-    video.setAttribute('muted', '');
-    // Add some styles if needed
-    video.setAttribute('style', 'position: fixed;');
-
-    // A helper to add sources to video
-    function addSourceToVideo(element, type, dataURI) {
-        var source = document.createElement('source');
-        source.src = dataURI;
-        source.type = 'video/' + type;
-        element.appendChild(source);
-    }
-
-    // A helper to concat base64
-    var base64 = function(mimeType, base64) {
-        return 'data:' + mimeType + ';base64,' + base64;
-    };
-
-    // Add Fake sourced
-    addSourceToVideo(video,'webm', base64('video/webm', 'GkXfo0AgQoaBAUL3gQFC8oEEQvOBCEKCQAR3ZWJtQoeBAkKFgQIYU4BnQI0VSalmQCgq17FAAw9CQE2AQAZ3aGFtbXlXQUAGd2hhbW15RIlACECPQAAAAAAAFlSua0AxrkAu14EBY8WBAZyBACK1nEADdW5khkAFVl9WUDglhohAA1ZQOIOBAeBABrCBCLqBCB9DtnVAIueBAKNAHIEAAIAwAQCdASoIAAgAAUAmJaQAA3AA/vz0AAA='));
-    addSourceToVideo(video, 'mp4', base64('video/mp4', 'AAAAHGZ0eXBpc29tAAACAGlzb21pc28ybXA0MQAAAAhmcmVlAAAAG21kYXQAAAGzABAHAAABthADAowdbb9/AAAC6W1vb3YAAABsbXZoZAAAAAB8JbCAfCWwgAAAA+gAAAAAAAEAAAEAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAIVdHJhawAAAFx0a2hkAAAAD3wlsIB8JbCAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAQAAAAAAIAAAACAAAAAABsW1kaWEAAAAgbWRoZAAAAAB8JbCAfCWwgAAAA+gAAAAAVcQAAAAAAC1oZGxyAAAAAAAAAAB2aWRlAAAAAAAAAAAAAAAAVmlkZW9IYW5kbGVyAAAAAVxtaW5mAAAAFHZtaGQAAAABAAAAAAAAAAAAAAAkZGluZgAAABxkcmVmAAAAAAAAAAEAAAAMdXJsIAAAAAEAAAEcc3RibAAAALhzdHNkAAAAAAAAAAEAAACobXA0dgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAIAAgASAAAAEgAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABj//wAAAFJlc2RzAAAAAANEAAEABDwgEQAAAAADDUAAAAAABS0AAAGwAQAAAbWJEwAAAQAAAAEgAMSNiB9FAEQBFGMAAAGyTGF2YzUyLjg3LjQGAQIAAAAYc3R0cwAAAAAAAAABAAAAAQAAAAAAAAAcc3RzYwAAAAAAAAABAAAAAQAAAAEAAAABAAAAFHN0c3oAAAAAAAAAEwAAAAEAAAAUc3RjbwAAAAAAAAABAAAALAAAAGB1ZHRhAAAAWG1ldGEAAAAAAAAAIWhkbHIAAAAAAAAAAG1kaXJhcHBsAAAAAAAAAAAAAAAAK2lsc3QAAAAjqXRvbwAAABtkYXRhAAAAAQAAAABMYXZmNTIuNzguMw=='));
-
-    // Append the video to where ever you need
-    document.body.appendChild(video);
-
-    // Start playing video after any user interaction.
-    // NOTE: Running video.play() handler without a user action may be blocked by browser.
-    var playFn = function() {
-        video.play();
-        document.body.removeEventListener('touchend', playFn);
-    };
-    document.body.addEventListener('touchend', playFn);
     </script>
 </html>
