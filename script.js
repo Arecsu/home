@@ -28,6 +28,24 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 let colors = [
    // white text
+   ['#ffc521', '#1d1d1d', 'dark'],
+   [
+      "linear-gradient(rgb(24 0 27 / 67%), rgb(0 0 0 / 19%)), center bottom 0 / cover no-repeat url('assets/backgrounds/computer.gif')",
+      '#e9e9e9',
+      // '#e9e9e9',
+      'dark',
+   ],
+   [
+      "linear-gradient(rgb(151 226 242 / 65%), rgb(51 139 134 / 25%)), center center / cover no-repeat url('assets/backgrounds/clouds.jpg')",
+      '#1d1d1d',
+      'light',
+   ],
+   [
+      "linear-gradient(rgb(30 0 0 / 64%), rgb(0 0 0 / 29%)), center bottom 0 / cover no-repeat url('assets/backgrounds/dystopia.gif')",
+      '#e9e9e9',
+      // '#e9e9e9',
+      'dark',
+   ],
    [
       "right 0 bottom 0 / 36px url('assets/backgrounds/graph_paper.png'), linear-gradient(#ffffff, #ffffff)",
       '#1d1d1d',
@@ -40,25 +58,7 @@ let colors = [
       // '#e9e9e9',
       'dark',
    ],
-   [
-      "linear-gradient(rgb(151 226 242 / 65%), rgb(51 139 134 / 25%)), center center / cover no-repeat url('assets/backgrounds/clouds.jpg')",
-      '#1d1d1d',
-      'light',
-   ],
-   [
-      "linear-gradient(rgb(24 0 27 / 67%), rgb(0 0 0 / 19%)), center bottom 0 / cover no-repeat url('assets/backgrounds/computer.gif')",
-      '#e9e9e9',
-      // '#e9e9e9',
-      'dark',
-   ],
-   [
-      "linear-gradient(rgb(30 0 0 / 64%), rgb(0 0 0 / 29%)), center bottom 0 / cover no-repeat url('assets/backgrounds/dystopia.gif')",
-      '#e9e9e9',
-      // '#e9e9e9',
-      'dark',
-   ],
    ['#1a1a1a', '#e9e9e9', 'dark'],
-   ['#0e242a', '#e9e9e9', 'dark'],
    // ['#0b2c23', '#e9e9e9', 'dark'], // dark green
    ['#33172c', '#e9e9e9', 'dark'], // dark fucsia
    //['#540e0e', '#e9e9e9', 'dark'], // kinda red
@@ -66,13 +66,13 @@ let colors = [
    //['#965601', '#e9e9e9', 'dark'], // dark yellow
 
    // black text
+   ['#0e242a', '#e9e9e9', 'dark'],
    ['#e7f3f3', '#1d1d1d', 'light'],
    ['#f0ff82', '#1d1d1d', 'light'],
    ['#e2dbff', '#1d1d1d', 'dark'],
    ['#ffe5cc', '#1d1d1d', 'light'],
    //['#b2e5ff', '#1d1d1d', 'light'], // blue
    ['#ffb5b5', '#1d1d1d', 'light'],
-   ['#ffc521', '#1d1d1d', 'dark'],
 ];
 
 let emojis = ["🐦", "🦜", "🐤", "🦗", "🐟", "🦩"]
