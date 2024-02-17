@@ -1,49 +1,52 @@
-<section>
+<section class="about">
    <header>
       <p>
          Web engineer & Visual artist<br />Founder of <a
             href="http://martyr.shop"
             target="_blank"
-            rel="noopener noreferrer">MARTYR X LTD</a>
+            rel="noopener noreferrer">MARTYR X LTD</a
+         >
       </p>
    </header>
-   <div>
+   <div class="about-textblock">
       <p style="text-indent: 3.8em;">
          Based in argentina. Born in 1994. Exploring the intersection between technology and human interaction.
       </p>
       <p>Amidst the chaos that surrounds us, how does beauty and simplicity come to light?</p>
       <p>My work is a journey to unveil the answer to that question.</p>
-      <p>For authentic people. by authentic people. <span>←</span></p>
+      <p>For authentic people. by authentic people. <span class="about-last-arrow">←</span></p>
    </div>
 </section>
 
 <style lang="scss">
-   section {
+   .about {
       grid-area: about;
       align-self: end;
       max-width: 34ch;
       line-height: 1.4em;
 
       header {
-         font-variation-settings: "wght" 600, "opsz" 32;
-         padding-bottom: .8rem;
+         font-variation-settings:
+            "wght" 600,
+            "opsz" 32;
+         padding-bottom: 0.8rem;
          margin-bottom: 1rem;
          border-bottom: 1.5px dashed black;
          text-transform: uppercase;
       }
-      div {
-         p {
-            text-align: justify;
-            text-transform: lowercase;
-            &:not(:last-child) {
-               margin-bottom: 1rem;
-            }
-            span {
-               float: right;
-               position: relative;
-               right: -0.05em;
-            }
+   }
+   .about-textblock {
+      p {
+         text-align: justify;
+         text-transform: lowercase;
+         &:not(:last-child) {
+            margin-bottom: 1rem;
          }
       }
+   }
+   .about-last-arrow {
+      float: right;
+      position: relative;
+      right: -0.05em;
    }
 </style>

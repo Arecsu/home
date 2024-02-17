@@ -1,12 +1,14 @@
 ---
-import Layout from "../layouts/Layout.astro"
-import Header from "../components/Header.astro"
-import About from "../components/About.astro"
+import Layout from "@layouts/Layout.astro"
+import Header from "@components/Header.astro"
+import About from "@components/About.astro"
+import BlackFlag from "@components/BlackFlag.astro"
 ---
 
 <Layout title="Welcome to Astro.">
    <main>
       <Header class="header" />
+      <BlackFlag />
       <About class="about" />
    </main>
 </Layout>
@@ -15,17 +17,28 @@ import About from "../components/About.astro"
    main {
       height: 100dvh;
       display: grid;
-      grid-template-areas: 
-      ".  .         .          ."
-      ".  header    blackflag  ."
-      ".  content   blackflag  ."
-      ".  about     blackflag  ."
-      ".  about     footer     ."
-      ".  .         .          .";
-      grid-template-columns: 2rem auto 1fr 2rem;
-      grid-template-rows: 2rem auto 1fr auto auto 2rem;
-
+      // grid-template-areas:
+      //    ".  .         .        .        .          ."
+      //    ".  header    header   .        blackflag  ."
+      //    ".  content   content  .        blackflag  ."
+      //    ".  about     .        .        blackflag  ."
+      //    ".  about     footer   footer   footer     ."
+      //    ".  .         .        .        .          .";
+      grid-template-columns:
+         [full-width-start] 2rem
+         [header-start content-start about-start] 34ch 
+         [about-end footer-start] 4rem [header-end]
+         minmax(3rem, 1fr) [content-end]         
+         5rem
+         [blackflag-start] minmax(auto, min(50rem, 40%)) [blackflag-end footer-end]
+         2rem [full-width-end];
+      grid-template-rows: 
+         2rem
+         [header-start blackflag-start] auto 
+         [header-end content-start] 1fr 
+         [content-end about-start] auto
+         [blackflag-end] 6rem
+         [footer-start] 2rem [about-end footer-end]
+         2rem;
    }
 </style>
-
-
