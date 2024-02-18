@@ -3,11 +3,14 @@ import Layout from "@layouts/Layout.astro"
 import Header from "@components/Header.astro"
 import About from "@components/About.astro"
 import BlackFlag from "@components/BlackFlag.astro"
+import Work from "@components/Work.astro"
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="alejandro romano">
    <main>
       <Header class="header" />
+      <span class="arrow">↘</span>
+      <Work />
       <BlackFlag />
       <About class="about" />
    </main>
@@ -15,6 +18,7 @@ import BlackFlag from "@components/BlackFlag.astro"
 
 <style lang="scss">
    main {
+      min-height: 800px;
       height: 100dvh;
       display: grid;
       // grid-template-areas:
@@ -26,19 +30,31 @@ import BlackFlag from "@components/BlackFlag.astro"
       //    ".  .         .        .        .          .";
       grid-template-columns:
          [full-width-start] 2rem
-         [header-start content-start about-start] 34ch 
-         [about-end footer-start] 4rem [header-end]
-         minmax(3rem, 1fr) [content-end]         
-         5rem
+         [header-start work-section-start content-title-start about-start] 14ch
+         [content-title-end] 4ch
+         [contact-start content-blocks-start] 14ch
+         [about-end footer-start] auto 
+         [contact-end header-end work-section-end content-blocks-end] 5rem
          [blackflag-start] minmax(auto, min(50rem, 40%)) [blackflag-end footer-end]
          2rem [full-width-end];
       grid-template-rows: 
          2rem
          [header-start blackflag-start] auto 
-         [header-end content-start] 1fr 
-         [content-end about-start] auto
+         [header-end arrow-start] auto
+         [arrow-end work-section-start] auto
+         [work-section-end reflections-section-start] 1fr
+         [reflections-section-end about-start] auto
          [blackflag-end] 6rem
          [footer-start] 2rem [about-end footer-end]
          2rem;
+   }
+
+   .arrow {
+      grid-row: arrow;
+      grid-column: header-start;
+      font-size: 2.2rem;
+      font-weight: 600;
+      line-height: 1em;
+      margin-block: 1.8rem 1.2rem;
    }
 </style>
