@@ -9,12 +9,20 @@
       display: grid;
       grid-template-columns: subgrid;
       // place-content: space-between;
+      grid-template-rows: subgrid;
       width: 100%;
+      @media screen and (max-width: 800px) {
+         place-content: space-between;
+         // grid-template-columns: none;
+         // grid-template-rows: none;
+         display: flex;
+      }
    }
    .header-contact {
       grid-column: contact;
-      width: 100%;
+      // width: 100%;
       display: flex;
       gap: 1rem;
+      
    }
 </style>

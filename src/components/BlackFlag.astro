@@ -18,18 +18,27 @@
         grid-area: blackflag;
         display: flex;
         max-width: 100%;
-        max-height: 100%;
+        height: auto;
         aspect-ratio: 8/7;
         justify-self: end;
-        width: min-content;
+        // width: min-content;
+        
+        /* firefox fix */
         width: -moz-available;
+        max-height: 100%;
+
+        @media screen and (max-width: 800px) {
+            justify-self: auto;
+            
+        }
+
     }
 
     .flag {
         // width: 20%;
         flex: 1;
         &:hover > .flag-interior {
-            background: red;
+            background: gray;
 
         }
     }

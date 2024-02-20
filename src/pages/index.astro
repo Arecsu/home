@@ -1,25 +1,38 @@
 ---
-import Layout from "@layouts/Layout.astro"
-import Header from "@components/Header.astro"
-import About from "@components/About.astro"
-import BlackFlag from "@components/BlackFlag.astro"
-import Work from "@components/Work.astro"
+import  Layout     from "@layouts/Layout.astro"
+import  Header     from "@components/Header.astro"
+import  About      from "@components/About.astro"
+import  BlackFlag  from "@components/BlackFlag.astro"
+import  Work       from "@components/Work.astro"
 ---
 
-<Layout title="alejandro romano">
+<Layout title="Alejandro Romano">
    <main>
-      <Header class="header" />
-      <span class="arrow">↘</span>
-      <Work />
-      <BlackFlag />
-      <About class="about" />
+      <div class="index-1">
+         <Header class="header" />
+         <span class="arrow">↘</span>
+         <Work />
+         <About class="about" />
+      </div>
+      <div class="index-2">
+         <BlackFlag />
+      </div>
    </main>
 </Layout>
 
 <style lang="scss">
+   .index-1, .index-2 {
+      display: grid;
+      grid-template-rows: subgrid;
+      grid-template-columns: subgrid;
+      grid-column: 1 / -1;
+      grid-row: 1 / -1;
+   }
+
    main {
       min-height: 800px;
       height: 100dvh;
+      width: 100%;
       display: grid;
       // grid-template-areas:
       //    ".  .         .        .        .          ."
@@ -35,18 +48,64 @@ import Work from "@components/Work.astro"
          [contact-start content-blocks-start] 14ch
          [about-end footer-start] auto 
          [contact-end header-end work-section-end content-blocks-end] 5rem
-         [blackflag-start] minmax(auto, min(50rem, 40%)) [blackflag-end footer-end]
-         2rem [full-width-end];
+         [blackflag-start] minmax(auto, min(50rem, 30%))
+         [blackflag-end footer-end] 2rem 
+         [full-width-end];
       grid-template-rows: 
          2rem
          [header-start blackflag-start] auto 
          [header-end arrow-start] auto
          [arrow-end work-section-start] auto
-         [work-section-end reflections-section-start] 1fr
+         [work-section-end reflections-section-start] 4rem 1fr
          [reflections-section-end about-start] auto
          [blackflag-end] 6rem
-         [footer-start] 2rem [about-end footer-end]
+         [footer-start] 2rem 
+         [about-end footer-end]
          2rem;
+   }
+
+   @media screen and (max-width: 800px) {
+      main {
+         min-height: 100dvh;
+         height: auto;
+         grid-template-columns:
+            [full-width-start] 
+            2rem
+            [header-start work-section-start content-title-start about-start
+            blackflag-start content-title-end content-blocks-start footer-start]
+            32ch
+            [about-end]
+            1fr
+            [header-end 
+            work-section-end content-blocks-end blackflag-end footer-end]
+            2rem 
+            [full-width-end];
+         grid-template-rows: 
+            100dvh
+            auto;
+      }
+      .index-1 {
+         grid-template-rows:
+            2rem
+            [header-start] auto 
+            [header-end arrow-start] auto
+            [arrow-end work-section-start] auto auto
+            [work-section-end reflections-section-start] 4rem
+            1fr
+            [reflections-section-end about-start] auto
+            [about-end] 
+            2.5rem;
+         grid-row: 1 / 2;
+      }
+      .index-2 {
+         grid-template-rows:
+            [blackflag-start] auto
+            [blackflag-end] 6rem
+            [footer-start] 2rem 
+            [footer-end]
+            2rem;
+         grid-row: 2 / 3;
+      }
    }
 
    .arrow {
