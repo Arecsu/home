@@ -44,10 +44,10 @@
         font-weight: 650;
         line-height: 2.7rem;
         letter-spacing: 0.02em;
-        @media screen and (max-width: 800px) {
+        @media (max-width: $mobile-layout-breakpoint) {
             justify-self: start;
             line-height: initial;
-            margin-bottom: 1rem;
+            margin-bottom: 1.4rem;
         }
     }
 
@@ -66,11 +66,17 @@
         // grid-template-rows: repeat(4, minmax(0, 1fr));
         // place-content: start;
         row-gap: .4rem;
-        @container work-list-container (max-width: 600px) {
-            grid-template-columns: auto;
-            row-gap: 0.8rem;
+
+        @media (max-width: 730px) {
+            grid-template-columns: auto max-content max-content;
         }
         
+
+        @container work-list-container (max-width: 512px) {
+            grid-template-columns: auto;
+            row-gap: 1.1rem;
+        }
+
     }
 
     .work {
@@ -104,11 +110,11 @@
             
         }
 
-        @container work-list-container (max-width: 600px) {
+        @container work-list-container (max-width: 512px) {
             grid-template-columns: auto 1fr;
             grid-template-rows: auto auto;
             grid-column: 1;
-            row-gap: .4rem;
+            row-gap: .2rem;
             // row-gap: .6rem;
             grid-template-areas:
                 "work-title work-type"
@@ -116,7 +122,7 @@
             .work-title {
                 grid-area: work-title;
                 padding-right: 1rem;
-                line-height: 1.2em;
+                line-height: 1.1em;
             }
             .work-timeline {
                 grid-area: work-timeline;
@@ -124,7 +130,7 @@
             .work-type {
                 grid-area: work-type;
                 align-self: self-end;
-                margin-bottom: 0.15em;
+                margin-bottom: 0.1em;
             }
             
             > * {
@@ -134,7 +140,7 @@
     }
     .senegal-work br {
         display: none;
-        @container work-list-container (max-width: 600px) {
+        @container work-list-container (max-width: 512px) {
             display: inline;
         }
     }

@@ -13,7 +13,7 @@
          Based in argentina. Born in 1994. Exploring the intersection between technology and human interaction.
       </p>
       <p>Amidst the chaos that surrounds us, how does beauty and simplicity come to light?</p>
-      <p>My work is a journey to unveil the answer to that question.</p>
+      <p>My work is a lifelong, continuous journey to find the answer.</p>
       <p>For authentic people. by authentic people. <span class="about-last-arrow">←</span></p>
    </div>
 </section>
@@ -22,17 +22,19 @@
    .about {
       grid-area: about;
       align-self: end;
-      // max-width: 34ch;
+      max-width: 34ch;
       line-height: 1.4em;
+   }
 
-      header {
+    header {
          font-weight: 650;
          padding-bottom: 0.8rem;
          margin-bottom: 1rem;
          border-bottom: 1.5px dashed black;
          text-transform: uppercase;
-      }
+         letter-spacing: 0.005em;
    }
+
    .about-textblock {
       p {
          text-align: justify;
@@ -47,4 +49,21 @@
       position: relative;
       right: -0.05em;
    }
+   
+   /*
+   @media (min-width: 460px) and (max-width: 800px) {
+      .about-last-arrow {
+         display: none;
+      }
+   }
+   */
+
+   @media (max-width: 459px) {
+      .about {
+         grid-column: about-start / work-section-end;
+         max-width: 100%;
+
+      }
+   }
+
 </style>

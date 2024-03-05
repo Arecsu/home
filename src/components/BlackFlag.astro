@@ -17,6 +17,7 @@
     .blackflag {
         grid-area: blackflag;
         display: flex;
+        min-width: 0;
         max-width: 100%;
         height: auto;
         aspect-ratio: 8/7;
@@ -27,7 +28,7 @@
         width: -moz-available;
         max-height: 100%;
 
-        @media screen and (max-width: 800px) {
+        @media (max-width: $mobile-layout-breakpoint) {
             justify-self: auto;
             
         }
@@ -58,7 +59,7 @@
     .flag-interior {
         height: 100%;
         width: 100%;
-        background: black;
+        background: linear-gradient(180deg, #000000, #4D4D4D);
     }
 
 </style>

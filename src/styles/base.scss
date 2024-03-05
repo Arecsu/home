@@ -1,0 +1,65 @@
+@font-face {
+   font-family: InterVariable;
+   font-style: normal;
+   font-weight: 100 900;
+   font-display: swap;
+   src: url("/inter-4.0/InterVariable.woff2") format("woff2");
+}
+@font-face {
+   font-family: InterVariable;
+   font-style: italic;
+   font-weight: 100 900;
+   font-display: swap;
+   src: url("/inter-4.0/InterVariable-Italic.woff2") format("woff2");
+}
+
+:root {
+   font-optical-sizing: auto;
+   font-variation-settings: "opsz" 22;
+   font-weight: 400;
+   font-size: 1.03rem;
+   font-family: "InterVariable", sans-serif;
+   // font-variation-settings: "wght" 400, "opsz" 32; /* opsz 32 is Inter Display */
+   // letter-spacing: +0.01em;
+
+   color-scheme: light;
+
+   --padding-page: 2rem;
+}
+
+.inter-display {
+   font-variation-settings: "opsz" 32;
+}
+.inter-text {
+   font-variation-settings: "opsz" 14;
+   letter-spacing: -0.02em;
+}
+.keep-together {
+   white-space: nowrap;
+}
+
+a {
+   //    text-decoration: none;
+   text-underline-offset: 0.12em;
+}
+
+a[target="_blank"]::after {
+   display: inline-block;
+   content: "↗";
+   position: relative;
+   top: -0.2em;
+   padding-left: 0.05em;
+//    font-size: 2em;
+   line-height: 0;
+   text-decoration: none;
+}
+
+@media (hover: hover) {
+   a:hover {
+    //    text-decoration-thickness: 0.12em;
+        --background: #101010;
+        background: var(--background);
+        color: white;
+        outline: .2em solid var(--background);
+   }
+}
