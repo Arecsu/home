@@ -2,26 +2,26 @@
     <div class="inter-display work-block-title"><span>_work</span></div>
     <div class="work-list-container">
         <div class="work-list">
-            <div class="work work-1">
+            <a href="/" class="work disable-default-a-hover work-martyr">
                 <span class="inter-display work-title">martyr⁠—</span>
                 <span class="work-timeline">2019 ---> +</span>
                 <span class="work-type">Founder</span>
-            </div>
-            <div class="work work-2">
+            </a>
+            <a href="/" class="work disable-default-a-hover work-monk">
                 <span class="inter-display work-title">mönk</span>
                 <span class="work-timeline">2023 ---> +</span>
                 <span class="work-type">Web ~ 3D</span>
-            </div>
-            <div class="work work-3 senegal-work">
+            </a>
+            <a href="/" class="work disable-default-a-hover work-senegal">
                 <span class="inter-display work-title">Senegal<br> Grindcore Mafia</span>
                 <span class="work-timeline">2017 → 2019</span>
                 <span class="work-type">Visuals</span>
-            </div>
-            <div class="work work-4">
+            </a>
+            <a href="/" class="work disable-default-a-hover work-explorations">
                 <span class="inter-display work-title">~explorations</span>
                 <span class="work-timeline">2013 ---> +</span>
                 <span class="work-type">[--------]</span>
-            </div>
+            </a>
         </div>
     </div>
 </section>
@@ -65,21 +65,42 @@
         grid-template-columns: repeat(3, max-content);
         // grid-template-rows: repeat(4, minmax(0, 1fr));
         // place-content: start;
-        row-gap: .4rem;
+
+        // replaced row-gap for padding-block in `.work` for proper hover interaction
+        // row-gap: .4rem;
+
+        .work {
+            padding-block: 0.2rem;
+            &:first-child {
+                padding-top: 0;
+            }
+            &:last-child {
+                padding-bottom: 0;
+            }
+        }
 
         @media (max-width: 730px) {
             grid-template-columns: auto max-content max-content;
         }
         
-
         @container work-list-container (max-width: 512px) {
             grid-template-columns: auto;
-            row-gap: 1.1rem;
+            // replaced row-gap for padding-block in `.work` for proper hover interaction
+            // row-gap: 1.1rem;
+            .work {
+                padding-block: 0.55rem;
+                &:first-child {
+                    padding-top: 0;
+                }
+                &:last-child {
+                    padding-bottom: 0;
+                }
+            }
         }
-
     }
 
     .work {
+        text-decoration: none;
         display: grid;
         grid-template-columns: subgrid;
         // grid-template-rows: auto;
@@ -138,7 +159,7 @@
             }
         }
     }
-    .senegal-work br {
+    .work-senegal br {
         display: none;
         @container work-list-container (max-width: 512px) {
             display: inline;

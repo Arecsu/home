@@ -1,9 +1,11 @@
 ---
-import  Layout     from "@layouts/Layout.astro"
-import  Header     from "@components/Header.astro"
-import  About      from "@components/About.astro"
-import  BlackFlag  from "@components/BlackFlag.astro"
-import  Work       from "@components/Work.astro"
+import Layout from "@layouts/Layout.astro"
+import Header from "@components/Header.astro"
+import About from "@components/About.astro"
+import BlackFlag from "@components/BlackFlag.astro"
+import Work from "@components/Work.astro"
+import WorkHoverMartyr from "@components/Work-Hover-Martyr.astro"
+import "@styles/index-work-hover.scss"
 ---
 
 <Layout title="Alejandro Romano">
@@ -18,11 +20,13 @@ import  Work       from "@components/Work.astro"
       <div class="index-2">
          <BlackFlag />
       </div>
+      <WorkHoverMartyr />
    </main>
 </Layout>
 
 <style lang="scss">
-   .index-1, .index-2 {
+   .index-1,
+   .index-2 {
       display: grid;
       grid-template-rows: subgrid;
       grid-template-columns: subgrid;
@@ -33,7 +37,7 @@ import  Work       from "@components/Work.astro"
          pointer-events: auto;
       }
    }
-
+   
    .symbol-small {
       display: none;
    }
@@ -48,20 +52,20 @@ import  Work       from "@components/Work.astro"
          [header-start header-title-start work-section-start content-title-start about-start] 8rem
          [header-title-end content-title-end] 4rem
          [contact-start content-blocks-start] auto
-         [about-end footer-start] auto 
+         [about-end footer-start] auto
          [contact-end header-end work-section-end content-blocks-end] 5rem
          [blackflag-start] minmax(auto, min(40rem, 40%))
-         [blackflag-end footer-end] 2rem 
+         [blackflag-end footer-end] 2rem
          [full-width-end];
-      grid-template-rows: 
+      grid-template-rows:
          2rem
-         [header-start contact-start blackflag-start] auto 
+         [header-start contact-start blackflag-start] auto
          [header-end contact-end arrow-start] auto
          [arrow-end work-section-start] auto
          [work-section-end reflections-section-start] 4rem 1fr
          [reflections-section-end about-start] auto
          [blackflag-end] 10rem
-         [footer-start] 2rem 
+         [footer-start] 2rem
          [about-end footer-end]
          2rem;
    }
@@ -72,7 +76,7 @@ import  Work       from "@components/Work.astro"
          // height: auto;
          min-height: unset;
          grid-template-columns:
-            [full-width-start] 
+            [full-width-start]
             2rem
             [header-start header-title-start work-section-start content-title-start about-start
             blackflag-start content-title-end content-blocks-start footer-start]
@@ -83,23 +87,23 @@ import  Work       from "@components/Work.astro"
             1fr
             [header-end contact-end
             work-section-end content-blocks-end blackflag-end footer-end]
-            2rem 
+            2rem
             [full-width-end];
-         grid-template-rows: 
+         grid-template-rows:
             minmax(100svh, auto)
             auto;
       }
       .index-1 {
          grid-template-rows:
             2rem
-            [header-start header-title-start contact-start] auto 
+            [header-start header-title-start contact-start] auto
             [arrow-start header-title-end] auto
             [arrow-end header-end contact-end] auto
             [work-section-start] auto auto
             [work-section-end reflections-section-start] 4rem
             1fr
             [reflections-section-end about-start] auto
-            [about-end] 
+            [about-end]
             2.5rem;
          grid-row: 1 / 2;
       }
@@ -107,7 +111,7 @@ import  Work       from "@components/Work.astro"
          grid-template-rows:
             [blackflag-start] auto
             [blackflag-end] 6rem
-            [footer-start] 2rem 
+            [footer-start] 2rem
             [footer-end]
             2rem;
          grid-row: 2 / 3;

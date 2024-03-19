@@ -1,0 +1,158 @@
+@mixin martyr-blackflag-move($direction, $distance) {
+   @keyframes martyr-blackflag-move-#{$direction} {
+      from {
+         transform: translateX(0) translateY(0);
+      }
+      to {
+         transform: translateX(if($direction == "left" or $direction == "right", $distance, 0))
+            translateY(if($direction == "up" or $direction == "down", $distance, 0));
+      }
+   }
+}
+
+$martyr-blackflag-svg-height: 12px;
+$martyr-blackflag-svg-width: 46px;
+$martyr-blackflag-animation-duration-X: 2.5s;
+$martyr-blackflag-animation-duration-Y: 0.3s;
+
+@include martyr-blackflag-move("up", -$martyr-blackflag-svg-height);
+@include martyr-blackflag-move("down", $martyr-blackflag-svg-height);
+@include martyr-blackflag-move("left", -$martyr-blackflag-svg-width);
+@include martyr-blackflag-move("right", $martyr-blackflag-svg-width);
+
+body {
+   // transition: color 0.05s, background 0.05s;
+   // transition-delay: .1s;
+}
+
+body:has(.work-martyr:hover) {
+   // body:has(.work-martyr) {
+   background: #efefef;
+   color: #aeaeae;
+
+   .work-martyr {
+      color: #000000;
+   }
+
+   .martyr-on-hover-grid-overlay {
+      visibility: visible;
+
+      .torn-paper-overlay {
+         rotate: 0deg;
+         translate: 9% 40.5%;
+      }
+   }
+
+   .flag-interior {
+      position: relative;
+      overflow: hidden;
+      background: #dfdfdf;
+   }
+
+   .flag-interior:after {
+      position: absolute;
+      color: black;
+      font-size: 10px;
+      white-space: pre;
+      line-height: 12px;
+      padding-left: 1px;
+      font-weight: 400;
+      font-variation-settings: "opsz" 14;
+      letter-spacing: -0.02em;
+      will-change: transform;
+      content: "martyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\a";
+      // content: "";
+      //    background-image: url(martyr-logo-full-black.svg);
+      //    background-image:
+      // background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='50px' width='120px'><text x='0' y='15' fill='black' font-size='20' font-family='InterVariable'>martyr— </text></svg>");
+      background-repeat: repeat;
+      background-size: $martyr-blackflag-svg-width $martyr-blackflag-svg-height;
+      background-position: 0 0;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+   }
+
+   .flag-1 .flag-interior:after,
+   .flag-3 .flag-interior:after {
+      animation-name: martyr-blackflag-move-up;
+      width: 100%;
+      height: calc(100% + $martyr-blackflag-svg-height);
+      animation-duration: $martyr-blackflag-animation-duration-Y;
+   }
+
+   .flag-2 .flag-interior:after,
+   .flag-4 .flag-interior:after {
+      animation-name: martyr-blackflag-move-down;
+      top: -$martyr-blackflag-svg-height;
+      width: 100%;
+      height: calc(100% + $martyr-blackflag-svg-height);
+      animation-duration: $martyr-blackflag-animation-duration-Y;
+   }
+
+   /*
+ .flag-1 .flag-interior:after {
+    animation-name: martyr-blackflag-move-up;
+    width: 100%;
+    height: calc(100% + $martyr-blackflag-svg-height);
+    animation-duration: $martyr-blackflag-animation-duration-Y;
+ }
+ 
+ .flag-2 .flag-interior:after {
+    animation-name: martyr-blackflag-move-down;
+    top: -$martyr-blackflag-svg-height;
+    width: 100%;
+    height: calc(100% + $martyr-blackflag-svg-height);
+    animation-duration: $martyr-blackflag-animation-duration-Y;
+ }
+ 
+ .flag-3 .flag-interior:after {
+    animation-name: martyr-blackflag-move-left;
+    width: calc(100% + $martyr-blackflag-svg-width);
+    height: 100%;
+    animation-duration: $martyr-blackflag-animation-duration-X;
+ }
+ 
+ .flag-4 .flag-interior:after {
+    animation-name: martyr-blackflag-move-right;
+    left: -$martyr-blackflag-svg-width;
+    width: calc(100% + $martyr-blackflag-svg-width);
+    height: 100%;
+    animation-duration: $martyr-blackflag-animation-duration-X;
+ }
+ */
+}
+
+body:has(.work-monk:hover) {
+   background: #000000;
+   color: #414141;
+   .blackflag {
+      visibility: hidden;
+   }
+
+   .work-monk {
+      color: #efefef;
+   }
+}
+
+body:has(.work-senegal:hover) {
+   background: #2a1160;
+   color: #4a3a6f;
+   .blackflag {
+      visibility: hidden;
+   }
+
+   .work-senegal {
+      color: #ffffff;
+   }
+}
+
+body:has(.work-explorations:hover) {
+   color: #aeaeae;
+   .blackflag {
+      visibility: hidden;
+   }
+
+   .work-explorations {
+      color: #000000;
+   }
+}

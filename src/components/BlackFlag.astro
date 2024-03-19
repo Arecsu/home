@@ -13,6 +13,7 @@
     </div>
 </section>
 
+
 <style lang="scss">
     .blackflag {
         grid-area: blackflag;
@@ -34,7 +35,13 @@
         }
 
     }
-
+    .flag-interior {
+        height: 100%;
+        width: 100%;
+        background: linear-gradient(180deg, #000000, #4D4D4D);
+        // background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='65' height='20' viewBox='0 0 65 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3ctext x='0' y='10' font-family='sans-serif' fill='black'%3emartyr— %3c/text%3e%3c/svg%3e ");
+        // mask-image: url(martyr-logo-full-black.svg);
+    }
     .flag {
         // width: 20%;
         flex: 1;
@@ -56,11 +63,5 @@
     .flag-4 {
         margin-bottom: 22%;
     }
-    .flag-interior {
-        height: 100%;
-        width: 100%;
-        background: linear-gradient(180deg, #000000, #4D4D4D);
-    }
-
 </style>
 
