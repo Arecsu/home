@@ -55,7 +55,8 @@ a[target="_blank"]::after {
 }
 
 @media (hover: hover) {
-   a:not(.disable-default-a-hover):hover {
+   a:not(.disable-default-a-hover):hover,
+   .about-authentic:hover {
     //    text-decoration-thickness: 0.12em;
         --background: #101010;
         background: var(--background);

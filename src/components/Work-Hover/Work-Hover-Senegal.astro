@@ -1,0 +1,93 @@
+---
+import { Image } from "astro:assets"
+import iylGerman from "@media/iyl-german.jpg"
+import iylGaspar from "@media/iyl-gaspar.jpg"
+import iylYuri from "@media/iyl-yuri.jpg"
+import iylPablo from "@media/iyl-pablo.jpg"
+import iylPeperina from "@media/iyl-peperina.jpg"
+---
+
+<div class="senegal-on-hover-grid-overlay">
+   <div class="asd">
+      <div class="senegal-image-container">
+         <Image class="iyl-german" src={iylGerman} alt="" />
+      </div>
+      <div class="senegal-image-container">
+         <Image class="iyl-gaspar" src={iylGaspar} alt="" />
+      </div>
+      <div class="senegal-image-container">
+         <Image class="iyl-yuri" src={iylYuri} alt="" />
+      </div>
+      <div class="senegal-image-container">
+         <Image class="iyl-peperina" src={iylPeperina} alt="" />
+      </div>
+      <div class="senegal-image-container">
+         <Image class="iyl-pablo" src={iylPablo} alt="" />
+      </div>
+   </div>
+</div>
+
+<style lang="scss">
+   .senegal-on-hover-grid-overlay {
+      visibility: hidden;
+      display: grid;
+      // grid-area: blackflag;
+      // grid-column: about-end / blackflag-end;
+      grid-column: about-end / full-width-end;
+      grid-row: work-section-start / blackflag-end;
+      overflow: hidden;
+      // ↓ it won't affect the layout and `auto` sizes calculation of the grid-templates
+      position: relative;
+      pointer-events: none;
+      color: black;
+      // place-content: center;
+      justify-items: center;
+   }
+
+   .plastic-surgery-01 {
+      margin-top: clamp(1rem, -27rem + 49vh, 10rem);
+      max-width: 250px;
+      height: auto;
+      margin-right: clamp(0%, 48vw - 46rem, 60%);
+      // animation called on `index-work-hover.scss`
+      // animation: monk-overlay-image 5s cubic-bezier(0.25, 0.16, 0.01, 0.99) 0s 1 normal forwards;
+   }
+
+   .asd {
+      // width: 500px;
+      display: flex;
+      flex-flow: row nowrap;
+   }
+
+   .senegal-image-container {
+      max-width: 200px;
+      object-fit: contain;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-start;
+      > * {
+         transform-origin: top center;
+      }
+      img {
+         max-width: 100%;
+         height: auto;
+      }
+   }
+   .iyl- {
+      &german {
+         scale: 2;
+      }
+      &gaspar {
+         scale: 2;
+      }
+      &yuri {
+         scale: 2;
+      }
+      &pablo {
+         scale: 2;
+      }
+      &peperina {
+         scale: 2;
+      }
+   }
+</style>

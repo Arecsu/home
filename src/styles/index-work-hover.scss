@@ -123,6 +123,7 @@ body:has(.work-martyr:hover) {
 }
 
 body:has(.work-monk:hover) {
+// body:has(.work-monk) {
    background: #000000;
    color: #414141;
    .blackflag {
@@ -132,17 +133,29 @@ body:has(.work-monk:hover) {
    .work-monk {
       color: #efefef;
    }
+
+   .monk-on-hover-grid-overlay {
+      visibility: visible;
+      .plastic-surgery-01 {
+         animation: monk-overlay-image 3s cubic-bezier(0.25, 0.16, 0.01, 0.99) 0s 1 normal forwards;
+      }
+   }
 }
 
-body:has(.work-senegal:hover) {
-   background: #2a1160;
-   color: #4a3a6f;
+// body:has(.work-senegal:hover) {
+body:has(.work-senegal) {
+   background: #2B0961;
+   color: #ffffff;
    .blackflag {
       visibility: hidden;
    }
 
    .work-senegal {
       color: #ffffff;
+   }
+
+   .senegal-on-hover-grid-overlay {
+      visibility: visible;
    }
 }
 

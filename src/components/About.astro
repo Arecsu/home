@@ -14,7 +14,7 @@
       </p>
       <p>Amidst the chaos that surrounds us, how does beauty and simplicity come to light?</p>
       <p>My work is a lifelong, continuous journey to find the answer.</p>
-      <p>For authentic people. by authentic people. <span class="about-last-arrow">←</span></p>
+      <p class="about-authentic">For authentic people. by authentic people. <span class="about-last-arrow">←</span></p>
    </div>
 </section>
 
@@ -26,14 +26,14 @@
       line-height: 1.4em;
    }
 
-    header {
-         font-weight: 650;
-         padding-bottom: 0.8rem;
-         margin-bottom: 1rem;
-         border-bottom: 1.5px dashed;
-         border-color: inherit;
-         text-transform: uppercase;
-         letter-spacing: 0.005em;
+   header {
+      font-weight: 650;
+      padding-bottom: 0.8rem;
+      margin-bottom: 1rem;
+      border-bottom: 1.5px dashed;
+      border-color: inherit;
+      text-transform: uppercase;
+      letter-spacing: 0.005em;
    }
 
    .about-textblock {
@@ -50,7 +50,7 @@
       position: relative;
       right: -0.05em;
    }
-   
+
    /*
    @media (min-width: 460px) and (max-width: 800px) {
       .about-last-arrow {
@@ -63,8 +63,18 @@
       .about {
          grid-column: about-start / work-section-end;
          max-width: 100%;
-
       }
    }
-
 </style>
+
+<!-- 
+<style is:global lang="scss">
+   body:has(.about-authentic:hover) main {
+      > * > *:not(.about) {
+         visibility: hidden;
+      }
+      .about {
+         color: transparent;
+      }
+   }
+</style> -->

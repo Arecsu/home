@@ -1,0 +1,53 @@
+---
+import { Image } from "astro:assets"
+import plasticSurgery from "@media/monk-plastic-surgery-01.jpg"
+---
+
+<div class="monk-on-hover-grid-overlay">
+   <Image class="plastic-surgery-01" src={plasticSurgery} alt="" />
+</div>
+
+<style lang="scss">
+   .monk-on-hover-grid-overlay {
+      visibility: hidden;
+      display: grid;
+      // grid-area: blackflag;
+      // grid-column: about-end / blackflag-end;
+      grid-column: about-end / full-width-end;
+      grid-row: work-section-start / blackflag-end;
+      overflow: hidden;
+      // ↓ it won't affect the layout and `auto` sizes calculation of the grid-templates
+      position: relative;
+      pointer-events: none;
+      color: black;
+      // place-content: center;
+      justify-items: center;
+   }
+
+   .plastic-surgery-01 {
+      margin-top: clamp(1rem, -27rem + 49vh, 10rem);
+      max-width: 250px;
+      height: auto;
+      margin-right: clamp(0%, 48vw - 46rem, 60%);
+      // animation called on `index-work-hover.scss`
+      // animation: monk-overlay-image 5s cubic-bezier(0.25, 0.16, 0.01, 0.99) 0s 1 normal forwards;
+   }
+
+   @keyframes monk-overlay-image {
+      0% {
+         opacity: 0;
+         scale: 0.9;
+      }
+      5% {
+         opacity: 0;
+         scale: 0.9;
+      }
+      70% {
+         opacity: 1;
+      }
+      100% {
+         opacity: 1;
+         scale: 1;
+      }
+   }
+</style>

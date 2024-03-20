@@ -4,9 +4,13 @@ import Header from "@components/Header.astro"
 import About from "@components/About.astro"
 import BlackFlag from "@components/BlackFlag.astro"
 import Work from "@components/Work.astro"
-import WorkHoverMartyr from "@components/Work-Hover-Martyr.astro"
+import WorkHoverMartyr from "@components/Work-Hover/Work-Hover-Martyr.astro"
+import WorkHoverMonk from "@components/Work-Hover/Work-Hover-Monk.astro"
+import WorkHoverSenegal from "@components/Work-Hover/Work-Hover-Senegal.astro"
 import "@styles/index-work-hover.scss"
 ---
+
+<script src="@scripts/decode-images.js"></script>
 
 <Layout title="Alejandro Romano">
    <main>
@@ -21,6 +25,8 @@ import "@styles/index-work-hover.scss"
          <BlackFlag />
       </div>
       <WorkHoverMartyr />
+      <WorkHoverMonk />
+      <WorkHoverSenegal />
    </main>
 </Layout>
 
@@ -52,8 +58,11 @@ import "@styles/index-work-hover.scss"
          [header-start header-title-start work-section-start content-title-start about-start] 8rem
          [header-title-end content-title-end] 4rem
          [contact-start content-blocks-start] auto
+         /*
          [about-end footer-start] auto
          [contact-end header-end work-section-end content-blocks-end] 5rem
+         */
+         [about-end footer-start contact-end header-end work-section-end content-blocks-end] 5rem
          [blackflag-start] minmax(auto, min(40rem, 40%))
          [blackflag-end footer-end] 2rem
          [full-width-end];

@@ -1,5 +1,5 @@
 import { defineConfig } from 'astro/config';
-import alpinejs from "@astrojs/alpinejs";
+// import alpinejs from "@astrojs/alpinejs";
 
 import { fileURLToPath } from 'url';
 import path, { dirname } from 'path';
@@ -10,7 +10,7 @@ const __dirname = dirname(__filename);
 // https://astro.build/config
 export default defineConfig({
 
-  integrations: [alpinejs()],
+  // integrations: [alpinejs()],
   // site: 'https://arecsu.github.io',
   // base: '/www',
 
