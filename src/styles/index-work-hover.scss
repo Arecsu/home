@@ -39,7 +39,7 @@ body:has(.work-martyr:hover) {
 
       .torn-paper-overlay {
          rotate: 0deg;
-         translate: 9% 40.5%;
+         translate: 8% 40.5%;
       }
    }
 
@@ -123,7 +123,7 @@ body:has(.work-martyr:hover) {
 }
 
 body:has(.work-monk:hover) {
-// body:has(.work-monk) {
+   // body:has(.work-monk) {
    background: #000000;
    color: #414141;
    .blackflag {
@@ -137,25 +137,62 @@ body:has(.work-monk:hover) {
    .monk-on-hover-grid-overlay {
       visibility: visible;
       .plastic-surgery-01 {
-         animation: monk-overlay-image 3s cubic-bezier(0.25, 0.16, 0.01, 0.99) 0s 1 normal forwards;
+         animation: monk-overlay-image 2s cubic-bezier(0.25, 0.16, 0.01, 0.99) .1s 1 normal forwards;
       }
    }
 }
 
-// body:has(.work-senegal:hover) {
-body:has(.work-senegal) {
-   background: #2B0961;
+body:has(.work-senegal:hover) {
+   // body:has(.work-senegal) {
+   background: #2b0961;
    color: #ffffff;
    .blackflag {
       visibility: hidden;
    }
 
    .work-senegal {
-      color: #ffffff;
+      color: rgb(255, 196, 0);
+      text-decoration: underline;
+   }
+
+   .work-list-container {
+      z-index: 2;
    }
 
    .senegal-on-hover-grid-overlay {
       visibility: visible;
+   }
+
+   .senegal-southwest-arrow {
+      transition: translate 0.6s, opacity 0.6s, scale 0.6s;
+      transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+      transition-delay: .6s;
+      opacity: 1;
+      translate: 0 0;
+      scale: 1;
+   }
+
+   .senegal-images-group,
+   .senegal-images-box:after,
+   .senegal-images-box:before {
+      transition: translate 0.4s, scale 0.4s;
+      transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+      // transition-delay: .15s;
+   }
+
+   .senegal-images-group {
+      translate: $senegal-box-translate (-$senegal-box-translate);
+   }
+
+   .senegal-images-box {
+      &:after {
+         // translate: $senegal-box-translate $senegal-box-translate;
+         scale: 1;
+      }
+      &:before {
+         // translate: 0 (-$senegal-box-translate);
+         scale: 1;
+      }
    }
 }
 

@@ -4,7 +4,7 @@ import plasticSurgery from "@media/monk-plastic-surgery-01.jpg"
 ---
 
 <div class="monk-on-hover-grid-overlay">
-   <Image class="plastic-surgery-01" src={plasticSurgery} alt="" />
+   <Image class="plastic-surgery-01" src={plasticSurgery} alt="" width="400" format="avif" quality="60" decoding="sync"/>
 </div>
 
 <style lang="scss">
@@ -26,9 +26,10 @@ import plasticSurgery from "@media/monk-plastic-surgery-01.jpg"
 
    .plastic-surgery-01 {
       margin-top: clamp(1rem, -27rem + 49vh, 10rem);
-      max-width: 250px;
+      width: min(100%, 250px);
       height: auto;
       margin-right: clamp(0%, 48vw - 46rem, 60%);
+      opacity: 0;
       // animation called on `index-work-hover.scss`
       // animation: monk-overlay-image 5s cubic-bezier(0.25, 0.16, 0.01, 0.99) 0s 1 normal forwards;
    }

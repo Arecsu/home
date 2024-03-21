@@ -8,23 +8,34 @@ import iylPeperina from "@media/iyl-peperina.jpg"
 ---
 
 <div class="senegal-on-hover-grid-overlay">
-   <div class="asd">
-      <div class="senegal-image-container">
-         <Image class="iyl-german" src={iylGerman} alt="" />
+   <div class="senegal-images-with-box">
+      <div class="senegal-images-group">
+         <div class="senegal-image-container">
+            <Image class="iyl-german" src={iylGerman} alt="" width="900" format="avif" quality="65" decoding="sync"/>
+         </div>
+         <div class="senegal-image-container">
+            <Image class="iyl-gaspar" src={iylGaspar} alt="" width="900" format="avif" quality="60" decoding="sync"/>
+         </div>
+         <div class="senegal-image-container">
+            <Image class="iyl-yuri" src={iylYuri} alt="" width="900" format="avif" quality="60" decoding="sync"/>
+         </div>
+         <div class="senegal-image-container">
+            <Image class="iyl-pablo" src={iylPablo} alt="" width="900" format="avif" quality="60" decoding="sync"/>
+         </div>
+         <div class="senegal-image-container">
+            <Image class="iyl-peperina" src={iylPeperina} alt="" width="900" format="avif" quality="60" decoding="sync"/>
+         </div>
+         <!-- <div class="senegal-radial-effect">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+         </div> -->
       </div>
-      <div class="senegal-image-container">
-         <Image class="iyl-gaspar" src={iylGaspar} alt="" />
-      </div>
-      <div class="senegal-image-container">
-         <Image class="iyl-yuri" src={iylYuri} alt="" />
-      </div>
-      <div class="senegal-image-container">
-         <Image class="iyl-peperina" src={iylPeperina} alt="" />
-      </div>
-      <div class="senegal-image-container">
-         <Image class="iyl-pablo" src={iylPablo} alt="" />
-      </div>
+      <div class="senegal-images-box"></div>
    </div>
+   <span class="senegal-southwest-arrow">↙</span>
 </div>
 
 <style lang="scss">
@@ -33,35 +44,104 @@ import iylPeperina from "@media/iyl-peperina.jpg"
       display: grid;
       // grid-area: blackflag;
       // grid-column: about-end / blackflag-end;
-      grid-column: about-end / full-width-end;
-      grid-row: work-section-start / blackflag-end;
+      grid-template-rows: subgrid;
+      grid-template-columns: subgrid;
+      grid-column: 1 / -1;
+      grid-row: 1 / -1;
       overflow: hidden;
       // ↓ it won't affect the layout and `auto` sizes calculation of the grid-templates
       position: relative;
       pointer-events: none;
-      color: black;
       // place-content: center;
-      justify-items: center;
+      // justify-items: center;
    }
 
-   .plastic-surgery-01 {
-      margin-top: clamp(1rem, -27rem + 49vh, 10rem);
-      max-width: 250px;
-      height: auto;
-      margin-right: clamp(0%, 48vw - 46rem, 60%);
-      // animation called on `index-work-hover.scss`
-      // animation: monk-overlay-image 5s cubic-bezier(0.25, 0.16, 0.01, 0.99) 0s 1 normal forwards;
+   .senegal-images-with-box {
+      grid-column: 1 / blackflag-end;
+      grid-row: 1 / footer-start;
+      position: absolute;
+      right: clamp(1%, -20rem + 27vw, 10%);
+      bottom: clamp(10%, 14rem - 18vh, 40%);
+      display: grid;
+      > * {
+         grid-column: 1 / -1;
+         grid-row: 1 / -1;
+      }
    }
 
-   .asd {
-      // width: 500px;
+   .senegal-images-group {
+      // position: relative;
+      width: clamp(800px, min(112vh, 54vw), 1300px);
       display: flex;
+      aspect-ratio: 4 / 2;
       flex-flow: row nowrap;
+      // &:before {
+      //    position: absolute;
+      //    content: "";
+      //    width: 100%;
+      //    height: 100%;
+      //    translate: 20px 20px;
+      //    // background: red;
+      //    box-shadow:inset 0px 0px 0px 4px white;
+      // }
+      translate: 0 0;
+   }
+
+   .senegal-images-box {
+      // position: absolute;
+      --senegal-background-box: #ffcb2d;
+      background: var(--senegal-background-box);
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      &:before {
+         content: "";
+         position: absolute;
+         top: -20px;
+         display: block;
+         left: 0;
+         height: 24px;
+         background: var(--senegal-background-box);
+         clip-path: polygon(100% -4px, 100% 100%, -4px 100%);
+         width: 24px;
+         transform-origin: left calc(100% - 4px);
+         scale: 0;
+      }
+      &:after {
+         content: "";
+         position: absolute;
+         bottom: 0;
+         display: block;
+         right: -20px;
+         height: 24px;
+         background: var(--senegal-background-box);
+         clip-path: polygon(0% 0%, calc(100% + 4px) 0%, 0% calc(100% + 5px));
+         width: 24px;
+         transform-origin: 4px bottom;
+         scale: 0;
+      }
+   }
+
+   .senegal-southwest-arrow {
+      grid-area: blackflag;
+      justify-self: end;
+      font-size: clamp(4rem, 6vw, 8rem);
+      font-weight: 550;
+      margin-right: -0.1em;
+      line-height: 0.37em;
+      opacity: 0;
+      translate: 0.4rem -0.4rem;
+      transform-origin: top right;
+      scale: 0.9;
    }
 
    .senegal-image-container {
-      max-width: 200px;
+      // position: relative;
+      // max-width: 400px;
+      // width: 100px;
+      aspect-ratio: 4 / 2;
       object-fit: contain;
+      height: auto;
       overflow: hidden;
       display: flex;
       align-items: flex-start;
@@ -73,21 +153,66 @@ import iylPeperina from "@media/iyl-peperina.jpg"
          height: auto;
       }
    }
+
    .iyl- {
       &german {
          scale: 2;
+         translate: 24% -1%;
       }
       &gaspar {
          scale: 2;
+         translate: 18% -1.5%;
       }
       &yuri {
          scale: 2;
+         translate: 14% -0.5%;
       }
       &pablo {
          scale: 2;
+         translate: 20% 0%;
       }
       &peperina {
          scale: 2;
+         translate: -5% 0%;
       }
    }
+
+   // @keyframes senegal-radial-effect {
+   //    from {
+   //       scale: 0;
+   //    }
+
+   //    to {
+   //       scale: 100;
+   //    }
+   // }
+
+   // $delay-increment: 1.2s;
+
+   // .senegal-radial-effect {
+   //    position: absolute;
+   //    height: 100%;
+   //    width: 100%;
+   //    display: grid;
+   //    place-items: center;
+   //    z-index: -1;
+   //    > div {
+   //       grid-column: 1 / -1;
+   //       grid-row: 1 / -1;
+   //       width: 40px;
+   //       height: 40px;
+   //       border-radius: 100%;
+   //       border: .2px solid black;
+   //       scale: 0;
+   //       animation-timing-function: linear;
+   //       animation-iteration-count: infinite;
+   //       animation-name: senegal-radial-effect;
+   //       animation-duration: 4s;
+   //    }
+   //    @for $i from 1 through 5 {
+   //       > div:nth-child(#{$i}) {
+   //          animation-delay: ($i * $delay-increment);
+   //       }
+   //    }
+   // }
 </style>
