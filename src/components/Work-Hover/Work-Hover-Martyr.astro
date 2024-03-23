@@ -1,14 +1,31 @@
 ---
 import { Image } from "astro:assets"
 import allTornPaper3 from "@media/all-torn-paper-3.png"
+import notepad from "@media/martyr-hover-notepad.png"
 ---
 
 <div class="martyr-on-hover-grid-overlay">
-   
-   <Image class="torn-paper-overlay" src={allTornPaper3} alt="" width="2600" format="avif" quality="55" decoding="sync" />
-   
+   <Image
+      class="torn-paper-overlay"
+      src={allTornPaper3}
+      alt=""
+      width="2700"
+      format="avif"
+      quality="60"
+      decoding="sync"
+      loading="eager"
+   />
+
    <div class="notepad-overlay">
-      <img src="martyr-hover-notepad.webp" height="1157" width="1157" decoding="async"/>
+      <img
+         src={notepad.src}
+         alt=""
+         srcset={notepad.src + " 3x"}
+         width={notepad.width / 3}
+         height={notepad.height / 3}
+         decoding="sync"
+         loading="eager"
+      />
       <span class="notepad-cursor"></span>
    </div>
    <div class="inter-display martyr-marquee">
@@ -36,6 +53,7 @@ import allTornPaper3 from "@media/all-torn-paper-3.png"
       grid-column: full-width;
       grid-row: 1 / -1;
       position: absolute;
+      // z-index: 1;
       right: 0%;
       bottom: 0%;
       width: auto;
@@ -49,7 +67,6 @@ import allTornPaper3 from "@media/all-torn-paper-3.png"
       transition:
          translate 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
          rotate 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-
    }
 
    @keyframes notepad-cursor-blink {
@@ -62,23 +79,26 @@ import allTornPaper3 from "@media/all-torn-paper-3.png"
       grid-column: full-width;
       grid-row: 1 / -1;
       position: absolute;
+      // left: 4%;
       right: 10%;
-      bottom: clamp(20%, 42rem - 20vw, 40%);
+      bottom: clamp(12%, -10rem + 30%, 16%);
+      @media (max-width: ($mobile-layout-breakpoint + 410px)) and (max-height: 1000px) {
+         transform-origin: bottom right;
+         scale: 0.75;
+      }
+      // bottom: clamp(20%, 42rem - 20vw, 40%);
       // image-rendering: pixelated;
       // height: 100%;
       // width: 100%;
       > img {
-         max-width: calc(1157px / 3);
-         @media (max-width: ($mobile-layout-breakpoint + 150px) ) {
-            max-width: calc(1157px / 4);
-         }
+         max-width: 100%;
          height: auto;
       }
-      
+
       .notepad-cursor {
          display: block;
          position: absolute;
-         width: .8%; // windows-98
+         width: 0.8%; // windows-98
          // width: 1%; // custom
          height: 5.25%;
          background: black;

@@ -10,20 +10,20 @@ import iylPeperina from "@media/iyl-peperina.jpg"
 <div class="senegal-on-hover-grid-overlay">
    <div class="senegal-images-with-box">
       <div class="senegal-images-group">
-         <div class="senegal-image-container">
-            <Image class="iyl-german" src={iylGerman} alt="" width="900" format="avif" quality="65" decoding="sync"/>
+         <div class="senegal-image-container iyl-german">
+            <Image src={iylGerman} alt="" width="860" format="avif" quality="65" decoding="sync" loading="eager" />
          </div>
-         <div class="senegal-image-container">
-            <Image class="iyl-gaspar" src={iylGaspar} alt="" width="900" format="avif" quality="60" decoding="sync"/>
+         <div class="senegal-image-container iyl-gaspar">
+            <Image src={iylGaspar} alt="" width="860" format="avif" quality="60" decoding="sync" loading="eager" />
          </div>
-         <div class="senegal-image-container">
-            <Image class="iyl-yuri" src={iylYuri} alt="" width="900" format="avif" quality="60" decoding="sync"/>
+         <div class="senegal-image-container iyl-yuri">
+            <Image src={iylYuri} alt="" width="860" format="avif" quality="60" decoding="sync" loading="eager" />
          </div>
-         <div class="senegal-image-container">
-            <Image class="iyl-pablo" src={iylPablo} alt="" width="900" format="avif" quality="60" decoding="sync"/>
+         <div class="senegal-image-container iyl-pablo">
+            <Image src={iylPablo} alt="" width="860" format="avif" quality="60" decoding="sync" loading="eager" />
          </div>
-         <div class="senegal-image-container">
-            <Image class="iyl-peperina" src={iylPeperina} alt="" width="900" format="avif" quality="60" decoding="sync"/>
+         <div class="senegal-image-container iyl-peperina">
+            <Image src={iylPeperina} alt="" width="860" format="avif" quality="60" decoding="sync" loading="eager" />
          </div>
          <!-- <div class="senegal-radial-effect">
             <div></div>
@@ -39,6 +39,8 @@ import iylPeperina from "@media/iyl-peperina.jpg"
 </div>
 
 <style lang="scss">
+   // hardcoded value when Work.astro @container changes form
+
    .senegal-on-hover-grid-overlay {
       visibility: hidden;
       display: grid;
@@ -54,15 +56,22 @@ import iylPeperina from "@media/iyl-peperina.jpg"
       pointer-events: none;
       // place-content: center;
       // justify-items: center;
+      z-index: 1;
    }
 
    .senegal-images-with-box {
+      --senegal-background-box: #ffcb2d;
       grid-column: 1 / blackflag-end;
       grid-row: 1 / footer-start;
+      display: grid;
       position: absolute;
       right: clamp(1%, -20rem + 27vw, 10%);
-      bottom: clamp(10%, 14rem - 18vh, 40%);
-      display: grid;
+      bottom: clamp(4%, -22rem + 50%, 12%);
+      @media (max-width: $work-astro-breakpoint) {
+         right: $senegal-box-translate;
+         bottom: 0;
+         grid-row: 1 / footer-end;
+      }
       > * {
          grid-column: 1 / -1;
          grid-row: 1 / -1;
@@ -71,26 +80,30 @@ import iylPeperina from "@media/iyl-peperina.jpg"
 
    .senegal-images-group {
       // position: relative;
-      width: clamp(800px, min(112vh, 54vw), 1300px);
+      width: clamp(500px, min(112vh, 46vw), 1300px);
       display: flex;
       aspect-ratio: 4 / 2;
       flex-flow: row nowrap;
-      // &:before {
-      //    position: absolute;
-      //    content: "";
-      //    width: 100%;
-      //    height: 100%;
-      //    translate: 20px 20px;
-      //    // background: red;
-      //    box-shadow:inset 0px 0px 0px 4px white;
-      // }
       translate: 0 0;
+      @media (max-width: $work-astro-breakpoint) {
+         width: clamp(300px, 40vw, 800px);
+         display: grid;
+         aspect-ratio: 3 / 3;
+         grid-template-columns: repeat(3, 1fr);
+         grid-template-rows: repeat(2, 1fr);
+         grid-template-areas:
+            "iyl-german iyl-gaspar ."
+            "iyl-yuri iyl-pablo iyl-peperina";
+         // opacity: 0.1;
+         translate: 0 0;
+      }
    }
 
    .senegal-images-box {
       // position: absolute;
-      --senegal-background-box: #ffcb2d;
-      background: var(--senegal-background-box);
+      background-image: linear-gradient(90deg, var(--senegal-background-box) 25%, transparent 25%),
+         linear-gradient(180deg, transparent 75%, var(--senegal-background-box) 75%);
+      // clip-path: polygon(0 0, 50% 0, 50% 50%, 100% 50%, 100% 100%, 0 100%);
       width: 100%;
       height: 100%;
       z-index: -1;
@@ -100,10 +113,10 @@ import iylPeperina from "@media/iyl-peperina.jpg"
          top: -20px;
          display: block;
          left: 0;
-         height: 24px;
+         height: ($senegal-box-translate + 4px);
          background: var(--senegal-background-box);
          clip-path: polygon(100% -4px, 100% 100%, -4px 100%);
-         width: 24px;
+         width: ($senegal-box-translate + 4px);
          transform-origin: left calc(100% - 4px);
          scale: 0;
       }
@@ -112,11 +125,11 @@ import iylPeperina from "@media/iyl-peperina.jpg"
          position: absolute;
          bottom: 0;
          display: block;
-         right: -20px;
-         height: 24px;
+         right: (-$senegal-box-translate);
+         height: ($senegal-box-translate + 4px);
          background: var(--senegal-background-box);
          clip-path: polygon(0% 0%, calc(100% + 4px) 0%, 0% calc(100% + 5px));
-         width: 24px;
+         width: ($senegal-box-translate + 4px);
          transform-origin: 4px bottom;
          scale: 0;
       }
@@ -139,12 +152,13 @@ import iylPeperina from "@media/iyl-peperina.jpg"
       // position: relative;
       // max-width: 400px;
       // width: 100px;
-      aspect-ratio: 4 / 2;
+      // aspect-ratio: 4 / 2;
       object-fit: contain;
       height: auto;
       overflow: hidden;
       display: flex;
       align-items: flex-start;
+      background: var(--senegal-background-box);
       > * {
          transform-origin: top center;
       }
@@ -156,24 +170,76 @@ import iylPeperina from "@media/iyl-peperina.jpg"
 
    .iyl- {
       &german {
-         scale: 2;
-         translate: 24% -1%;
+         grid-area: iyl-german;
+         background: var(--senegal-background-box);
+         img {
+            scale: 1.9;
+            translate: 23% 0.5%;
+         }
       }
       &gaspar {
-         scale: 2;
-         translate: 18% -1.5%;
+         grid-area: iyl-gaspar;
+         background: linear-gradient(90deg, #07d9fd, #0ac6fb);
+         img {
+            scale: 1.8;
+            translate: 18% 0%;
+         }
       }
       &yuri {
-         scale: 2;
-         translate: 14% -0.5%;
+         grid-area: iyl-yuri;
+         background: #fe2552;
+         img {
+            scale: 2;
+            translate: 14% -0.5%;
+         }
       }
       &pablo {
-         scale: 2;
-         translate: 20% 0%;
+         grid-area: iyl-pablo;
+         background: linear-gradient(180deg, #07e99f, #07de91);
+         img {
+            scale: 2;
+            translate: 29% 0%;
+         }
       }
       &peperina {
-         scale: 2;
-         translate: -5% 0%;
+         grid-area: iyl-peperina;
+         background: #de82c9;
+         img {
+            scale: 1.82;
+            translate: -5% 0%;
+         }
+      }
+      @media (max-width: $work-astro-breakpoint) {
+         &german {
+            img {
+               scale: 1.12;
+               translate: 2% 0%;
+            }
+         }
+         &gaspar {
+            img {
+               scale: 1.12;
+               translate: 2.5% 0.5%;
+            }
+         }
+         &yuri {
+            img {
+               scale: 1.2;
+               translate: 10% 0%;
+            }
+         }
+         &pablo {
+            img {
+               translate: 12% 0%;
+               scale: 1.2;
+            }
+         }
+         &peperina {
+            img {
+               scale: 1.05;
+               translate: 0% 0%;
+            }
+         }
       }
    }
 

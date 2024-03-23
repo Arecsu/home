@@ -150,13 +150,19 @@ body:has(.work-senegal:hover) {
       visibility: hidden;
    }
 
+   @media (max-width: $work-astro-breakpoint) {
+      footer {
+         visibility: hidden;
+      }
+   }
+
    .work-senegal {
       color: rgb(255, 196, 0);
       text-decoration: underline;
    }
 
    .work-list-container {
-      z-index: 2;
+      // z-index: -1;
    }
 
    .senegal-on-hover-grid-overlay {
