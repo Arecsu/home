@@ -21,6 +21,7 @@ import "@styles/index-work-hover.scss"
          <Work />
          <span class="symbol-small">~\</span>
          <About class="about" />
+         <WorkHoverSenegal />
       </div>
       <div class="index-2">
          <BlackFlag />
@@ -28,7 +29,6 @@ import "@styles/index-work-hover.scss"
       </div>
       <WorkHoverMartyr />
       <WorkHoverMonk />
-      <WorkHoverSenegal />
    </main>
 </Layout>
 
@@ -41,7 +41,7 @@ import "@styles/index-work-hover.scss"
       grid-column: 1 / -1;
       grid-row: 1 / -1;
       pointer-events: none;
-      > :global(*) {
+      > :global(*):not(.pointer-events-none) {
          pointer-events: auto;
       }
    }

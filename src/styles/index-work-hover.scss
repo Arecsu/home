@@ -156,9 +156,15 @@ body:has(.work-senegal:hover) {
       }
    }
 
+   @media (max-width: $mobile-layout-breakpoint) {
+      .about {
+         visibility: hidden;
+      }
+   }
+
    .work-senegal {
       color: rgb(255, 196, 0);
-      text-decoration: underline;
+      // text-decoration: underline;
    }
 
    .work-list-container {

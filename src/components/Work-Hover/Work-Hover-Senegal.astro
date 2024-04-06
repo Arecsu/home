@@ -7,7 +7,7 @@ import iylPablo from "@media/iyl-pablo.jpg"
 import iylPeperina from "@media/iyl-peperina.jpg"
 ---
 
-<div class="senegal-on-hover-grid-overlay">
+<div class="senegal-on-hover-grid-overlay pointer-events-none">
    <div class="senegal-images-with-box">
       <div class="senegal-images-group">
          <div class="senegal-image-container iyl-german">
@@ -53,10 +53,9 @@ import iylPeperina from "@media/iyl-peperina.jpg"
       overflow: hidden;
       // ↓ it won't affect the layout and `auto` sizes calculation of the grid-templates
       position: relative;
-      pointer-events: none;
       // place-content: center;
       // justify-items: center;
-      z-index: 1;
+      z-index: 1; 
    }
 
    .senegal-images-with-box {
@@ -67,10 +66,19 @@ import iylPeperina from "@media/iyl-peperina.jpg"
       position: absolute;
       right: clamp(1%, -20rem + 27vw, 10%);
       bottom: clamp(4%, -22rem + 50%, 12%);
+      width: clamp(500px, min(112vh, 46vw), 1300px);
       @media (max-width: $work-astro-breakpoint) {
+         width: clamp(300px, 40vw, 800px);
          right: $senegal-box-translate;
          bottom: 0;
          grid-row: 1 / footer-end;
+      }
+      @media (max-width: $mobile-layout-breakpoint) {
+         grid-column: content-blocks;
+         grid-row: about;
+         right: auto;
+         bottom: 0;
+         width: min(80%, 600px);
       }
       > * {
          grid-column: 1 / -1;
@@ -80,13 +88,12 @@ import iylPeperina from "@media/iyl-peperina.jpg"
 
    .senegal-images-group {
       // position: relative;
-      width: clamp(500px, min(112vh, 46vw), 1300px);
+      width: 100%;
       display: flex;
       aspect-ratio: 4 / 2;
       flex-flow: row nowrap;
       translate: 0 0;
       @media (max-width: $work-astro-breakpoint) {
-         width: clamp(300px, 40vw, 800px);
          display: grid;
          aspect-ratio: 3 / 3;
          grid-template-columns: repeat(3, 1fr);
@@ -146,6 +153,9 @@ import iylPeperina from "@media/iyl-peperina.jpg"
       translate: 0.4rem -0.4rem;
       transform-origin: top right;
       scale: 0.9;
+      @media (max-width: $mobile-layout-breakpoint) {
+         visibility: hidden;
+      }
    }
 
    .senegal-image-container {
