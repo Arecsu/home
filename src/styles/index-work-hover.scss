@@ -20,11 +20,6 @@ $martyr-blackflag-animation-duration-Y: 0.3s;
 @include martyr-blackflag-move("left", -$martyr-blackflag-svg-width);
 @include martyr-blackflag-move("right", $martyr-blackflag-svg-width);
 
-body {
-   // transition: color 0.05s, background 0.05s;
-   // transition-delay: .1s;
-}
-
 :root:has(.work-martyr:hover) {
    // :root:has(.work-martyr) {
    body {
@@ -186,9 +181,9 @@ body {
       // text-decoration: underline;
    }
 
-   .work-list-container {
+   // .work-list-container {
       // z-index: -1;
-   }
+   // }
 
    .senegal-on-hover-grid-overlay {
       visibility: visible;
