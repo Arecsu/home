@@ -3,7 +3,7 @@ import { Image } from "astro:assets"
 import plasticSurgery from "@media/monk-plastic-surgery-01.jpg"
 ---
 
-<div class="monk-on-hover-grid-overlay">
+<div class="monk-on-hover-grid-overlay pointer-events-none">
    <Image class="plastic-surgery-01" src={plasticSurgery} alt="" width="400" format="avif" quality="60" decoding="sync" loading="eager"/>
 </div>
 
@@ -22,6 +22,10 @@ import plasticSurgery from "@media/monk-plastic-surgery-01.jpg"
       color: black;
       // place-content: center;
       justify-items: center;
+      @media (max-width: $mobile-layout-breakpoint) {
+         grid-column: content-blocks;
+         grid-row: reflections-section-start / about-end;
+      }
    }
 
    .plastic-surgery-01 {
@@ -32,6 +36,10 @@ import plasticSurgery from "@media/monk-plastic-surgery-01.jpg"
       opacity: 0;
       // animation called on `index-work-hover.scss`
       // animation: monk-overlay-image 5s cubic-bezier(0.25, 0.16, 0.01, 0.99) 0s 1 normal forwards;
+      @media (max-width: $mobile-layout-breakpoint) {
+         align-self: flex-end;
+         margin-bottom: 10rem;
+      }
    }
 
    @keyframes monk-overlay-image {

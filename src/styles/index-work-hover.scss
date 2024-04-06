@@ -25,12 +25,14 @@ body {
    // transition-delay: .1s;
 }
 
-body:has(.work-martyr:hover) {
-   // body:has(.work-martyr) {
-   background: #efefef;
-   color: #aeaeae;
+:root:has(.work-martyr:hover) {
+   // :root:has(.work-martyr) {
+   body {
+      background: #efefef;
+      color: #aeaeae;
+   }
 
-   .work-martyr {
+  .work-martyr {
       color: #000000;
    }
 
@@ -122,10 +124,15 @@ body:has(.work-martyr:hover) {
  */
 }
 
-body:has(.work-monk:hover) {
-   // body:has(.work-monk) {
-   background: #000000;
-   color: #414141;
+:root:has(.work-monk:hover) {
+// :root:has(.work-monk) {
+   color-scheme: dark;
+   
+   body {
+      background: #000000;
+      color: #414141;
+   }
+   
    .blackflag {
       visibility: hidden;
    }
@@ -140,12 +147,24 @@ body:has(.work-monk:hover) {
          animation: monk-overlay-image 2s cubic-bezier(0.25, 0.16, 0.01, 0.99) .1s 1 normal forwards;
       }
    }
+   
+   @media (max-width: $mobile-layout-breakpoint) {
+      .about {
+         visibility: hidden;
+      }
+      // .symbol-small {
+      //    visibility: hidden;
+      // }
+   }
 }
 
-body:has(.work-senegal:hover) {
-   // body:has(.work-senegal) {
-   background: #2b0961;
-   color: #ffffff;
+:root:has(.work-senegal:hover) {
+   // :root:has(.work-senegal) {
+   body {
+      background: #2b0961;
+      color: #ffffff;
+   }
+   
    .blackflag {
       visibility: hidden;
    }
@@ -208,8 +227,10 @@ body:has(.work-senegal:hover) {
    }
 }
 
-body:has(.work-explorations:hover) {
-   color: #aeaeae;
+:root:has(.work-explorations:hover) {
+   body {
+      color: #aeaeae;
+   }
    .blackflag {
       visibility: hidden;
    }
