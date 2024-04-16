@@ -1,67 +1,69 @@
 <section class="blackflag">
-    <div class="flag flag-1">
-        <div class="flag-interior"></div>
-    </div>
-    <div class="flag flag-2">
-        <div class="flag-interior"></div>
-    </div>
-    <div class="flag flag-3">
-        <div class="flag-interior"></div>
-    </div>
-    <div class="flag flag-4">
-        <div class="flag-interior"></div>
-    </div>
+	<div class="flag flag-1">
+		<div class="flag-interior"></div>
+	</div>
+	<div class="flag flag-2">
+		<div class="flag-interior"></div>
+	</div>
+	<div class="flag flag-3">
+		<div class="flag-interior"></div>
+	</div>
+	<div class="flag flag-4">
+		<div class="flag-interior"></div>
+	</div>
 </section>
 
-
 <style lang="scss">
-    .blackflag {
-        grid-area: blackflag;
-        display: flex;
-        min-width: 0;
-        max-width: 100%;
-        height: auto;
-        aspect-ratio: 8/7;
-        justify-self: end;
-        // width: min-content;
-        
-        /* firefox fix */
-        width: -moz-available;
-        max-height: 100%;
+	.blackflag {
+		grid-area: blackflag;
+		display: flex;
+		min-width: 0;
+		max-width: 100%;
+		height: auto;
+		aspect-ratio: 8/7;
+		justify-self: end;
+		// width: min-content;
 
-        @media (max-width: $mobile-layout-breakpoint) {
-            justify-self: auto;
-            
-        }
+		/* firefox fix */
+		width: -moz-available;
+		max-height: 100%;
 
-    }
-    .flag-interior {
-        height: 100%;
-        width: 100%;
-        background: linear-gradient(180deg, #000000, #4D4D4D);
-        // background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='65' height='20' viewBox='0 0 65 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3ctext x='0' y='10' font-family='sans-serif' fill='black'%3emartyr— %3c/text%3e%3c/svg%3e ");
-        // mask-image: url(martyr-logo-full-black.svg);
-    }
-    .flag {
-        // width: 20%;
-        flex: 1;
-        &:hover > .flag-interior {
-            background: gray;
+		@media (max-width: $mobile-layout-breakpoint) {
+			justify-self: auto;
+		}
+	}
+	.flag-interior {
+		height: 100%;
+		width: 100%;
+		background: linear-gradient(180deg, #000000, #4d4d4d);
+		transition: opacity 0.1s ease-out;
+		// background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='65' height='20' viewBox='0 0 65 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3ctext x='0' y='10' font-family='sans-serif' fill='black'%3emartyr— %3c/text%3e%3c/svg%3e ");
+		// mask-image: url(martyr-logo-full-black.svg);
+	}
+	.flag {
+		// width: 20%;
+		flex: 1;
 
-        }
-    }
-    .flag:not(:last-child) {
-        padding-right: 3.5%;
-    }
-    .flag-1, .flag-2 {
-        margin-top: 6%;
-        margin-bottom: 10%;
-    }
-    .flag-3 {
-        margin-top: 14%;
-    }
-    .flag-4 {
-        margin-bottom: 22%;
-    }
+		// prettier-ignore
+		@media (hover: hover) {
+		&:hover > .flag-interior {
+			// background: gray;
+			opacity: 0.5;
+		}
+		}
+	}
+	.flag:not(:last-child) {
+		padding-right: 3.5%;
+	}
+	.flag-1,
+	.flag-2 {
+		margin-top: 6%;
+		margin-bottom: 10%;
+	}
+	.flag-3 {
+		margin-top: 14%;
+	}
+	.flag-4 {
+		margin-bottom: 22%;
+	}
 </style>
-

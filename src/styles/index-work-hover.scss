@@ -1,13 +1,17 @@
 @mixin martyr-blackflag-move($direction, $distance) {
-   @keyframes martyr-blackflag-move-#{$direction} {
-      from {
-         transform: translateX(0) translateY(0);
-      }
-      to {
-         transform: translateX(if($direction == "left" or $direction == "right", $distance, 0))
-            translateY(if($direction == "up" or $direction == "down", $distance, 0));
-      }
-   }
+	@keyframes martyr-blackflag-move-#{$direction} {
+		from {
+			transform: translateX(0) translateY(0);
+		}
+		to {
+			transform: translateX(
+					if($direction == "left" or $direction == "right", $distance, 0)
+				)
+				translateY(
+					if($direction == "up" or $direction == "down", $distance, 0)
+				);
+		}
+	}
 }
 
 $martyr-blackflag-svg-height: 12px;
@@ -20,6 +24,8 @@ $martyr-blackflag-animation-duration-Y: 0.3s;
 @include martyr-blackflag-move("left", -$martyr-blackflag-svg-width);
 @include martyr-blackflag-move("right", $martyr-blackflag-svg-width);
 
+// prettier-ignore
+@media (hover: hover) {
 :root:has(.work-martyr:hover) {
    // :root:has(.work-martyr) {
    body {
@@ -27,7 +33,7 @@ $martyr-blackflag-animation-duration-Y: 0.3s;
       color: #aeaeae;
    }
 
-  .work-martyr {
+   .work-martyr {
       color: #000000;
    }
 
@@ -63,7 +69,8 @@ $martyr-blackflag-animation-duration-Y: 0.3s;
       //    background-image:
       // background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='50px' width='120px'><text x='0' y='15' fill='black' font-size='20' font-family='InterVariable'>martyr— </text></svg>");
       background-repeat: repeat;
-      background-size: $martyr-blackflag-svg-width $martyr-blackflag-svg-height;
+      background-size: $martyr-blackflag-svg-width
+         $martyr-blackflag-svg-height;
       background-position: 0 0;
       animation-timing-function: linear;
       animation-iteration-count: infinite;
@@ -87,47 +94,47 @@ $martyr-blackflag-animation-duration-Y: 0.3s;
    }
 
    /*
- .flag-1 .flag-interior:after {
-    animation-name: martyr-blackflag-move-up;
-    width: 100%;
-    height: calc(100% + $martyr-blackflag-svg-height);
-    animation-duration: $martyr-blackflag-animation-duration-Y;
- }
- 
- .flag-2 .flag-interior:after {
-    animation-name: martyr-blackflag-move-down;
-    top: -$martyr-blackflag-svg-height;
-    width: 100%;
-    height: calc(100% + $martyr-blackflag-svg-height);
-    animation-duration: $martyr-blackflag-animation-duration-Y;
- }
- 
- .flag-3 .flag-interior:after {
-    animation-name: martyr-blackflag-move-left;
-    width: calc(100% + $martyr-blackflag-svg-width);
-    height: 100%;
-    animation-duration: $martyr-blackflag-animation-duration-X;
- }
- 
- .flag-4 .flag-interior:after {
-    animation-name: martyr-blackflag-move-right;
-    left: -$martyr-blackflag-svg-width;
-    width: calc(100% + $martyr-blackflag-svg-width);
-    height: 100%;
-    animation-duration: $martyr-blackflag-animation-duration-X;
- }
- */
+.flag-1 .flag-interior:after {
+   animation-name: martyr-blackflag-move-up;
+   width: 100%;
+   height: calc(100% + $martyr-blackflag-svg-height);
+   animation-duration: $martyr-blackflag-animation-duration-Y;
+}
+
+.flag-2 .flag-interior:after {
+   animation-name: martyr-blackflag-move-down;
+   top: -$martyr-blackflag-svg-height;
+   width: 100%;
+   height: calc(100% + $martyr-blackflag-svg-height);
+   animation-duration: $martyr-blackflag-animation-duration-Y;
+}
+
+.flag-3 .flag-interior:after {
+   animation-name: martyr-blackflag-move-left;
+   width: calc(100% + $martyr-blackflag-svg-width);
+   height: 100%;
+   animation-duration: $martyr-blackflag-animation-duration-X;
+}
+
+.flag-4 .flag-interior:after {
+   animation-name: martyr-blackflag-move-right;
+   left: -$martyr-blackflag-svg-width;
+   width: calc(100% + $martyr-blackflag-svg-width);
+   height: 100%;
+   animation-duration: $martyr-blackflag-animation-duration-X;
+}
+*/
 }
 
 :root:has(.work-monk:hover) {
-// :root:has(.work-monk) {
+   // :root:has(.work-monk) {
    color-scheme: dark;
-   
+
    body {
       background: #000000;
       color: #414141;
    }
-   
+
    .blackflag {
       visibility: hidden;
    }
@@ -139,10 +146,11 @@ $martyr-blackflag-animation-duration-Y: 0.3s;
    .monk-on-hover-grid-overlay {
       visibility: visible;
       .plastic-surgery-01 {
-         animation: monk-overlay-image 2s cubic-bezier(0.25, 0.16, 0.01, 0.99) .1s 1 normal forwards;
+         animation: monk-overlay-image 2s
+            cubic-bezier(0.25, 0.16, 0.01, 0.99) 0.1s 1 normal forwards;
       }
    }
-   
+
    @media (max-width: $mobile-layout-breakpoint) {
       .about {
          visibility: hidden;
@@ -159,7 +167,7 @@ $martyr-blackflag-animation-duration-Y: 0.3s;
       background: #2b0961;
       color: #ffffff;
    }
-   
+
    .blackflag {
       visibility: hidden;
    }
@@ -182,7 +190,7 @@ $martyr-blackflag-animation-duration-Y: 0.3s;
    }
 
    // .work-list-container {
-      // z-index: -1;
+   // z-index: -1;
    // }
 
    .senegal-on-hover-grid-overlay {
@@ -192,7 +200,7 @@ $martyr-blackflag-animation-duration-Y: 0.3s;
    .senegal-southwest-arrow {
       transition: translate 0.6s, opacity 0.6s, scale 0.6s;
       transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
-      transition-delay: .6s;
+      transition-delay: 0.6s;
       opacity: 1;
       translate: 0 0;
       scale: 1;
@@ -233,4 +241,5 @@ $martyr-blackflag-animation-duration-Y: 0.3s;
    .work-explorations {
       color: #000000;
    }
+}
 }
