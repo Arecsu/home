@@ -39,7 +39,10 @@ import plasticSurgery from "@media/monk-plastic-surgery-01.jpg";
 
 	.plastic-surgery-01 {
 		margin-top: clamp(1rem, -27rem + 49vh, 10rem);
-		width: min(100%, 250px);
+		width: min(54%, 250px);
+		@media (max-width: $mobile-layout-breakpoint) {
+			width: 20vmax;
+		}
 		height: auto;
 		margin-right: clamp(0%, 48vw - 46rem, 60%);
 		opacity: 0;

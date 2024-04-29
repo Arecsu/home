@@ -28,6 +28,7 @@
 
 <style lang="scss">
     .work-section {
+        font-size: 1em;
         // grid-area: content;
         grid-area: work-section;
         display: grid;
@@ -42,12 +43,12 @@
         justify-self: end;
         text-transform: uppercase;
         font-weight: 650;
-        line-height: 2.7rem;
+        line-height: 2.7em;
         letter-spacing: 0.02em;
         @media (max-width: $mobile-layout-breakpoint) {
             justify-self: start;
             line-height: initial;
-            margin-bottom: 1.4rem;
+            margin-bottom: 1.4em;
         }
     }
 
@@ -70,7 +71,7 @@
         // row-gap: .4rem;
 
         .work {
-            padding-block: 0.2rem;
+            padding-block: 0.2em;
             &:first-child {
                 padding-top: 0;
             }
@@ -88,7 +89,7 @@
             // replaced row-gap for padding-block in `.work` for proper hover interaction
             // row-gap: 1.1rem;
             .work {
-                padding-block: 0.55rem;
+                padding-block: 0.55em;
                 &:first-child {
                     padding-top: 0;
                 }
@@ -108,7 +109,7 @@
         align-items: center;
 
         > *:not(:last-child) {
-            padding-right: 2.5rem;
+            padding-right: 2em;
             // width: max-content;
         }
 
@@ -135,14 +136,14 @@
             grid-template-columns: auto 1fr;
             grid-template-rows: auto auto;
             grid-column: 1;
-            row-gap: .2rem;
+            row-gap: .2em;
             // row-gap: .6rem;
             grid-template-areas:
                 "work-title work-type"
                 "work-timeline work-timeline";
             .work-title {
                 grid-area: work-title;
-                padding-right: 1rem;
+                padding-right: 1em;
                 line-height: 1.1em;
             }
             .work-timeline {
@@ -151,7 +152,7 @@
             .work-type {
                 grid-area: work-type;
                 align-self: self-end;
-                margin-bottom: 0.1em;
+                margin-bottom: 0.04em;
             }
             
             > * {

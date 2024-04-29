@@ -25,7 +25,7 @@ $martyr-blackflag-animation-duration-Y: 0.3s;
 @include martyr-blackflag-move("right", $martyr-blackflag-svg-width);
 
 // prettier-ignore
-@media (hover: hover) {
+// @media (hover: hover) {
 :root:has(.work-martyr:hover) {
    // :root:has(.work-martyr) {
    body {
@@ -37,14 +37,40 @@ $martyr-blackflag-animation-duration-Y: 0.3s;
       color: #000000;
    }
 
-   .martyr-on-hover-grid-overlay {
-      visibility: visible;
-
-      .torn-paper-overlay {
-         rotate: 0deg;
-         translate: 8% 40.5%;
+   @media (max-width: $mobile-layout-breakpoint) {
+      .header-contact {
+         visibility: hidden;
+      }
+      .about {
+         visibility: hidden;
       }
    }
+
+   
+   .martyr-on-hover-grid-overlay {
+      visibility: visible;
+   }
+   
+   .torn-paper-overlay-desktop-img {
+      rotate: 0deg;
+      translate: 8% 40.5%;
+   }
+
+   .torn-paper-overlay-mobile {
+		&-img-1 {
+         translate: 0% 0%;
+         rotate: 0deg;
+		}
+		&-img-2 {
+			rotate: -0.3deg;
+         translate: 0% 0%;
+		}
+		&-img-3 {
+			rotate: 5deg;
+         translate: 0% 0%;
+		}
+   }
+
 
    .flag-interior {
       position: relative;
@@ -242,4 +268,4 @@ $martyr-blackflag-animation-duration-Y: 0.3s;
       color: #000000;
    }
 }
-}
+// }

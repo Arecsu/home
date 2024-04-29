@@ -2,144 +2,293 @@
 import { Image } from "astro:assets"
 import allTornPaper3 from "@media/all-torn-paper-3.png"
 import notepad from "@media/martyr-hover-notepad.png"
+import mobileTornPaper1 from "@media/mobile-torn-paper-overlay-1.png"
+import mobileTornPaper2 from "@media/mobile-torn-paper-overlay-2.png"
+import mobileTornPaper3 from "@media/mobile-torn-paper-overlay-3.png"
 ---
 
-<div class="martyr-on-hover-grid-overlay">
-   <Image
-      class="torn-paper-overlay"
-      src={allTornPaper3}
-      alt=""
-      width="2700"
-      format="avif"
-      quality="60"
-      decoding="sync"
-      loading="eager"
-   />
-
-   <div class="notepad-overlay">
-      <img
-         src={notepad.src}
-         alt=""
-         srcset={notepad.src + " 3x"}
-         width={notepad.width / 3}
-         height={notepad.height / 3}
-         decoding="sync"
-         loading="eager"
-      />
-      <span class="notepad-cursor"></span>
-   </div>
-   <div class="inter-display martyr-marquee">
-      <span>martyr—martyr—martyr—martyr—</span>
-      <span>martyr—martyr—martyr—martyr—</span>
-   </div>
+<div class="martyr-on-hover-grid-overlay pointer-events-none">
+	<Image
+		class="torn-paper-overlay-desktop-img"
+		src={allTornPaper3}
+		alt=""
+		width="2700"
+		format="avif"
+		quality="60"
+		decoding="sync"
+		loading="eager"
+	/>
+	<div class="torn-paper-overlay-mobile-container">
+		<Image
+			class="torn-paper-overlay-mobile-img-1"
+			src={mobileTornPaper1}
+			alt=""
+			width="1080"
+			format="avif"
+			quality="61"
+			decoding="sync"
+			loading="eager"
+		/>
+		<Image
+			class="torn-paper-overlay-mobile-img-2"
+			src={mobileTornPaper2}
+			alt=""
+			width="1080"
+			format="avif"
+			quality="61"
+			decoding="sync"
+			loading="eager"
+		/>
+		<Image
+			class="torn-paper-overlay-mobile-img-3"
+			src={mobileTornPaper3}
+			alt=""
+			width="1080"
+			format="avif"
+			quality="60"
+			decoding="sync"
+			loading="eager"
+		/>
+	</div>
+	<div class="notepad-overlay">
+		<img
+			src={notepad.src}
+			alt=""
+			srcset={notepad.src + " 3x"}
+			width={notepad.width / 3}
+			height={notepad.height / 3}
+			decoding="sync"
+			loading="eager"
+		/>
+		<span class="notepad-cursor"></span>
+	</div>
+	<div class="inter-display martyr-marquee martyr-marquee-desktop">
+		<span>martyr—martyr—martyr—martyr—</span>
+		<span>martyr—martyr—martyr—martyr—</span>
+	</div>
+	<div class="martyr-marquee-mobile-container">
+		{
+			Array.from({ length: 4 }, () => (
+				<div class="inter-display martyr-marquee">
+					<span>martyr—martyr—martyr—martyr—</span>
+					<span>martyr—martyr—martyr—martyr—</span>
+					<span>martyr—martyr—martyr—martyr—</span>
+				</div>
+			))
+		}
+	</div>
 </div>
 
 <style lang="scss">
-   .martyr-on-hover-grid-overlay {
-      visibility: hidden;
-      display: grid;
-      grid-template-rows: subgrid;
-      grid-template-columns: subgrid;
-      grid-column: 1 / -1;
-      grid-row: 1 / -1;
-      overflow: hidden;
-      // ↓ it won't affect the layout and `auto` sizes calculation of the grid-templates
-      position: relative;
-      pointer-events: none;
-      color: black;
-   }
+	$torn-paper-img-easing: cubic-bezier(0.34, 1.56, 0.64, 1);
 
-   .torn-paper-overlay {
-      grid-column: full-width;
-      grid-row: 1 / -1;
-      position: absolute;
-      // z-index: 1;
-      right: 0%;
-      bottom: 0%;
-      width: auto;
-      height: auto;
-      max-width: min(92%, 1800px);
-      max-height: 100%;
-      margin-bottom: clamp(5%, 55rem - 50vw, 9%);
-      rotate: -0.5deg;
-      translate: 9.5% 41%;
-      transform-origin: center right;
-      transition:
-         translate 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
-         rotate 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-   }
+	.martyr-on-hover-grid-overlay {
+		z-index: 1;
+		visibility: hidden;
+		display: grid;
+		grid-template-rows: subgrid;
+		grid-template-columns: subgrid;
+		grid-column: 1 / -1;
+		grid-row: 1 / -1;
+		overflow: hidden;
+		// ↓ it won't affect the layout and `auto` sizes calculation of the grid-templates
+		position: relative;
+		pointer-events: none;
+		color: black;
+		@media (max-width: $mobile-layout-breakpoint) {
+			overflow: visible;
+			overflow-x: clip;
+			grid-template-rows: auto;
+			max-height: 100vh;
+		}
+	}
 
-   @keyframes notepad-cursor-blink {
-      50% {
-         opacity: 0;
-      }
-   }
+	.torn-paper-overlay-desktop-img,
+	.torn-paper-overlay-mobile-container img {
+		transition:
+			translate 0.4s $torn-paper-img-easing,
+			rotate 0.4s $torn-paper-img-easing;
+	}
 
-   .notepad-overlay {
-      grid-column: full-width;
-      grid-row: 1 / -1;
-      position: absolute;
-      // left: 4%;
-      right: 10%;
-      bottom: clamp(12%, -10rem + 30%, 16%);
-      @media (max-width: ($mobile-layout-breakpoint + 410px)) and (max-height: 1000px) {
-         transform-origin: bottom right;
-         scale: 0.75;
-      }
-      // bottom: clamp(20%, 42rem - 20vw, 40%);
-      // image-rendering: pixelated;
-      // height: 100%;
-      // width: 100%;
-      > img {
-         max-width: 100%;
-         height: auto;
-      }
+	.torn-paper-overlay-desktop-img {
+		grid-column: full-width;
+		grid-row: 1 / -1;
+		position: absolute;
+		// z-index: 1;
+		right: 0%;
+		bottom: 0%;
+		width: auto;
+		height: auto;
+		max-width: min(92%, 1800px);
+		max-height: 100%;
+		margin-bottom: clamp(5%, 55rem - 50vw, 9%);
+		rotate: -0.5deg;
+		translate: 9.5% 41%;
+		transform-origin: center right;
+		@media (max-width: $mobile-layout-breakpoint) {
+			display: none;
+		}
+	}
 
-      .notepad-cursor {
-         display: block;
-         position: absolute;
-         width: 0.8%; // windows-98
-         // width: 1%; // custom
-         height: 5.25%;
-         background: black;
-         top: 15.8%;
-         left: 66%;
-         animation: notepad-cursor-blink 1s step-start 0s infinite;
-      }
-   }
+	@keyframes notepad-cursor-blink {
+		50% {
+			opacity: 0;
+		}
+	}
 
-   .martyr-marquee {
-      top: clamp(-0.2rem, 19rem - 23.6vw, 11rem);
-      @media (max-width: $mobile-layout-breakpoint) {
-         top: clamp(-0.2rem, 20.3rem - 21.6vw, 10rem);
-      }
-      grid-column: full-width;
-      grid-row: header-start / work-section-end;
-      align-self: center;
-      font-size: clamp(7rem, 13vw, 13rem);
-      white-space: nowrap;
-      font-weight: 500;
-      position: absolute;
-      // width: 100%;
-      letter-spacing: -0.01em;
-      display: flex;
-      > span {
-         animation-timing-function: linear;
-         animation-iteration-count: infinite;
-         animation-name: martyr-marquee;
-         animation-duration: 12s;
-         @media (max-width: $mobile-layout-breakpoint) {
-            animation-duration: 10s;
-         }
-      }
-   }
+	.torn-paper-overlay-mobile {
+		&-container {
+			grid-column: full-width;
+			grid-row: 1 / -1;
+			display: none;
+			@media (max-width: $mobile-layout-breakpoint) {
+				display: block;
+			}
+		}
+		&-img-1 {
+			max-width: min(100%, 38rem);
+			position: absolute;
+			bottom: 0;
+			/* using margin instead of `bottom` because 
+			 * it maintains position @ different window sizes
+			 */
+			margin-bottom: -8%;
+			left: -0.3rem;
+			translate: -3% 3%;
+			transform-origin: center left;
+			rotate: 3deg;
+		}
+		&-img-2 {
+			max-width: min(52%, 18rem);
+			position: absolute;
+			top: 1.9rem;
+			right: -0.3rem;
+			z-index: 1;
+			translate: 10% 1%;
+			rotate: 1deg;
+			transform-origin: top right;
+		}
+		&-img-3 {
+			max-width: min(72%, 26rem);
+			position: absolute;
+			top: clamp(12%, 42vw, 14rem);
+			right: -0.6rem;
+			translate: -2% 0%;
+			rotate: 2.5deg;
+			transform-origin: bottom right;
+		}
+	}
 
-   @keyframes martyr-marquee {
-      from {
-         transform: translateX(0);
-      }
-      to {
-         transform: translateX(-100%);
-      }
-   }
+	.notepad-overlay {
+		grid-column: full-width;
+		grid-row: 1 / -1;
+		position: absolute;
+		// left: 4%;
+		right: 10%;
+		bottom: clamp(12%, -10rem + 30%, 16%);
+		@media (max-width: 1310px) and (max-height: 1000px) {
+			transform-origin: bottom right;
+			scale: 0.75;
+		}
+		// bottom: clamp(20%, 42rem - 20vw, 40%);
+		// image-rendering: pixelated;
+		// height: 100%;
+		// width: 100%;
+
+		@media (max-width: $mobile-layout-breakpoint) {
+			// visibility: hidden;
+			transform-origin: bottom right;
+			scale: 0.75;
+			bottom: 10rem;
+			right: 4%;
+		}
+
+		@media (max-width: (460px)) {
+			transform-origin: bottom right;
+			scale: 0.66;
+			right: 6%;
+		}
+
+		.notepad-cursor {
+			display: block;
+			position: absolute;
+			width: 0.8%; // windows-98
+			// width: 1%; // custom
+			height: 5.25%;
+			background: black;
+			top: 15.8%;
+			left: 66%;
+			animation: notepad-cursor-blink 1s step-start 0s infinite;
+		}
+	}
+
+	.martyr-marquee {
+		align-self: center;
+		white-space: nowrap;
+		font-weight: 500;
+		// width: 100%;
+		letter-spacing: -0.01em;
+		display: flex;
+		span {
+			animation-timing-function: linear;
+			animation-iteration-count: infinite;
+			animation-name: martyr-marquee;
+		}
+	}
+
+	.martyr-marquee {
+		&-desktop {
+			@media (max-width: $mobile-layout-breakpoint) {
+				display: none;
+			}
+			position: absolute;
+			top: clamp(-0.2rem, 19rem - 23.6vw, 11rem);
+			grid-column: full-width;
+			grid-row: header-start / work-section-end;
+			font-size: clamp(7rem, 13vw, 13rem);
+			span {
+				animation-duration: 12s;
+			}
+		}
+		&-mobile-container {
+			display: none;
+			@media (max-width: $mobile-layout-breakpoint) {
+				display: flex;
+			}
+			position: absolute;
+			flex-flow: column nowrap;
+			top: 1rem;
+			font-size: 1.2rem;
+			grid-column: full-width;
+			grid-row: 1 / -1;
+
+			> .martyr-marquee {
+				line-height: 1em;
+				&:nth-child(odd) {
+					span {
+						animation-direction: reverse;
+					}
+				}
+				@for $i from 1 through 4 {
+					&:nth-child(#{$i}) {
+						transform: translateX(-1.5rem * $i);
+						> span {
+							// bugged in chrome, they go out of sync
+							// animation-duration: (random(5) + 3) + s;
+							animation-duration: 5.5s;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	@keyframes martyr-marquee {
+		from {
+			transform: translateX(0);
+		}
+		to {
+			transform: translateX(-100%);
+		}
+	}
 </style>

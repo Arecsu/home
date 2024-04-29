@@ -66,3 +66,8 @@ a[target="_blank"]::after {
         outline: .2em solid var(--background);
    }
 }
+
+img {
+   max-width: 100%;
+   height: auto;
+}

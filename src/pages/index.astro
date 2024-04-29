@@ -17,18 +17,18 @@ import "@styles/index-work-hover.scss";
 	<main>
 		<div class="index-1">
 			<Header class="header" />
-			<span class="arrow">↘</span>
+			<span class="arrow-before-work">↘</span>
 			<Work />
 			<span class="symbol-small">~\</span>
 			<About class="about" />
 			<WorkHoverSenegal />
 			<WorkHoverMonk />
+			<WorkHoverMartyr />
 		</div>
 		<div class="index-2">
 			<BlackFlag />
 			<Footer />
 		</div>
-		<WorkHoverMartyr />
 	</main>
 </Layout>
 
@@ -51,34 +51,35 @@ import "@styles/index-work-hover.scss";
 	}
 
 	main {
+		font-size: 1rem;
 		// min-height: 800px;
 		min-height: 100dvh;
 		width: 100%;
 		display: grid;
 		grid-template-columns:
-			[full-width-start] 2rem
-			[header-start header-title-start work-section-start content-title-start about-start] 8rem
-			[header-title-end content-title-end] 4rem
+			[full-width-start] 2em
+			[header-start header-title-start work-section-start content-title-start about-start] 8em
+			[header-title-end content-title-end] 4em
 			[contact-start content-blocks-start] auto
 			/*
          [about-end footer-start] auto
-         [contact-end header-end work-section-end content-blocks-end] 5rem
+         [contact-end header-end work-section-end content-blocks-end] 5em
          */
-			[about-end footer-start contact-end header-end work-section-end content-blocks-end] 5rem
-			[blackflag-start] minmax(auto, min(40rem, 40%))
-			[blackflag-end footer-end] 2rem
+			[about-end footer-start contact-end header-end work-section-end content-blocks-end] 5em
+			[blackflag-start] minmax(auto, min(40em, 40%))
+			[blackflag-end footer-end] 2em
 			[full-width-end];
 		grid-template-rows:
-			2rem
+			2em
 			[header-start contact-start blackflag-start] auto
 			[header-end contact-end arrow-start] auto
 			[arrow-end work-section-start] auto
-			[work-section-end reflections-section-start] 4rem 1fr
+			[work-section-end reflections-section-start] 4em 1fr
 			[reflections-section-end about-start] auto
-			[blackflag-end] 10rem
-			[footer-start] 2rem
+			[blackflag-end] 10em
+			[footer-start] 2em
 			[about-end footer-end]
-			2rem;
+			2em;
 	}
 
 	@media (max-width: $mobile-layout-breakpoint) {
@@ -88,7 +89,7 @@ import "@styles/index-work-hover.scss";
 			min-height: unset;
 			grid-template-columns:
 				[full-width-start]
-				2rem
+				min(2em, 5vw)
 				[header-start header-title-start work-section-start content-title-start about-start
 				blackflag-start content-title-end content-blocks-start footer-start]
 				min-content
@@ -98,7 +99,7 @@ import "@styles/index-work-hover.scss";
 				1fr
 				[header-end contact-end
 				work-section-end content-blocks-end blackflag-end footer-end]
-				2rem
+				min(2em, 5vw)
 				[full-width-end];
 			grid-template-rows:
 				minmax(100svh, auto)
@@ -106,25 +107,25 @@ import "@styles/index-work-hover.scss";
 		}
 		.index-1 {
 			grid-template-rows:
-				2rem
+				min(2em, 5vw)
 				[header-start header-title-start contact-start] auto
 				[arrow-start header-title-end] auto
 				[arrow-end header-end contact-end] auto
 				[work-section-start] auto auto
-				[work-section-end reflections-section-start] 4rem
+				[work-section-end reflections-section-start] 2em
 				1fr
 				[reflections-section-end about-start] auto
 				[about-end]
-				2.5rem;
+				min(2.5em, 5vw + 0.5em);
 			grid-row: 1 / 2;
 		}
 		.index-2 {
 			grid-template-rows:
 				[blackflag-start] auto
-				[blackflag-end] 6rem
-				[footer-start] 2rem
+				[blackflag-end] 6em
+				[footer-start] 2em
 				[footer-end]
-				2rem;
+				2em;
 			grid-row: 2 / 3;
 		}
 	}
@@ -138,14 +139,23 @@ import "@styles/index-work-hover.scss";
 		}
 	}
 
-	.arrow {
+	.arrow-before-work {
 		grid-row: arrow;
 		grid-column: header-start;
-		font-size: 2.2rem;
+		font-size: 2.2em;
 		font-weight: 600;
 		line-height: 1em;
-		margin-block: clamp(1rem, 3vw, 1.8rem) 1.2rem;
+		margin-block: clamp(0em, -0.4em + 3vmin, .6em) clamp(.4em, 3vmin, .8em);
 		// box-sizing: content-box;
 		// padding-block: 0.3rem;
+		@media (max-width: 700px) {
+			// display: none;
+			opacity: 0;
+			font-size: .7em;
+		}
+
+		@media (max-width: $header-contact-breakpoint) {
+			display: none;
+		}
 	}
 </style>
