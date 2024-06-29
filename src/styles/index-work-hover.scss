@@ -25,101 +25,98 @@ $martyr-blackflag-animation-duration-Y: 0.3s;
 @include martyr-blackflag-move("right", $martyr-blackflag-svg-width);
 
 // prettier-ignore
-// @media (hover: hover) {
+@media (hover: hover) {
 :root:has(.work-martyr:hover) {
-   // :root:has(.work-martyr) {
-   body {
-      background: #efefef;
-      color: #aeaeae;
-   }
+	// :root:has(.work-martyr) {
+	body {
+		background: #efefef;
+		color: #aeaeae;
+	}
 
-   .work-martyr {
-      color: #000000;
-   }
+	.work-martyr {
+		color: #000000;
+	}
 
-   @media (max-width: $mobile-layout-breakpoint) {
-      .header-contact {
-         visibility: hidden;
-      }
-      .about {
-         visibility: hidden;
-      }
-   }
+	@media (max-width: $mobile-layout-breakpoint) {
+		.header-contact {
+			visibility: hidden;
+		}
+		.about {
+			visibility: hidden;
+		}
+	}
 
-   
-   .martyr-on-hover-grid-overlay {
-      visibility: visible;
-   }
-   
-   .torn-paper-overlay-desktop-img {
-      rotate: 0deg;
-      translate: 8% 40.5%;
-   }
+	.martyr-on-hover-grid-overlay {
+		visibility: visible;
+	}
 
-   .torn-paper-overlay-mobile {
+	.torn-paper-overlay-desktop-img {
+		rotate: 0deg;
+		translate: 8% 40.5%;
+	}
+
+	.torn-paper-overlay-mobile {
 		&-img-1 {
-         translate: 0% 0%;
-         rotate: 0deg;
+			translate: 0% 0%;
+			rotate: 0deg;
 		}
 		&-img-2 {
 			rotate: -0.3deg;
-         translate: 0% 0%;
+			translate: 0% 0%;
 		}
 		&-img-3 {
 			rotate: 5deg;
-         translate: 0% 0%;
+			translate: 0% 0%;
 		}
-   }
+	}
 
+	.flag-interior {
+		position: relative;
+		overflow: hidden;
+		background: #dfdfdf;
+	}
 
-   .flag-interior {
-      position: relative;
-      overflow: hidden;
-      background: #dfdfdf;
-   }
+	.flag-interior:after {
+		position: absolute;
+		color: black;
+		font-size: 10px;
+		white-space: pre;
+		line-height: 12px;
+		padding-left: 1px;
+		font-weight: 400;
+		font-variation-settings: "opsz" 14;
+		letter-spacing: -0.02em;
+		will-change: transform;
+		content: "martyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\a";
+		// content: "";
+		//    background-image: url(martyr-logo-full-black.svg);
+		//    background-image:
+		// background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='50px' width='120px'><text x='0' y='15' fill='black' font-size='20' font-family='InterVariable'>martyr— </text></svg>");
+		background-repeat: repeat;
+		background-size: $martyr-blackflag-svg-width $martyr-blackflag-svg-height;
+		background-position: 0 0;
+		animation-timing-function: linear;
+		animation-iteration-count: infinite;
+	}
 
-   .flag-interior:after {
-      position: absolute;
-      color: black;
-      font-size: 10px;
-      white-space: pre;
-      line-height: 12px;
-      padding-left: 1px;
-      font-weight: 400;
-      font-variation-settings: "opsz" 14;
-      letter-spacing: -0.02em;
-      will-change: transform;
-      content: "martyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\amartyr—martyr—martyr—\a";
-      // content: "";
-      //    background-image: url(martyr-logo-full-black.svg);
-      //    background-image:
-      // background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='50px' width='120px'><text x='0' y='15' fill='black' font-size='20' font-family='InterVariable'>martyr— </text></svg>");
-      background-repeat: repeat;
-      background-size: $martyr-blackflag-svg-width
-         $martyr-blackflag-svg-height;
-      background-position: 0 0;
-      animation-timing-function: linear;
-      animation-iteration-count: infinite;
-   }
+	.flag-1 .flag-interior:after,
+	.flag-3 .flag-interior:after {
+		animation-name: martyr-blackflag-move-up;
+		width: 100%;
+		height: calc(100% + $martyr-blackflag-svg-height);
+		animation-duration: $martyr-blackflag-animation-duration-Y;
+	}
 
-   .flag-1 .flag-interior:after,
-   .flag-3 .flag-interior:after {
-      animation-name: martyr-blackflag-move-up;
-      width: 100%;
-      height: calc(100% + $martyr-blackflag-svg-height);
-      animation-duration: $martyr-blackflag-animation-duration-Y;
-   }
+	.flag-2 .flag-interior:after,
+	.flag-4 .flag-interior:after {
+		animation-name: martyr-blackflag-move-down;
+		top: -$martyr-blackflag-svg-height;
+		width: 100%;
+		height: calc(100% + $martyr-blackflag-svg-height);
+		animation-duration: $martyr-blackflag-animation-duration-Y;
+	}
 
-   .flag-2 .flag-interior:after,
-   .flag-4 .flag-interior:after {
-      animation-name: martyr-blackflag-move-down;
-      top: -$martyr-blackflag-svg-height;
-      width: 100%;
-      height: calc(100% + $martyr-blackflag-svg-height);
-      animation-duration: $martyr-blackflag-animation-duration-Y;
-   }
-
-   /*
+	/*
 .flag-1 .flag-interior:after {
    animation-name: martyr-blackflag-move-up;
    width: 100%;
@@ -153,119 +150,140 @@ $martyr-blackflag-animation-duration-Y: 0.3s;
 }
 
 :root:has(.work-monk:hover) {
-   // :root:has(.work-monk) {
-   color-scheme: dark;
+	// :root:has(.work-monk) {
+	color-scheme: dark;
 
-   body {
-      background: #000000;
-      color: #414141;
-   }
+	body {
+		background: #000000;
+		color: #414141;
+	}
 
-   .blackflag {
-      visibility: hidden;
-   }
+	.blackflag {
+		visibility: hidden;
+	}
 
-   .work-monk {
-      color: #efefef;
-   }
+	.work-monk {
+		color: #efefef;
+	}
 
-   .monk-on-hover-grid-overlay {
-      visibility: visible;
-      .plastic-surgery-01 {
-         animation: monk-overlay-image 2s
-            cubic-bezier(0.25, 0.16, 0.01, 0.99) 0.1s 1 normal forwards;
-      }
-   }
+	.monk-on-hover-grid-overlay {
+		visibility: visible;
+		.plastic-surgery-01 {
+			animation: monk-overlay-image 2s cubic-bezier(0.25, 0.16, 0.01, 0.99)
+				0.1s 1 normal forwards;
+		}
+	}
 
-   @media (max-width: $mobile-layout-breakpoint) {
-      .about {
-         visibility: hidden;
-      }
-      // .symbol-small {
-      //    visibility: hidden;
-      // }
-   }
+	@media (max-width: $mobile-layout-breakpoint) {
+		.about {
+			visibility: hidden;
+		}
+		// .symbol-small {
+		//    visibility: hidden;
+		// }
+	}
 }
 
 :root:has(.work-senegal:hover) {
-   // :root:has(.work-senegal) {
-   body {
-      background: #2b0961;
-      color: #ffffff;
-   }
+	// :root:has(.work-senegal) {
+	body {
+		background: #2b0961;
+		color: #ffffff;
+	}
 
-   .blackflag {
-      visibility: hidden;
-   }
+	.blackflag {
+		visibility: hidden;
+	}
 
-   @media (max-width: $work-astro-breakpoint) {
-      footer {
-         visibility: hidden;
-      }
-   }
+	@media (max-width: $work-astro-breakpoint) {
+		footer {
+			visibility: hidden;
+		}
+	}
 
-   @media (max-width: $mobile-layout-breakpoint) {
-      .about {
-         visibility: hidden;
-      }
-   }
+	@media (max-width: $mobile-layout-breakpoint) {
+		.about {
+			visibility: hidden;
+		}
+	}
 
-   .work-senegal {
-      color: rgb(255, 196, 0);
-      // text-decoration: underline;
-   }
+	.work-senegal {
+		color: rgb(255, 196, 0);
+		// text-decoration: underline;
+	}
 
-   // .work-list-container {
-   // z-index: -1;
-   // }
+	// .work-list-container {
+	// z-index: -1;
+	// }
 
-   .senegal-on-hover-grid-overlay {
-      visibility: visible;
-   }
+	.senegal-on-hover-grid-overlay {
+		visibility: visible;
+	}
 
-   .senegal-southwest-arrow {
-      transition: translate 0.6s, opacity 0.6s, scale 0.6s;
-      transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
-      transition-delay: 0.6s;
-      opacity: 1;
-      translate: 0 0;
-      scale: 1;
-   }
+	.senegal-southwest-arrow {
+		transition: translate 0.6s, opacity 0.6s, scale 0.6s;
+		transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+		transition-delay: 0.6s;
+		opacity: 1;
+		translate: 0 0;
+		scale: 1;
+	}
 
-   .senegal-images-group,
-   .senegal-images-box:after,
-   .senegal-images-box:before {
-      transition: translate 0.4s, scale 0.4s;
-      transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
-      // transition-delay: .15s;
-   }
+	.senegal-images-group,
+	.senegal-images-box:after,
+	.senegal-images-box:before {
+		transition: translate 0.4s, scale 0.4s;
+		transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+		// transition-delay: .15s;
+	}
 
-   .senegal-images-group {
-      translate: $senegal-box-translate (-$senegal-box-translate);
-   }
+	.senegal-images-group {
+		translate: $senegal-box-translate (-$senegal-box-translate);
+	}
 
-   .senegal-images-box {
-      &:after {
-         // translate: $senegal-box-translate $senegal-box-translate;
-         scale: 1;
-      }
-      &:before {
-         // translate: 0 (-$senegal-box-translate);
-         scale: 1;
-      }
-   }
+	.senegal-images-box {
+		&:after {
+			// translate: $senegal-box-translate $senegal-box-translate;
+			scale: 1;
+		}
+		&:before {
+			// translate: 0 (-$senegal-box-translate);
+			scale: 1;
+		}
+	}
 }
 
 :root:has(.work-explorations:hover) {
-   body {
-      color: #aeaeae;
-   }
-   .blackflag {
-      visibility: hidden;
-   }
+// :root:has(.work-explorations) {
+	color-scheme: dark;
 
-   .work-explorations {
-      color: #000000;
-   }
+	body {
+		background: #000000;
+		color: #cccccc;
+	}
+
+	.blackflag {
+		// visibility: hidden;
+      // blend mode
+      // mix-blend-mode: screen;
+      // opacity: 0.7;
+      .flag-interior {
+   		// background: rgba(255, 255, 255, 0.2);
+   		background: rgba(0, 0, 0, 0.5);
+         -webkit-backdrop-filter: blur(10px);
+         backdrop-filter: blur(10px);
+         // border-radius: .15cqw;
+      }
+	}
+
+	.work-explorations {
+		color: #ffffff;
+	}
+
+	.explorations-on-hover-grid-overlay {
+		visibility: visible;
+	}
+
+
 }
-// }
+}
