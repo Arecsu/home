@@ -1,15 +1,27 @@
+---
+import HeaderTitle from "@components/HeaderTitle.astro";
+
+interface Props {
+   contactVisible?: boolean
+}
+
+const { contactVisible = false } = Astro.props
+---
+
 <header>
    <span class="header-title">alejandro r.</span>
-   <div class="header-contact">
-      <a href="mailto:hello@malejandro.com">email</a>
-      <span>//</span>
-      <a href="https://github.com/arecsu" target="_blank">github</a>
-      <div class="header-contact-break"></div>
-      <span>//</span>
-      <a href="https://instagram.com/malejand_ro" target="_blank">instagram</a>
-      <!-- <span>//</span>
-      <a href="https://www.last.fm/user/alejandro9r" target="_blank">last.fm</a> -->
-   </div>
+   {contactVisible &&
+      <div class="header-contact">
+         <a href="mailto:hello@malejandro.com">email</a>
+         <span>//</span>
+         <a href="https://github.com/arecsu" target="_blank">github</a>
+         <div class="header-contact-break"></div>
+         <span>//</span>
+         <a href="https://instagram.com/malejand_ro" target="_blank">instagram</a>
+         <!-- <span>//</span>
+         <a href="https://www.last.fm/user/alejandro9r" target="_blank">last.fm</a> -->
+      </div>
+   }
 </header>
 
 <style lang="scss">
@@ -24,6 +36,11 @@
    
    .header-contact-break {
       display: none;
+   }
+
+   .header-title {
+      white-space: nowrap;
+      grid-area: header-title;
    }
 
    .header-contact {
@@ -41,13 +58,6 @@
          justify-content: end;
          align-content: start;
       }
-
-
-   }
-
-   .header-title {
-      white-space: nowrap;
-      grid-area: header-title;
    }
 
    @media (max-width: $header-contact-breakpoint) {

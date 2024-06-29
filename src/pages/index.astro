@@ -1,5 +1,5 @@
 ---
-import Layout from "@layouts/Layout.astro";
+import BaseLayout from "@layouts/Base.astro";
 import Header from "@components/Header.astro";
 import About from "@components/About.astro";
 import BlackFlag from "@components/BlackFlag.astro";
@@ -13,14 +13,14 @@ import "@styles/index-work-hover.scss";
 
 <script src="@scripts/decode-images.js"></script>
 
-<Layout title="Alejandro Romano">
+<BaseLayout title="Alejandro Romano">
 	<main>
 		<div class="index-1">
-			<Header class="header" />
+			<Header contactVisible={true} />
 			<span class="arrow-before-work">↘</span>
 			<Work />
 			<span class="symbol-small">~\</span>
-			<About class="about" />
+			<About />
 			<WorkHoverSenegal />
 			<WorkHoverMonk />
 			<WorkHoverMartyr />
@@ -30,7 +30,7 @@ import "@styles/index-work-hover.scss";
 			<Footer />
 		</div>
 	</main>
-</Layout>
+</BaseLayout>
 
 <style lang="scss">
 	.index-1,
@@ -57,7 +57,7 @@ import "@styles/index-work-hover.scss";
 		width: 100%;
 		display: grid;
 		grid-template-columns:
-			[full-width-start] 2em
+			[full-width-start] $margin-page-1
 			[header-start header-title-start work-section-start content-title-start about-start] 8em
 			[header-title-end content-title-end] 4em
 			[contact-start content-blocks-start] auto
@@ -79,7 +79,7 @@ import "@styles/index-work-hover.scss";
 			[blackflag-end] 10em
 			[footer-start] 2em
 			[about-end footer-end]
-			2em;
+			$margin-page-1;
 	}
 
 	@media (max-width: $mobile-layout-breakpoint) {
@@ -89,7 +89,7 @@ import "@styles/index-work-hover.scss";
 			min-height: unset;
 			grid-template-columns:
 				[full-width-start]
-				min(2em, 5vw)
+				$margin-page-1
 				[header-start header-title-start work-section-start content-title-start about-start
 				blackflag-start content-title-end content-blocks-start footer-start]
 				min-content
@@ -99,7 +99,7 @@ import "@styles/index-work-hover.scss";
 				1fr
 				[header-end contact-end
 				work-section-end content-blocks-end blackflag-end footer-end]
-				min(2em, 5vw)
+				$margin-page-1
 				[full-width-end];
 			grid-template-rows:
 				minmax(100svh, auto)
@@ -107,7 +107,7 @@ import "@styles/index-work-hover.scss";
 		}
 		.index-1 {
 			grid-template-rows:
-				min(2em, 5vw)
+				$margin-page-1
 				[header-start header-title-start contact-start] auto
 				[arrow-start header-title-end] auto
 				[arrow-end header-end contact-end] auto
@@ -116,7 +116,7 @@ import "@styles/index-work-hover.scss";
 				1fr
 				[reflections-section-end about-start] auto
 				[about-end]
-				min(2.5em, 5vw + 0.5em);
+				$margin-page-2;
 			grid-row: 1 / 2;
 		}
 		.index-2 {
@@ -125,7 +125,7 @@ import "@styles/index-work-hover.scss";
 				[blackflag-end] 6em
 				[footer-start] 2em
 				[footer-end]
-				2em;
+				$margin-page-2;
 			grid-row: 2 / 3;
 		}
 	}
