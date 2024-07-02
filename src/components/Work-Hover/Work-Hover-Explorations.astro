@@ -1,16 +1,21 @@
 ---
 import { Image } from "astro:assets";
-import explorationsImage from "@media/explorations-color.jpg";
+import explorationsImage from "@media/explorations-color-8bit.avif";
 ---
+<script>
+	import { setClassInElementWhenImagesLoad } from "@scripts/helpers"
+
+	const explorationsGridElement = document.querySelector(".explorations-on-hover-grid-overlay")
+	setClassInElementWhenImagesLoad(explorationsGridElement, "images-loaded")
+</script>
 
 <div class="explorations-on-hover-grid-overlay pointer-events-none">
-	<Image
+	<img
 		class="explorations-image"
-		src={explorationsImage}
+		src={explorationsImage.src}
+		width="{explorationsImage.width}"
+		height="{explorationsImage.height}"
 		alt=""
-		width="3840"
-		format="avif"
-		quality="80"
 		decoding="sync"
 		loading="eager"
 	/>
@@ -26,17 +31,21 @@ import explorationsImage from "@media/explorations-color.jpg";
 		grid-column: 1 / -1;
 		grid-row: 1 / -1;
 		overflow: hidden;
-		// ↓ it won't affect the layout and `auto` sizes calculation of the grid-templates
-		position: relative;
+		width: 100%;
+		position: sticky;
+		top: 0;
 		pointer-events: none;
 		color: black;
       height: 100vh;
 	}
 
 	.explorations-image {
+		opacity: 0;
       object-fit: cover;
       object-position: 100% 29%;
       width: 100%;
       height: 100%;
+		// ↓ it won't affect the layout and `auto` sizes calculation of the grid-templates
+		position: absolute;
 	}
 </style>
