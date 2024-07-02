@@ -7,288 +7,295 @@ import iylPablo from "@media/iyl-pablo.jpg"
 import iylPeperina from "@media/iyl-peperina.jpg"
 ---
 
+<script>
+	import { setClassInElementWhenImagesLoad } from "@scripts/helpers"
+
+	const senegalGridElement = document.querySelector(".senegal-on-hover-grid-overlay")
+	setClassInElementWhenImagesLoad(senegalGridElement, "images-loaded")
+</script>
+
 <div class="senegal-on-hover-grid-overlay pointer-events-none">
-   <div class="senegal-images-with-box">
-      <div class="senegal-images-group">
-         <div class="senegal-image-container iyl-german">
-            <Image src={iylGerman} alt="" width="860" format="avif" quality="65" decoding="sync" loading="eager" />
-         </div>
-         <div class="senegal-image-container iyl-gaspar">
-            <Image src={iylGaspar} alt="" width="860" format="avif" quality="60" decoding="sync" loading="eager" />
-         </div>
-         <div class="senegal-image-container iyl-yuri">
-            <Image src={iylYuri} alt="" width="860" format="avif" quality="60" decoding="sync" loading="eager" />
-         </div>
-         <div class="senegal-image-container iyl-pablo">
-            <Image src={iylPablo} alt="" width="860" format="avif" quality="60" decoding="sync" loading="eager" />
-         </div>
-         <div class="senegal-image-container iyl-peperina">
-            <Image src={iylPeperina} alt="" width="860" format="avif" quality="60" decoding="sync" loading="eager" />
-         </div>
-         <!-- <div class="senegal-radial-effect">
+	<div class="senegal-images-with-box">
+		<div class="senegal-images-group">
+			<div class="senegal-image-container iyl-german">
+				<Image src={iylGerman} alt="" width="860" format="avif" quality="65" decoding="sync" loading="eager" />
+			</div>
+			<div class="senegal-image-container iyl-gaspar">
+				<Image src={iylGaspar} alt="" width="860" format="avif" quality="60" decoding="sync" loading="eager" />
+			</div>
+			<div class="senegal-image-container iyl-yuri">
+				<Image src={iylYuri} alt="" width="860" format="avif" quality="60" decoding="sync" loading="eager" />
+			</div>
+			<div class="senegal-image-container iyl-pablo">
+				<Image src={iylPablo} alt="" width="860" format="avif" quality="60" decoding="sync" loading="eager" />
+			</div>
+			<div class="senegal-image-container iyl-peperina">
+				<Image src={iylPeperina} alt="" width="860" format="avif" quality="60" decoding="sync" loading="eager" />
+			</div>
+			<!-- <div class="senegal-radial-effect">
             <div></div>
             <div></div>
             <div></div>
             <div></div>
             <div></div>
          </div> -->
-      </div>
-      <div class="senegal-images-box"></div>
-   </div>
-   <span class="senegal-southwest-arrow">↙</span>
+		</div>
+		<div class="senegal-images-box"></div>
+	</div>
+	<span class="senegal-southwest-arrow">↙</span>
 </div>
 
 <style lang="scss">
-   // hardcoded value when Work.astro @container changes form
+	// hardcoded value when Work.astro @container changes form
 
-   .senegal-on-hover-grid-overlay {
-      visibility: hidden;
-      display: grid;
-      // grid-area: blackflag;
-      // grid-column: about-end / blackflag-end;
-      grid-template-rows: subgrid;
-      grid-template-columns: subgrid;
-      grid-column: 1 / -1;
-      grid-row: 1 / -1;
-      overflow: hidden;
-      // ↓ it won't affect the layout and `auto` sizes calculation of the grid-templates
-      position: relative;
-      // place-content: center;
-      // justify-items: center;
-      z-index: 1; 
-   }
+	.senegal-on-hover-grid-overlay {
+		visibility: hidden;
+		display: grid;
+		// grid-area: blackflag;
+		// grid-column: about-end / blackflag-end;
+		grid-template-rows: subgrid;
+		grid-template-columns: subgrid;
+		grid-column: 1 / -1;
+		grid-row: 1 / -1;
+		overflow: hidden;
+		// ↓ it won't affect the layout and `auto` sizes calculation of the grid-templates
+		position: relative;
+		// place-content: center;
+		// justify-items: center;
+		z-index: 1;
+	}
 
-   .senegal-images-with-box {
-      --senegal-background-box: #ffcb2d;
-      grid-column: 1 / blackflag-end;
-      grid-row: 1 / footer-start;
-      display: grid;
-      position: absolute;
-      right: clamp(1%, -20rem + 27vw, 10%);
-      bottom: clamp(4%, -22rem + 50%, 12%);
-      width: clamp(500px, min(112vh, 46vw), 1300px);
-      @media (max-width: $work-astro-breakpoint) {
-         width: clamp(300px, 40vw, 800px);
-         right: $senegal-box-translate;
-         bottom: 0;
-         grid-row: 1 / footer-end;
-      }
-      @media (max-width: $mobile-layout-breakpoint) {
-         grid-column: content-blocks;
-         grid-row: about;
-         right: auto;
-         bottom: 0;
-         width: min(78%, 450px);
-      }
-      > * {
-         grid-column: 1 / -1;
-         grid-row: 1 / -1;
-      }
-   }
+	.senegal-images-with-box {
+		--senegal-background-box: #ffcb2d;
+		grid-column: 1 / blackflag-end;
+		grid-row: 1 / footer-start;
+		display: grid;
+		position: absolute;
+		right: clamp(1%, -20rem + 27vw, 10%);
+		bottom: clamp(4%, -22rem + 50%, 12%);
+		width: clamp(500px, min(112vh, 46vw), 1300px);
+		@media (max-width: $work-astro-breakpoint) {
+			width: clamp(300px, 40vw, 800px);
+			right: $senegal-box-translate;
+			bottom: 0;
+			grid-row: 1 / footer-end;
+		}
+		@media (max-width: $mobile-layout-breakpoint) {
+			grid-column: content-blocks;
+			grid-row: about;
+			right: auto;
+			bottom: 0;
+			width: min(78%, 450px);
+		}
+		> * {
+			grid-column: 1 / -1;
+			grid-row: 1 / -1;
+		}
+	}
 
-   .senegal-images-group {
-      // position: relative;
-      width: 100%;
-      display: flex;
-      aspect-ratio: 4 / 2;
-      flex-flow: row nowrap;
-      translate: 0 0;
-      @media (max-width: $work-astro-breakpoint) {
-         display: grid;
-         aspect-ratio: 3 / 3;
-         grid-template-columns: repeat(3, 1fr);
-         grid-template-rows: repeat(2, 1fr);
-         grid-template-areas:
-            "iyl-german iyl-gaspar ."
-            "iyl-yuri iyl-pablo iyl-peperina";
-         // opacity: 0.1;
-         translate: 0 0;
-      }
-   }
+	.senegal-images-group {
+		// position: relative;
+		width: 100%;
+		display: flex;
+		aspect-ratio: 4 / 2;
+		flex-flow: row nowrap;
+		translate: 0 0;
+		@media (max-width: $work-astro-breakpoint) {
+			display: grid;
+			aspect-ratio: 3 / 3;
+			grid-template-columns: repeat(3, 1fr);
+			grid-template-rows: repeat(2, 1fr);
+			grid-template-areas:
+				"iyl-german iyl-gaspar ."
+				"iyl-yuri iyl-pablo iyl-peperina";
+			// opacity: 0.1;
+			translate: 0 0;
+		}
+	}
 
-   .senegal-images-box {
-      // position: absolute;
-      background-image: linear-gradient(90deg, var(--senegal-background-box) 25%, transparent 25%),
-         linear-gradient(180deg, transparent 75%, var(--senegal-background-box) 75%);
-      // clip-path: polygon(0 0, 50% 0, 50% 50%, 100% 50%, 100% 100%, 0 100%);
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      &:before {
-         content: "";
-         position: absolute;
-         top: -20px;
-         display: block;
-         left: 0;
-         height: ($senegal-box-translate + 4px);
-         background: var(--senegal-background-box);
-         clip-path: polygon(100% -4px, 100% 100%, -4px 100%);
-         width: ($senegal-box-translate + 4px);
-         transform-origin: left calc(100% - 4px);
-         scale: 0;
-      }
-      &:after {
-         content: "";
-         position: absolute;
-         bottom: 0;
-         display: block;
-         right: (-$senegal-box-translate);
-         height: ($senegal-box-translate + 4px);
-         background: var(--senegal-background-box);
-         clip-path: polygon(0% 0%, calc(100% + 4px) 0%, 0% calc(100% + 5px));
-         width: ($senegal-box-translate + 4px);
-         transform-origin: 4px bottom;
-         scale: 0;
-      }
-   }
+	.senegal-images-box {
+		// position: absolute;
+		background-image: linear-gradient(90deg, var(--senegal-background-box) 25%, transparent 25%),
+			linear-gradient(180deg, transparent 75%, var(--senegal-background-box) 75%);
+		// clip-path: polygon(0 0, 50% 0, 50% 50%, 100% 50%, 100% 100%, 0 100%);
+		width: 100%;
+		height: 100%;
+		z-index: -1;
+		&:before {
+			content: "";
+			position: absolute;
+			top: -20px;
+			display: block;
+			left: 0;
+			height: ($senegal-box-translate + 4px);
+			background: var(--senegal-background-box);
+			clip-path: polygon(100% -4px, 100% 100%, -4px 100%);
+			width: ($senegal-box-translate + 4px);
+			transform-origin: left calc(100% - 4px);
+			scale: 0;
+		}
+		&:after {
+			content: "";
+			position: absolute;
+			bottom: 0;
+			display: block;
+			right: (-$senegal-box-translate);
+			height: ($senegal-box-translate + 4px);
+			background: var(--senegal-background-box);
+			clip-path: polygon(0% 0%, calc(100% + 4px) 0%, 0% calc(100% + 5px));
+			width: ($senegal-box-translate + 4px);
+			transform-origin: 4px bottom;
+			scale: 0;
+		}
+	}
 
-   .senegal-southwest-arrow {
-      grid-area: blackflag;
-      justify-self: end;
-      font-size: clamp(4rem, 6vw, 8rem);
-      font-weight: 550;
-      margin-right: -0.1em;
-      line-height: 0.37em;
-      opacity: 0;
-      translate: 0.4rem -0.4rem;
-      transform-origin: top right;
-      scale: 0.9;
-      @media (max-width: $mobile-layout-breakpoint) {
-         visibility: hidden;
-      }
-   }
+	.senegal-southwest-arrow {
+		grid-area: blackflag;
+		justify-self: end;
+		font-size: clamp(4rem, 6vw, 8rem);
+		font-weight: 550;
+		margin-right: -0.1em;
+		line-height: 0.37em;
+		opacity: 0;
+		translate: 0.4rem -0.4rem;
+		transform-origin: top right;
+		scale: 0.9;
+		@media (max-width: $mobile-layout-breakpoint) {
+			visibility: hidden;
+		}
+	}
 
-   .senegal-image-container {
-      // position: relative;
-      // max-width: 400px;
-      // width: 100px;
-      // aspect-ratio: 4 / 2;
-      object-fit: contain;
-      height: auto;
-      overflow: hidden;
-      display: flex;
-      align-items: flex-start;
-      background: var(--senegal-background-box);
-      > * {
-         transform-origin: top center;
-      }
-      img {
-         max-width: 100%;
-         height: auto;
-      }
-   }
+	.senegal-image-container {
+		// position: relative;
+		// max-width: 400px;
+		// width: 100px;
+		// aspect-ratio: 4 / 2;
+		object-fit: contain;
+		height: auto;
+		overflow: hidden;
+		display: flex;
+		align-items: flex-start;
+		background: var(--senegal-background-box);
+		> * {
+			transform-origin: top center;
+		}
+		img {
+			max-width: 100%;
+			height: auto;
+		}
+	}
 
-   .iyl- {
-      &german {
-         grid-area: iyl-german;
-         background: var(--senegal-background-box);
-         img {
-            scale: 1.9;
-            translate: 23% 0.5%;
-         }
-      }
-      &gaspar {
-         grid-area: iyl-gaspar;
-         background: linear-gradient(90deg, #07d9fd, #0ac6fb);
-         img {
-            scale: 1.8;
-            translate: 18% 0%;
-         }
-      }
-      &yuri {
-         grid-area: iyl-yuri;
-         background: #fe2552;
-         img {
-            scale: 2;
-            translate: 14% -0.5%;
-         }
-      }
-      &pablo {
-         grid-area: iyl-pablo;
-         background: linear-gradient(180deg, #07e99f, #07de91);
-         img {
-            scale: 2;
-            translate: 29% 0%;
-         }
-      }
-      &peperina {
-         grid-area: iyl-peperina;
-         background: #de82c9;
-         img {
-            scale: 1.82;
-            translate: -5% 0%;
-         }
-      }
-      @media (max-width: $work-astro-breakpoint) {
-         &german {
-            img {
-               scale: 1.12;
-               translate: 2% 0%;
-            }
-         }
-         &gaspar {
-            img {
-               scale: 1.12;
-               translate: 2.5% 0.5%;
-            }
-         }
-         &yuri {
-            img {
-               scale: 1.2;
-               translate: 10% 0%;
-            }
-         }
-         &pablo {
-            img {
-               translate: 12% 0%;
-               scale: 1.2;
-            }
-         }
-         &peperina {
-            img {
-               scale: 1.05;
-               translate: 0% 0%;
-            }
-         }
-      }
-   }
+	.iyl- {
+		&german {
+			grid-area: iyl-german;
+			background: var(--senegal-background-box);
+			img {
+				scale: 1.9;
+				translate: 23% 0.5%;
+			}
+		}
+		&gaspar {
+			grid-area: iyl-gaspar;
+			background: linear-gradient(90deg, #07d9fd, #0ac6fb);
+			img {
+				scale: 1.8;
+				translate: 18% 0%;
+			}
+		}
+		&yuri {
+			grid-area: iyl-yuri;
+			background: #fe2552;
+			img {
+				scale: 2;
+				translate: 14% -0.5%;
+			}
+		}
+		&pablo {
+			grid-area: iyl-pablo;
+			background: linear-gradient(180deg, #07e99f, #07de91);
+			img {
+				scale: 2;
+				translate: 29% 0%;
+			}
+		}
+		&peperina {
+			grid-area: iyl-peperina;
+			background: #de82c9;
+			img {
+				scale: 1.82;
+				translate: -5% 0%;
+			}
+		}
+		@media (max-width: $work-astro-breakpoint) {
+			&german {
+				img {
+					scale: 1.12;
+					translate: 2% 0%;
+				}
+			}
+			&gaspar {
+				img {
+					scale: 1.12;
+					translate: 2.5% 0.5%;
+				}
+			}
+			&yuri {
+				img {
+					scale: 1.2;
+					translate: 10% 0%;
+				}
+			}
+			&pablo {
+				img {
+					translate: 12% 0%;
+					scale: 1.2;
+				}
+			}
+			&peperina {
+				img {
+					scale: 1.05;
+					translate: 0% 0%;
+				}
+			}
+		}
+	}
 
-   // @keyframes senegal-radial-effect {
-   //    from {
-   //       scale: 0;
-   //    }
+	// @keyframes senegal-radial-effect {
+	//    from {
+	//       scale: 0;
+	//    }
 
-   //    to {
-   //       scale: 100;
-   //    }
-   // }
+	//    to {
+	//       scale: 100;
+	//    }
+	// }
 
-   // $delay-increment: 1.2s;
+	// $delay-increment: 1.2s;
 
-   // .senegal-radial-effect {
-   //    position: absolute;
-   //    height: 100%;
-   //    width: 100%;
-   //    display: grid;
-   //    place-items: center;
-   //    z-index: -1;
-   //    > div {
-   //       grid-column: 1 / -1;
-   //       grid-row: 1 / -1;
-   //       width: 40px;
-   //       height: 40px;
-   //       border-radius: 100%;
-   //       border: .2px solid black;
-   //       scale: 0;
-   //       animation-timing-function: linear;
-   //       animation-iteration-count: infinite;
-   //       animation-name: senegal-radial-effect;
-   //       animation-duration: 4s;
-   //    }
-   //    @for $i from 1 through 5 {
-   //       > div:nth-child(#{$i}) {
-   //          animation-delay: ($i * $delay-increment);
-   //       }
-   //    }
-   // }
+	// .senegal-radial-effect {
+	//    position: absolute;
+	//    height: 100%;
+	//    width: 100%;
+	//    display: grid;
+	//    place-items: center;
+	//    z-index: -1;
+	//    > div {
+	//       grid-column: 1 / -1;
+	//       grid-row: 1 / -1;
+	//       width: 40px;
+	//       height: 40px;
+	//       border-radius: 100%;
+	//       border: .2px solid black;
+	//       scale: 0;
+	//       animation-timing-function: linear;
+	//       animation-iteration-count: infinite;
+	//       animation-name: senegal-radial-effect;
+	//       animation-duration: 4s;
+	//    }
+	//    @for $i from 1 through 5 {
+	//       > div:nth-child(#{$i}) {
+	//          animation-delay: ($i * $delay-increment);
+	//       }
+	//    }
+	// }
 </style>

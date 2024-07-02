@@ -1,6 +1,6 @@
 ---
-import { Image } from "astro:assets";
-import plasticSurgery from "@media/monk-plastic-surgery-01.jpg";
+import { Image } from "astro:assets"
+import plasticSurgery from "@media/monk-plastic-surgery-01.jpg"
 ---
 
 <div class="monk-on-hover-grid-overlay pointer-events-none">
@@ -48,29 +48,10 @@ import plasticSurgery from "@media/monk-plastic-surgery-01.jpg";
 		margin-right: clamp(0%, 48vw - 46rem, 60%);
 		opacity: 0;
 		// animation called on `index-work-hover.scss`
-		// animation: monk-overlay-image 5s cubic-bezier(0.25, 0.16, 0.01, 0.99) 0s 1 normal forwards;
 		@media (max-width: $mobile-layout-breakpoint) {
 			align-self: center;
 			margin-top: 0;
 			// margin-bottom: 10rem;
-		}
-	}
-
-	@keyframes monk-overlay-image {
-		0% {
-			opacity: 0;
-			scale: 0.9;
-		}
-		5% {
-			opacity: 0;
-			scale: 0.9;
-		}
-		70% {
-			opacity: 1;
-		}
-		100% {
-			opacity: 1;
-			scale: 1;
 		}
 	}
 </style>

@@ -4,12 +4,8 @@
 			transform: translateX(0) translateY(0);
 		}
 		to {
-			transform: translateX(
-					if($direction == "left" or $direction == "right", $distance, 0)
-				)
-				translateY(
-					if($direction == "up" or $direction == "down", $distance, 0)
-				);
+			transform: translateX(if($direction == "left" or $direction == "right", $distance, 0))
+				translateY(if($direction == "up" or $direction == "down", $distance, 0));
 		}
 	}
 }
@@ -46,27 +42,29 @@ $martyr-blackflag-animation-duration-Y: 0.3s;
 		}
 	}
 
-	.martyr-on-hover-grid-overlay {
-		visibility: visible;
-	}
+	.images-loaded {
+		&.martyr-on-hover-grid-overlay {
+			visibility: visible;
+		}
 
-	.torn-paper-overlay-desktop-img {
-		rotate: 0deg;
-		translate: 8% 40.5%;
-	}
-
-	.torn-paper-overlay-mobile {
-		&-img-1 {
-			translate: 0% 0%;
+		.torn-paper-overlay-desktop-img {
 			rotate: 0deg;
+			translate: 8% 40.5%;
 		}
-		&-img-2 {
-			rotate: -0.3deg;
-			translate: 0% 0%;
-		}
-		&-img-3 {
-			rotate: 5deg;
-			translate: 0% 0%;
+
+		.torn-paper-overlay-mobile {
+			&-img-1 {
+				translate: 0% 0%;
+				rotate: 0deg;
+			}
+			&-img-2 {
+				rotate: -0.3deg;
+				translate: 0% 0%;
+			}
+			&-img-3 {
+				rotate: 5deg;
+				translate: 0% 0%;
+			}
 		}
 	}
 
@@ -166,6 +164,24 @@ $martyr-blackflag-animation-duration-Y: 0.3s;
 		color: #efefef;
 	}
 
+	@keyframes monk-overlay-image {
+		0% {
+			opacity: 0;
+			scale: 0.9;
+		}
+		5% {
+			opacity: 0;
+			scale: 0.9;
+		}
+		70% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 1;
+			scale: 1;
+		}
+	}
+
 	.monk-on-hover-grid-overlay {
 		visibility: visible;
 		.plastic-surgery-01 {
@@ -216,41 +232,44 @@ $martyr-blackflag-animation-duration-Y: 0.3s;
 	// z-index: -1;
 	// }
 
-	.senegal-on-hover-grid-overlay {
-		visibility: visible;
-	}
 
-	.senegal-southwest-arrow {
-		transition: translate 0.6s, opacity 0.6s, scale 0.6s;
-		transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
-		transition-delay: 0.6s;
-		opacity: 1;
-		translate: 0 0;
-		scale: 1;
-	}
+	.images-loaded {
+		&.senegal-on-hover-grid-overlay {
+			visibility: visible;
+		}
 
-	.senegal-images-group,
-	.senegal-images-box:after,
-	.senegal-images-box:before {
-		transition: translate 0.4s, scale 0.4s;
-		transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
-		// transition-delay: .15s;
-	}
-
-	.senegal-images-group {
-		translate: $senegal-box-translate (-$senegal-box-translate);
-	}
-
-	.senegal-images-box {
-		&:after {
-			// translate: $senegal-box-translate $senegal-box-translate;
+		.senegal-southwest-arrow {
+			transition: translate 0.6s, opacity 0.6s, scale 0.6s;
+			transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+			transition-delay: 0.6s;
+			opacity: 1;
+			translate: 0 0;
 			scale: 1;
 		}
-		&:before {
-			// translate: 0 (-$senegal-box-translate);
-			scale: 1;
+
+		.senegal-images-group,
+		.senegal-images-box:after,
+		.senegal-images-box:before {
+			transition: translate 0.4s, scale 0.4s;
+			transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+			// transition-delay: .15s;
 		}
-	}
+
+		.senegal-images-group {
+			translate: $senegal-box-translate (-$senegal-box-translate);
+		}
+
+		.senegal-images-box {
+			&:after {
+				// translate: $senegal-box-translate $senegal-box-translate;
+				scale: 1;
+			}
+			&:before {
+				// translate: 0 (-$senegal-box-translate);
+				scale: 1;
+			}
+		}
+	}	
 }
 
 :root:has(.work-explorations:hover) {
@@ -303,8 +322,8 @@ $martyr-blackflag-animation-duration-Y: 0.3s;
 
 	.images-loaded {
 		&.explorations-on-hover-grid-overlay {
-		visibility: visible;
-	}
+			visibility: visible;
+		}
 
 		.explorations-image {
 			animation: explorations-background-image 2s cubic-bezier(0.25, 0.16, 0.01, 0.99)

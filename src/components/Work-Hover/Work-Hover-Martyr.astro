@@ -7,6 +7,13 @@ import mobileTornPaper2 from "@media/mobile-torn-paper-overlay-2.png"
 import mobileTornPaper3 from "@media/mobile-torn-paper-overlay-3.png"
 ---
 
+<script>
+	import { setClassInElementWhenImagesLoad } from "@scripts/helpers"
+
+	const martyrGridElement = document.querySelector(".martyr-on-hover-grid-overlay")
+	setClassInElementWhenImagesLoad(martyrGridElement, "images-loaded")
+</script>
+
 <div class="martyr-on-hover-grid-overlay pointer-events-none">
 	<Image
 		class="torn-paper-overlay-desktop-img"
@@ -14,7 +21,7 @@ import mobileTornPaper3 from "@media/mobile-torn-paper-overlay-3.png"
 		alt=""
 		width="2700"
 		format="avif"
-		quality="60"
+		quality="58"
 		decoding="sync"
 		loading="eager"
 	/>
