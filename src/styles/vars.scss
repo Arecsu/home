@@ -10,6 +10,31 @@ $header-gap: 7rem;
 $content-title-offset-gap: 4rem;
 
 :root {
-   --color-fg-2: #bbb;
-   --link-underline-offset: 0.12em;
+	--color-fg-2: #bbb;
+	--link-underline-offset: 0.12em;
+}
+
+@mixin inter-display {
+	font-variation-settings: "opsz" 32;
+}
+
+@mixin inter-text {
+	font-variation-settings: "opsz" 14;
+	letter-spacing: -0.015em;
+}
+
+.inter-display {
+	@include inter-display;
+}
+
+.inter-text {
+	@include inter-text;
+}
+
+@mixin inter-monospace-numbers {
+	font-feature-settings: "cv04", "tnum";
+}
+
+.inter-monospace-numbers {
+	@include inter-monospace-numbers;
 }

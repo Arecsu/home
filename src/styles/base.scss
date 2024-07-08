@@ -1,73 +1,79 @@
 @font-face {
-   font-family: InterVariable;
-   font-style: normal;
-   font-weight: 100 900;
-   font-display: swap;
-   src: url("/inter-4.0/InterVariable-subset.woff2") format("woff2");
-   // src: url("/inter-4.0/InterVariable.woff2") format("woff2");
+	font-family: InterVariable;
+	font-style: normal;
+	font-weight: 100 900;
+	font-display: swap;
+	src: url("/inter-4.0/InterVariable-subset.woff2") format("woff2");
+	// src: url("/inter-4.0/InterVariable.woff2") format("woff2");
 }
 @font-face {
-   font-family: InterVariable;
-   font-style: italic;
-   font-weight: 100 900;
-   font-display: swap;
-   src: url("/inter-4.0/InterVariable-Italic-subset.woff2") format("woff2");
-   // src: url("/inter-4.0/InterVariable-Italic.woff2") format("woff2");
+	font-family: InterVariable;
+	font-style: italic;
+	font-weight: 100 900;
+	font-display: swap;
+	src: url("/inter-4.0/InterVariable-Italic-subset.woff2") format("woff2");
+	// src: url("/inter-4.0/InterVariable-Italic.woff2") format("woff2");
 }
 
 :root {
-   font-optical-sizing: auto;
-   font-variation-settings: "opsz" 22;
-   font-weight: 400;
-   font-size: 1.03rem;
-   font-family: "InterVariable", sans-serif;
-   // font-variation-settings: "wght" 400, "opsz" 32; /* opsz 32 is Inter Display */
-   // letter-spacing: +0.01em;
+	font-optical-sizing: auto;
+	font-variation-settings: "opsz" 22;
+	font-weight: 400;
+	font-size: 1.03rem;
+	font-family: "InterVariable", sans-serif;
+	// font-variation-settings: "wght" 400, "opsz" 32; /* opsz 32 is Inter Display */
+	// letter-spacing: +0.01em;
 
-   color-scheme: light;
+	color-scheme: light;
 
-   --padding-page: 2rem;
+	--padding-page: 2rem;
 }
 
-.inter-display {
-   font-variation-settings: "opsz" 32;
-}
-.inter-text {
-   font-variation-settings: "opsz" 14;
-   letter-spacing: -0.02em;
-}
 .keep-together {
-   white-space: nowrap;
+	white-space: nowrap;
 }
 
 a {
-   //    text-decoration: none;
-   text-underline-offset: var(--link-underline-offset);
+	//    text-decoration: none;
+	text-underline-offset: var(--link-underline-offset);
+}
+
+a.no-underline {
+	text-decoration: none;
 }
 
 a[target="_blank"]::after {
-   display: inline-block;
-   content: "↗";
-   position: relative;
-   top: -0.2em;
-   padding-left: 0.05em;
-//    font-size: 2em;
-   line-height: 0;
-   text-decoration: none;
+	display: inline-block;
+	content: "↗";
+	position: relative;
+	top: -0.2em;
+	padding-left: 0.05em;
+	//    font-size: 2em;
+	line-height: 0;
+	text-decoration: none;
 }
 
 @media (hover: hover) {
-   a:not(.disable-default-a-hover):hover,
-   .about-authentic:hover {
-    //    text-decoration-thickness: 0.12em;
-        --background: #101010;
-        background: var(--background);
-        color: white;
-        outline: .2em solid var(--background);
-   }
+	a:not(.disable-default-a-hover):hover,
+	.about-authentic:hover {
+		//    text-decoration-thickness: 0.12em;
+		--background: #101010;
+		background: var(--background);
+		color: white;
+		outline: 0.2em solid var(--background);
+	}
 }
 
 img {
-   max-width: 100%;
-   height: auto;
+	max-width: 100%;
+	height: auto;
+}
+
+.content-title-offset,
+.work-page-wrapper h2 {
+   @include inter-display;
+	font-weight: 650;
+	letter-spacing: 0.02em;
+	// font-size: clamp(0.9em, 3vw, 1em);
+   font-size: 1em;
 }
