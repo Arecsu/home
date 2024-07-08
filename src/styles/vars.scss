@@ -4,8 +4,10 @@ $work-astro-breakpoint: 1430px;
 // $senegal-box-translate: 3%;
 $header-contact-breakpoint: 500px;
 
-$margin-page-1: min(2em, 5vw);
-$margin-page-2: min(2.5em, 5vw + 0.5em);
+$margin-page-1: min(2rem, 5vw);
+$margin-page-2: min(2.5rem, 5vw + 0.5rem);
+$header-gap: 7rem;
+$content-title-offset-gap: 4rem;
 
 :root {
    --color-fg-2: #bbb;

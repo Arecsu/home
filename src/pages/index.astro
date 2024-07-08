@@ -60,26 +60,27 @@ import "@styles/index-work-hover.scss";
 		display: grid;
 		grid-template-columns:
 			[full-width-start] $margin-page-1
-			[header-start header-title-start work-section-start content-title-start about-start] 8em
-			[header-title-end content-title-end] 4em
-			[contact-start content-blocks-start] auto
+			[header-start header-title-start work-section-start content-title-start about-start] min-content
+			[header-title-end] ($header-gap - $content-title-offset-gap)
+			[content-title-end] $content-title-offset-gap
+			[header-contact-start content-blocks-start] auto
 			/*
          [about-end footer-start] auto
          [contact-end header-end work-section-end content-blocks-end] 5em
          */
-			[about-end footer-start contact-end header-end work-section-end content-blocks-end] 5em
+			[about-end footer-start header-contact-end header-end work-section-end content-blocks-end] 5em
 			[blackflag-start] minmax(auto, min(40em, 40%))
 			[blackflag-end footer-end] 2em
 			[full-width-end];
 		grid-template-rows:
-			2em
-			[header-start contact-start blackflag-start] auto
-			[header-end contact-end arrow-start] auto
+			2rem
+			[header-start header-contact-start blackflag-start] auto
+			[header-end header-contact-end arrow-start] auto
 			[arrow-end work-section-start] auto
-			[work-section-end reflections-section-start] 4em 1fr
+			[work-section-end reflections-section-start] 4rem 1fr
 			[reflections-section-end about-start] auto
-			[blackflag-end] 10em
-			[footer-start] 2em
+			[blackflag-end] 10rem
+			[footer-start] 2rem
 			[about-end footer-end]
 			$margin-page-1;
 	}
@@ -95,11 +96,11 @@ import "@styles/index-work-hover.scss";
 				[header-start header-title-start work-section-start content-title-start about-start
 				blackflag-start content-title-end content-blocks-start footer-start]
 				min-content
-				[header-title-end contact-start]
+				[header-title-end header-contact-start]
 				auto
 				[about-end]
 				1fr
-				[header-end contact-end
+				[header-end header-contact-end
 				work-section-end content-blocks-end blackflag-end footer-end]
 				$margin-page-1
 				[full-width-end];
@@ -110,11 +111,11 @@ import "@styles/index-work-hover.scss";
 		.index-1 {
 			grid-template-rows:
 				$margin-page-1
-				[header-start header-title-start contact-start] auto
+				[header-start header-title-start header-contact-start] auto
 				[arrow-start header-title-end] auto
-				[arrow-end header-end contact-end] auto
+				[arrow-end header-end header-contact-end] auto
 				[work-section-start] auto auto
-				[work-section-end reflections-section-start] 2em
+				[work-section-end reflections-section-start] 2rem
 				1fr
 				[reflections-section-end about-start] auto
 				[about-end]
@@ -124,8 +125,8 @@ import "@styles/index-work-hover.scss";
 		.index-2 {
 			grid-template-rows:
 				[blackflag-start] auto
-				[blackflag-end] 6em
-				[footer-start] 2em
+				[blackflag-end] 6rem
+				[footer-start] 2rem
 				[footer-end]
 				$margin-page-2;
 			grid-row: 2 / 3;

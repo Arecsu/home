@@ -7,7 +7,7 @@ const { contactVisible = false } = Astro.props
 ---
 
 <header>
-   <span class="header-title">alejandro r.</span>
+   <a href="/" class="no-underline header-title">alejandro r.</a>
    {contactVisible &&
       <div class="header-contact">
          <a href="mailto:hello@malejandro.com">email</a>
@@ -42,7 +42,7 @@ const { contactVisible = false } = Astro.props
    }
 
    .header-contact {
-      grid-area: contact;
+      grid-area: header-contact;
       // width: 100%;
       display: flex;
       column-gap: 1rem;
