@@ -11,8 +11,8 @@ const __dirname = dirname(__filename);
 export default defineConfig({
 
   // integrations: [alpinejs()],
-  // site: 'https://arecsu.github.io',
-  // base: '/www',
+  site: 'https://arecsu.github.io',
+  base: import.meta.env.DEV ? "." : "/www",
 
   vite: {
     resolve: {
