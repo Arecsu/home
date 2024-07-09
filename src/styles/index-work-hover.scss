@@ -21,7 +21,7 @@ $martyr-blackflag-animation-duration-Y: 0.3s;
 @include martyr-blackflag-move("right", $martyr-blackflag-svg-width);
 
 // prettier-ignore
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
 :root:has(.work-martyr:hover) {
 	// :root:has(.work-martyr) {
 	body {
