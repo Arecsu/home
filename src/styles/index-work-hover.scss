@@ -33,7 +33,7 @@ $martyr-blackflag-animation-duration-Y: 0.3s;
 		color: #000000;
 	}
 
-	@media (max-width: $mobile-layout-breakpoint) {
+	@media (max-width: $mobile-layout-breakpoint-1) {
 		.header-contact {
 			visibility: hidden;
 		}
@@ -190,7 +190,7 @@ $martyr-blackflag-animation-duration-Y: 0.3s;
 		}
 	}
 
-	@media (max-width: $mobile-layout-breakpoint) {
+	@media (max-width: $mobile-layout-breakpoint-1) {
 		.about {
 			visibility: hidden;
 		}
@@ -217,7 +217,7 @@ $martyr-blackflag-animation-duration-Y: 0.3s;
 		}
 	}
 
-	@media (max-width: $mobile-layout-breakpoint) {
+	@media (max-width: $mobile-layout-breakpoint-1) {
 		.about {
 			visibility: hidden;
 		}
