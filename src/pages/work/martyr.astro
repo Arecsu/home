@@ -2,7 +2,7 @@
 import WorkPageLayout from "@layouts/WorkPage.astro"
 ---
 
-<WorkPageLayout title="martyr⁠—">
+<WorkPageLayout title="martyr⁠—" workPageClass="work-page-martyr">
 	<h2>Web</h2>
 	<a href="https://martyr.shop" target="_blank">https://martyr.shop/</a>
 	<h2>Timeline</h2>
@@ -23,3 +23,17 @@ import WorkPageLayout from "@layouts/WorkPage.astro"
 	<h2>Timeline</h2>
 	<p>2019 ---> [ONGOING]</p>
 </WorkPageLayout>
+
+<style is:global lang="scss">
+	.work-page-martyr {
+		@media (max-width: 600px) {
+			.work-page-title span {
+				display: none;
+			}
+		}
+
+		.work-page-title {
+			font-size: clamp(4em, 18vw, 6em); 
+		}
+	}
+</style>
