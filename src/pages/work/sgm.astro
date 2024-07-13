@@ -2,7 +2,7 @@
 import WorkPageLayout from "@layouts/WorkPage.astro"
 ---
 
-<WorkPageLayout title="martyr⁠—" workPageClass="work-page-martyr">
+<WorkPageLayout title="senegal grindcore mafia" workPageClass="work-page-martyr">
 	<h2>Web</h2>
 	<a href="https://martyr.shop" target="_blank">https://martyr.shop/</a>
 	<h2>Timeline</h2>
@@ -26,7 +26,7 @@ import WorkPageLayout from "@layouts/WorkPage.astro"
 
 <style is:global lang="scss">
 	.work-page-martyr {
-		@media (max-width: 340px) {
+		@media (max-width: 1500px) {
 		// @media (max-width: $header-contact-breakpoint) {
 			.work-page-title span {
 				display: none;
@@ -34,7 +34,10 @@ import WorkPageLayout from "@layouts/WorkPage.astro"
 		}
 
 		.work-page-title {
-			font-size: clamp(3em, -6em + 24vw, 6em); 
+			font-size: clamp(2em, -2em + 10vw, 6em); 
+			@media (max-width: $mobile-layout-breakpoint-1) {
+				font-size: clamp(1.8em, 7vw, 6em); 
+			}
 		}
 	}
 </style>

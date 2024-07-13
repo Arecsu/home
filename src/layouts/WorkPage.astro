@@ -67,10 +67,13 @@ const { title, workPageClass } = Astro.props
 	.work-page-title {
 		font-size: 6em;
 		font-weight: 500;
-		letter-spacing: -.01em;
+		letter-spacing: -.02em;
+		line-height: 1.2em;
 		grid-column: main-content;
 		margin-left: -0.055em;
 		place-self: normal;
+		margin-top: calc(0.7em + clamp(0rem, 8rem - 19.5vw, 1rem));
+		margin-bottom: 1rem;
 		span {
 			float: right;
 		}
@@ -84,7 +87,7 @@ const { title, workPageClass } = Astro.props
 
 <style is:global lang="scss">
 	.work-page-wrapper main {
-		$space-between-h2-sections: 0.7em;
+		$space-between-h2-sections: 0.9em;
 
 		h2 {
 			grid-column: heading;
