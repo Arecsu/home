@@ -245,30 +245,29 @@ import mobileTornPaper3 from "@media/mobile-torn-paper-overlay-3.png"
 
 	.martyr-marquee {
 		&-desktop {
-			@media (max-width: $mobile-layout-breakpoint-1) {
-				display: none;
-			}
 			position: absolute;
 			top: clamp(-0.2rem, 19rem - 23.6vw, 11rem);
 			grid-column: full-width;
 			grid-row: header-start / work-section-end;
 			font-size: clamp(7rem, 13vw, 13rem);
+			@media (max-width: $mobile-layout-breakpoint-1) {
+				display: none;
+			}
 			span {
 				animation-duration: 12s;
 			}
 		}
 		&-mobile-container {
 			display: none;
-			@media (max-width: $mobile-layout-breakpoint-1) {
-				display: flex;
-			}
 			position: absolute;
 			flex-flow: column nowrap;
 			top: 1rem;
 			font-size: 1.2rem;
 			grid-column: full-width;
 			grid-row: 1 / -1;
-
+			@media (max-width: $mobile-layout-breakpoint-1) {
+				display: flex;
+			}
 			> .martyr-marquee {
 				line-height: 1em;
 				&:nth-child(odd) {
