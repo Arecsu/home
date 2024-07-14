@@ -12,7 +12,12 @@ export default defineConfig({
 
   // integrations: [alpinejs()],
   site: 'https://arecsu.github.io',
-  base: import.meta.env.DEV ? "." : "/www",
+  base: import.meta.env.DEV ? "." : "/www/",
+
+  prefetch: {
+    prefetchAll: true,
+    defaultStrategy: 'viewport'
+  },
 
   vite: {
     resolve: {
