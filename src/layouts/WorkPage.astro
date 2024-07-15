@@ -64,23 +64,6 @@ const { title, workPageClass } = Astro.props
 		// row-gap: 1rem;
 		place-items: start;
 	}
-	.work-page-title {
-		font-size: 6em;
-		font-weight: 500;
-		letter-spacing: -.02em;
-		line-height: 1.2em;
-		grid-column: main-content;
-		margin-left: -0.055em;
-		place-self: normal;
-		margin-top: calc(0.7em + clamp(0rem, 8rem - 19.5vw, 1rem));
-		margin-bottom: 1rem;
-		span {
-			float: right;
-		}
-		@media (max-width: $mobile-layout-breakpoint-1) {
-			// margin-bottom: -0.5rem;
-		}
-	}
 </style>
 
 
@@ -126,6 +109,24 @@ const { title, workPageClass } = Astro.props
 			// text-transform: uppercase;
 			// text-transform: lowercase;
 			// font-size: 1.4em;
+		}
+	}
+
+	.work-page-title {
+		font-size: 6em;
+		font-weight: 500;
+		letter-spacing: -.02em;
+		line-height: 1.2em;
+		grid-column: main-content;
+		margin-left: -0.055em;
+		place-self: normal;
+		margin-top: calc(0.7em + clamp(0rem, 8rem - 19.5vw, 1rem));
+		margin-bottom: 1rem;
+		span {
+			float: right;
+		}
+		@media (max-width: $mobile-layout-breakpoint-1) {
+			// margin-bottom: -0.5rem;
 		}
 	}
 </style>
