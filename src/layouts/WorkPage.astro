@@ -87,7 +87,7 @@ const { title, workPageClass } = Astro.props
 
 <style is:global lang="scss">
 	.work-page-wrapper main {
-		$space-between-h2-sections: 0.9em;
+		$space-between-h2-sections: 0.9rem;
 
 		h2 {
 			grid-column: heading;
@@ -100,25 +100,32 @@ const { title, workPageClass } = Astro.props
 				// margin-block: 1em;
 				// margin-top: .5rem;
 			}
+			& + *:not(h2) {
+				margin-top: $space-between-h2-sections;
+			}
 		}
 		:not(h2) { 
 			@include inter-text;
 			grid-column: main-content;
 		}
-		p, a {
-			margin-block: $space-between-h2-sections 1em;
-
+		p {
+			text-wrap: pretty;
+			margin-block: 0em .6em;
 			@media (max-width: $mobile-layout-breakpoint-1) {
-				margin-block: .7em .7em;
-			}
-
-			& + *:not(h2) {
-				// remove the space between paragraphs and such set on previous declarations
-				margin-top: 0em;
+				margin-block: .3em .6em;
 			}
 		}
-		p, a, h2 {
+		p, h2 {
 			max-width: 75ch;
+		}
+		h3 {
+			margin-block: .7em .4em;
+			letter-spacing: -0.02em;
+			font-weight: 520;
+			font-size: 1.6em;
+			// text-transform: uppercase;
+			// text-transform: lowercase;
+			// font-size: 1.4em;
 		}
 	}
 </style>
