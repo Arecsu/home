@@ -10,7 +10,7 @@ Until I was 25, my experiments and explorations in these fields remained largely
 
 At some point, I grown tired of jumping from one field to another, sort of regreting to displace a path in favor of another. Is there a way to bridge them? Furthermore, internal and external pressures started to come into play. Time was ticking, and so was my motivation to continue.
 
-In the events of despair and hope, martyr⁠— was born. I could even say it has been always there. Latent. Waiting to be realized. Mistakes will be made, for sure. It takes courage to walk the path consiously knowing how hard it is. But hard or easy, it doesn't matter. If it's worth it, it matters.
+One day, in the juxtaposition of despair and hope, martyr⁠— was born. It has always been there. Latent. Waiting to be realized. Mistakes will be made, for sure. It takes courage to walk the path consiously knowing how hard it is. But hard or easy, it doesn't matter. If it is worthwhile, it matters.
 
 martyr⁠— is, at its core, an act of self-discovery.
 
@@ -38,9 +38,9 @@ There will be times when the concept was flawed from the beginning. No matter ho
 
 ### Straight Edge
 
-Inspiration happens when you pay attention. To pay attention is to have a clear mind. To have a clear mind is to take care of yourself and your surroundings.
+Inspiration happens when you pay attention. Paying attention requires a clear mind. And a clear mind comes from taking care of yourself and your surroundings.
 
-A stoic life, free from excess and with time for contemplation, is essential. Though the day-to-day experience is often mundane, it can still surprise us in unexpected ways. To come to this realization is to have mental space for precious creative thoughts.
+A calm life, free from excess, with enough time for contemplation, is essential. Though the day-to-day experience is often mundane, it can still surprise us in unexpected ways. To come to this realization is to have mental space for precious creative thoughts.
 
 martyr⁠— does not embrace shortcuts. Work is hard. Things do take effort and time. But it shouldn't feel dreadful to embrace the process. In fact, it should feel meaningful. Otherwise, what's the point of it all?
 
