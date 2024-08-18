@@ -71,6 +71,7 @@ const { title, workPageClass } = Astro.props
 <style is:global lang="scss">
 	.work-page-wrapper main {
 		$space-between-h2-sections: 0.9rem;
+		$space-between-h2-sections-mobile: 0.4rem;
 
 		h2 {
 			grid-column: heading;
@@ -85,6 +86,9 @@ const { title, workPageClass } = Astro.props
 			}
 			& + *:not(h2) {
 				margin-top: $space-between-h2-sections;
+				@media (max-width: $mobile-layout-breakpoint-1) {
+					margin-top: $space-between-h2-sections-mobile;
+				}
 			}
 		}
 		:not(h2) { 
@@ -122,7 +126,7 @@ const { title, workPageClass } = Astro.props
 		grid-column: main-content;
 		margin-left: -0.055em;
 		place-self: normal;
-		margin-top: calc(0.7em + clamp(0rem, 8rem - 19.5vw, 1rem));
+		margin-top: calc(0.5em + clamp(0rem, 8rem - 15.5vw, 0.6rem));
 		margin-bottom: 1rem;
 		span {
 			float: right;
