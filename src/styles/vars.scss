@@ -10,13 +10,6 @@ $margin-page-2: min(2.5rem, 5vw + 0.5rem);
 $header-gap: 7rem;
 $content-title-offset-gap: 4rem;
 
-:root {
-	--color-fg-2: #bbb;
-	--link-underline-offset: 0.13em;
-	--link-color-hover: #fff;
-	--link-background-color-hover: #101010;
-}
-
 @mixin inter-display {
 	font-variation-settings: "opsz" 32;
 }
@@ -26,20 +19,8 @@ $content-title-offset-gap: 4rem;
 	letter-spacing: -0.015em;
 }
 
-.inter-display {
-	@include inter-display;
-}
-
-.inter-text {
-	@include inter-text;
-}
-
 @mixin inter-monospace-numbers {
 	font-feature-settings: "cv04", "tnum";
-}
-
-.inter-monospace-numbers {
-	@include inter-monospace-numbers;
 }
 
 $color-fg-1-monk: rgb(232, 230, 227);

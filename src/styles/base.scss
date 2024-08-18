@@ -23,10 +23,13 @@
 	font-family: "InterVariable", sans-serif;
 	// font-variation-settings: "wght" 400, "opsz" 32; /* opsz 32 is Inter Display */
 	// letter-spacing: +0.01em;
-
 	color-scheme: light;
-
 	--padding-page: 2rem;
+	
+	--color-fg-2: #bbb;
+	--link-underline-offset: 0.13em;
+	--link-color-hover: #fff;
+	--link-background-color-hover: #101010;
 }
 
 .keep-together {
@@ -75,4 +78,16 @@ img {
 	letter-spacing: 0.02em;
 	// font-size: clamp(0.9em, 3vw, 1em);
    font-size: 1em;
+}
+
+.inter-display {
+	@include inter-display;
+}
+
+.inter-text {
+	@include inter-text;
+}
+
+.inter-monospace-numbers {
+	@include inter-monospace-numbers;
 }
