@@ -57,10 +57,9 @@ a[target="_blank"]::after {
 	a:not(.disable-default-a-hover):hover,
 	.about-authentic:hover {
 		//    text-decoration-thickness: 0.12em;
-		--background: #101010;
-		background: var(--background);
-		color: white;
-		outline: 0.2em solid var(--background);
+		background: var(--link-background-color-hover);
+		color: var(--link-color-hover);
+		outline: 0.2em solid var(--link-background-color-hover);
 	}
 }
 

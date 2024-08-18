@@ -14,6 +14,18 @@ import { Content as MartyrAboutContent } from "./_martyr.md"
 	<MartyrAboutContent />
 </WorkPageLayout>
 
+<style lang="scss">
+	:root {
+		color-scheme: $color-scheme-martyr;
+		--link-background-color-hover: #{$color-fg-1-martyr};
+		--link-color-hover: #{$color-bg-1-martyr};
+	}
+	body {
+		background: $color-bg-1-martyr;
+		color: $color-fg-1-martyr;
+	}
+	</style>
+
 <style is:global lang="scss">
 	.work-page-martyr {
 		@media (max-width: 340px) {

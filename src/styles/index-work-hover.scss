@@ -24,13 +24,15 @@ $martyr-blackflag-animation-duration-Y: 0.3s;
 @media (hover: hover) and (pointer: fine) {
 :root:has(.work-martyr:hover) {
 	// :root:has(.work-martyr) {
+	color-scheme: $color-scheme-martyr;
+
 	body {
-		background: #efefef;
-		color: #aeaeae;
+		background: $color-bg-1-martyr;
+		color: $color-fg-2-martyr;
 	}
 
 	.work-martyr {
-		color: #000000;
+		color: $color-fg-1-martyr;
 	}
 
 	@media (max-width: $mobile-layout-breakpoint-1) {
@@ -151,11 +153,11 @@ $martyr-blackflag-animation-duration-Y: 0.3s;
 
 :root:has(.work-monk:hover) {
 	// :root:has(.work-monk) {
-	color-scheme: dark;
+	color-scheme: $color-scheme-monk;
 
 	body {
-		background: #000000;
-		color: #414141;
+		background: $color-bg-1-monk;
+		color: $color-fg-2-monk;
 	}
 
 	.blackflag {
@@ -163,7 +165,7 @@ $martyr-blackflag-animation-duration-Y: 0.3s;
 	}
 
 	.work-monk {
-		color: #efefef;
+		color: $color-fg-1-monk;
 	}
 
 	@keyframes monk-overlay-image {
@@ -205,8 +207,8 @@ $martyr-blackflag-animation-duration-Y: 0.3s;
 :root:has(.work-senegal:hover) {
 	// :root:has(.work-senegal) {
 	body {
-		background: #2b0961;
-		color: #ffffff;
+		background: $color-bg-1-sgm;
+		color: $color-fg-1-sgm;
 	}
 
 	.blackflag {
@@ -226,7 +228,7 @@ $martyr-blackflag-animation-duration-Y: 0.3s;
 	}
 
 	.work-senegal {
-		color: rgb(255, 196, 0);
+		color: $color-fg-2-sgm;
 		// text-decoration: underline;
 	}
 

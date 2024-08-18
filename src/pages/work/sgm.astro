@@ -24,6 +24,19 @@ import WorkPageLayout from "@layouts/WorkPage.astro"
 	<p>2019 ---> [ONGOING]</p>
 </WorkPageLayout>
 
+<style lang="scss">
+	:root {
+		color-scheme: $color-scheme-sgm;
+		--link-background-color-hover: #{$color-fg-2-sgm};
+		--link-color-hover: #{$color-bg-1-sgm};
+	}
+
+	body {
+		background: $color-bg-1-sgm;
+		color: $color-fg-1-sgm;
+	}
+</style>
+
 <style is:global lang="scss">
 	.work-page-sgm {
 		@media (max-width: 1500px) {

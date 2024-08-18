@@ -12,7 +12,9 @@ $content-title-offset-gap: 4rem;
 
 :root {
 	--color-fg-2: #bbb;
-	--link-underline-offset: 0.12em;
+	--link-underline-offset: 0.13em;
+	--link-color-hover: #fff;
+	--link-background-color-hover: #101010;
 }
 
 @mixin inter-display {
@@ -39,3 +41,19 @@ $content-title-offset-gap: 4rem;
 .inter-monospace-numbers {
 	@include inter-monospace-numbers;
 }
+
+$color-fg-1-monk: rgb(232, 230, 227);
+$color-fg-2-monk: #414141;
+$color-fg-3-monk: #fbfbfb;
+$color-bg-1-monk: #000000;
+$color-scheme-monk: dark;
+
+$color-bg-1-martyr: #efefef;
+$color-fg-1-martyr: #000000;
+$color-fg-2-martyr: #aeaeae;
+$color-scheme-martyr: light;
+
+$color-bg-1-sgm: #2b0961;
+$color-fg-1-sgm: #ffffff;
+$color-fg-2-sgm: rgb(255, 196, 0);
+$color-scheme-sgm: light;
