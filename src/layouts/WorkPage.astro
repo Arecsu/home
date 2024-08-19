@@ -61,7 +61,6 @@ const { title, workPageClass } = Astro.props
 		grid-column: full-width;
 		grid-row: main-content;
 		grid-auto-rows: min-content;
-		// row-gap: 1rem;
 		place-items: start;
 	}
 </style>
@@ -89,23 +88,21 @@ const { title, workPageClass } = Astro.props
 				@media (max-width: $mobile-layout-breakpoint-1) {
 					margin-top: $space-between-h2-sections-mobile;
 				}
-			}
+			}			
 		}
-		:not(h1, h2) { 
-			@include inter-text;
+		:not(h1, h1 *, h2) { 
 			grid-column: main-content;
+			@include inter-text;
+			max-width: 75ch;
 		}
-		p {
+		p, ul {
 			text-wrap: pretty;
 			margin-block: 0em .6em;
-			letter-spacing: -0.010em;
+			// letter-spacing: -0.010em;
   			line-height: 1.55;
 			@media (max-width: $mobile-layout-breakpoint-1) {
 				margin-block: .3em .6em;
 			}
-		}
-		p, h2 {
-			max-width: 75ch;
 		}
 		h3 {
 			margin-block: .7em .4em;
