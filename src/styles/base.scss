@@ -45,15 +45,18 @@ a.no-underline {
 	text-decoration: none;
 }
 
-a[target="_blank"]::after {
-	display: inline-block;
-	content: "↗";
-	position: relative;
-	top: -0.2em;
-	padding-left: 0.05em;
-	//    font-size: 2em;
-	line-height: 0;
-	text-decoration: none;
+a[target="_blank"],
+a[href^="http"] {
+	&::after {
+		display: inline-block;
+		content: "↗";
+		position: relative;
+		top: -0.2em;
+		padding-left: 0.05em;
+		//    font-size: 2em;
+		line-height: 0;
+		text-decoration: none;
+	}
 }
 
 @media (hover: hover) {
