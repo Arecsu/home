@@ -18,7 +18,8 @@ import "@styles/index-work-hover.scss";
 	<main>
 		<div class="index-1">
 			<Header contactVisible={true} />
-			<span class="arrow-before-work">↘</span>
+			<span class="arrow-before-work inter-display">↘</span>
+			<span class="arrow-southwest inter-display">↙</span>
 			<Work />
 			<span class="symbol-small">~\</span>
 			<About />
@@ -146,12 +147,12 @@ import "@styles/index-work-hover.scss";
 		grid-row: arrow;
 		grid-column: header-start;
 		font-size: 2.2em;
-		font-weight: 300;
+		font-weight: 330;
 		line-height: 1em;
 		margin-block: clamp(0em, -0.4em + 3vmin, .6em) clamp(.4em, 3vmin, .8em);
 		// box-sizing: content-box;
 		// padding-block: 0.3rem;
-		@media (max-width: 700px) {
+		@media (max-width: $mobile-layout-breakpoint-1) {
 			// display: none;
 			opacity: 0;
 			font-size: .7em;
@@ -159,6 +160,19 @@ import "@styles/index-work-hover.scss";
 
 		@media (max-width: $header-contact-breakpoint) {
 			display: none;
+		}
+	}
+
+	.arrow-southwest {
+		display: none;
+		grid-row: work-section-start;
+		grid-column-end: header-end;
+		justify-self: end;
+		font-size: 1rem;
+		// font-weight: 400;
+		line-height: 0.55;
+		@media (min-width: ($mobile-layout-breakpoint-2 + 1px)) and (max-width: $mobile-layout-breakpoint-1) {
+			display: block;
 		}
 	}
 </style>
