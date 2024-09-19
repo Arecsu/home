@@ -1,0 +1,56 @@
+---
+import WorkPageLayout from "@layouts/WorkPage.astro"
+---
+
+<WorkPageLayout title="senegal grindcore mafia" workPageClass="work-page-sgm">
+	<h2>Web</h2>
+	<a href="https://martyr.shop" target="_blank">https://martyr.shop/</a>
+	<h2>Timeline</h2>
+	<p class="inter-monospace-numbers">2019 ---> [ONGOING]</p>
+	<h2>About</h2>
+	<p>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet scelerisque purus. Duis risus dolor, cursus in
+		convallis eu, laoreet at urna. Duis nec diam augue. Praesent convallis vitae dolor et dictum. Ut ac ullamcorper velit, eu
+		ullamcorper mi. Mauris purus odio, interdum ac accumsan sit amet, ultricies id purus.
+	</p>
+	<p>
+		Donec arcu erat, dictum ac dignissim ut, rhoncus sed metus. Aenean venenatis sem at libero facilisis, vitae varius risus
+		finibus. Suspendisse condimentum, nibh eu condimentum sagittis, justo dolor euismod neque, id bibendum elit est id mi.
+		Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nam sit amet erat leo. Sed commodo
+		ut mauris et vulputate. Sed odio tortor, ultrices nec diam sed, dapibus dignissim risus. Aliquam dignissim velit lectus,
+		ullamcorper porta ex placerat ac.
+	</p>
+	<h2>Timeline</h2>
+	<p>2019 ---> [ONGOING]</p>
+</WorkPageLayout>
+
+<style lang="scss">
+	html:root {
+		color-scheme: $color-scheme-sgm;
+		--link-background-color-hover: #{$color-fg-2-sgm};
+		--link-color-hover: #{$color-bg-1-sgm};
+	}
+
+	body {
+		background: $color-bg-1-sgm;
+		color: $color-fg-1-sgm;
+	}
+</style>
+
+<style is:global lang="scss">
+	.work-page-sgm {
+		@media (max-width: 1500px) {
+		// @media (max-width: $header-contact-breakpoint) {
+			.work-page-title span {
+				display: none;
+			}
+		}
+
+		.work-page-title {
+			font-size: clamp(2em, -2em + 10vw, 6em); 
+			@media (max-width: $mobile-layout-breakpoint-1) {
+				font-size: clamp(1.8em, 7vw, 6em); 
+			}
+		}
+	}
+</style>
