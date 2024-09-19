@@ -78,6 +78,11 @@ img {
 	height: auto;
 }
 
+ul.unstyled-list {
+	list-style-type: none;
+ 	padding: 0;
+}
+
 .content-title-offset,
 .work-page-wrapper h2 {
    @include inter-display;

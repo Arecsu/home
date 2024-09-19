@@ -53,7 +53,9 @@ Given this scenario, we had to develop custom code, workarounds, and hacks to de
 
 ### Photorealistic 3D visuals
 
-[Soufyan Boubker](https://www.instagram.com/soufyanboubker/) was in charge of the texturing, modeling, animation, and environment of the 3D prints featured at mönk. A highly recommended artist to keep an eye on.
+[Soufyan Boubker](https://www.instagram.com/soufyanboubker/) was in charge of the texturing, modeling, animation, and environment of the interactive 3D prints featured at mönk. A highly recommended artist to keep an eye on.
+
+You can play with the models in any of the products listed on the store. For instance, here's the link to my favorite one: [Mc Lovin' 04](https://www.monkstudeyo.com/products/mc-lovin-04). Move the slider to the left or right to see it. It is such a joy to use!
 
 When I was handed the 3D assets, they featured uncompressed, high-resolution textures. The materials and topology workflow were designed to be viewed and rendered under Blender. They needed to be converted and exported in a format that could be understood by  [\<model-viewer\>](https://modelviewer.dev/).
 
