@@ -32,6 +32,10 @@
 	--link-background-color-hover: #101010;
 }
 
+body {
+	overflow-x: hidden;
+}
+
 .keep-together {
 	white-space: nowrap;
 }
