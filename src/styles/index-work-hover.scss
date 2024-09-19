@@ -22,6 +22,12 @@ $martyr-blackflag-animation-duration-Y: 0.3s;
 
 // prettier-ignore
 @media (hover: hover) and (pointer: fine) {
+
+body {
+	transition: background 0.5s cubic-bezier(0.45, 0.7, 0, 1.01);
+	background: white;
+}
+
 :root:has(.work-martyr:hover) {
 	// :root:has(.work-martyr) {
 	color-scheme: $color-scheme-martyr;
@@ -73,7 +79,7 @@ $martyr-blackflag-animation-duration-Y: 0.3s;
 	.flag-interior {
 		position: relative;
 		overflow: hidden;
-		background: #dfdfdf;
+		background: #00000012;
 		// border: solid 1px #101010;
 		border: none;
 	}
