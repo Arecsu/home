@@ -21,6 +21,79 @@ const { title, workPageClass } = Astro.props
 	</div>
 </BaseLayout>
 
+<style is:global lang="scss">
+	.work-page-wrapper main {
+		$space-between-h2-sections: 0.9rem;
+		$space-between-h2-sections-mobile: 0.4rem;
+
+		h2 {
+			grid-column: heading;
+			text-transform: uppercase;
+			justify-self: end;
+			margin-block: $space-between-h2-sections 0;
+		
+			@media (max-width: $mobile-layout-breakpoint-1) {
+				justify-self: start;
+				// margin-block: 1em;
+				// margin-top: .5rem;
+			}
+			& + *:not(h2) {
+				margin-top: $space-between-h2-sections;
+				@media (max-width: $mobile-layout-breakpoint-1) {
+					margin-top: $space-between-h2-sections-mobile;
+				}
+			}			
+		}
+		> *:not(h1, h1 *, h2) { 
+			grid-column: main-content;
+			@include inter-text;
+			max-width: 75ch;
+			width: 100%;
+		}
+		p, ul {
+			text-wrap: pretty;
+			margin-block: 0em .6em;
+			// letter-spacing: -0.010em;
+  			line-height: 1.55;
+			@media (max-width: $mobile-layout-breakpoint-1) {
+				margin-block: .3em .6em;
+			}
+		}
+		h3 {
+			margin-block: .7em .4em;
+			letter-spacing: -0.02em;
+			font-weight: 520;
+			font-size: 1.6em;
+			// text-transform: uppercase;
+			// text-transform: lowercase;
+			// font-size: 1.4em;
+		}
+
+		.full-width {
+			grid-column: 1 / -1;
+			max-width: 100%;
+		}
+	}
+
+	.work-page-title {
+		font-size: 6em;
+		font-weight: 500;
+		letter-spacing: -.02em;
+		line-height: 1.2em;
+		grid-column: main-content;
+		margin-left: -0.055em;
+		place-self: normal;
+		margin-top: calc(0.5em + clamp(0rem, 8rem - 15.5vw, 0.6rem));
+		margin-bottom: 1rem;
+		span {
+			float: right;
+		}
+		@media (max-width: $mobile-layout-breakpoint-1) {
+			// margin-bottom: -0.5rem;
+		}
+	}
+</style>
+
 <style lang="scss">
 	.work-page-wrapper {
 		font-size: 1rem;
@@ -62,75 +135,6 @@ const { title, workPageClass } = Astro.props
 		grid-row: main-content;
 		grid-auto-rows: min-content;
 		place-items: start;
-	}
-</style>
-
-
-
-<style is:global lang="scss">
-	.work-page-wrapper main {
-		$space-between-h2-sections: 0.9rem;
-		$space-between-h2-sections-mobile: 0.4rem;
-
-		h2 {
-			grid-column: heading;
-			text-transform: uppercase;
-			justify-self: end;
-			margin-block: $space-between-h2-sections 0;
-		
-			@media (max-width: $mobile-layout-breakpoint-1) {
-				justify-self: start;
-				// margin-block: 1em;
-				// margin-top: .5rem;
-			}
-			& + *:not(h2) {
-				margin-top: $space-between-h2-sections;
-				@media (max-width: $mobile-layout-breakpoint-1) {
-					margin-top: $space-between-h2-sections-mobile;
-				}
-			}			
-		}
-		:not(h1, h1 *, h2) { 
-			grid-column: main-content;
-			@include inter-text;
-			max-width: 75ch;
-		}
-		p, ul {
-			text-wrap: pretty;
-			margin-block: 0em .6em;
-			// letter-spacing: -0.010em;
-  			line-height: 1.55;
-			@media (max-width: $mobile-layout-breakpoint-1) {
-				margin-block: .3em .6em;
-			}
-		}
-		h3 {
-			margin-block: .7em .4em;
-			letter-spacing: -0.02em;
-			font-weight: 520;
-			font-size: 1.6em;
-			// text-transform: uppercase;
-			// text-transform: lowercase;
-			// font-size: 1.4em;
-		}
-	}
-
-	.work-page-title {
-		font-size: 6em;
-		font-weight: 500;
-		letter-spacing: -.02em;
-		line-height: 1.2em;
-		grid-column: main-content;
-		margin-left: -0.055em;
-		place-self: normal;
-		margin-top: calc(0.5em + clamp(0rem, 8rem - 15.5vw, 0.6rem));
-		margin-bottom: 1rem;
-		span {
-			float: right;
-		}
-		@media (max-width: $mobile-layout-breakpoint-1) {
-			// margin-bottom: -0.5rem;
-		}
 	}
 </style>
 

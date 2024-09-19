@@ -14,6 +14,44 @@ import { Content as MartyrAboutContent } from "./_martyr.mdx"
 	<MartyrAboutContent />
 </WorkPageLayout>
 
+<style is:global lang="scss">
+	.work-page-martyr main {
+		@media (max-width: 340px) {
+			// @media (max-width: $header-contact-breakpoint) {
+			.work-page-title span {
+				display: none;
+			}
+		}
+
+		.work-page-title {
+			font-size: clamp(3em, -6em + 24vw, 6em);
+		}
+
+		img.all-torn-paper-wide {
+			width: 104%;
+  			max-width: unset;
+  			justify-self: center;
+
+			@media (max-width: $mobile-layout-breakpoint-1) {
+				display: none;
+			}
+		}
+
+		img.all-torn-paper-mobile {
+			display: none;
+			@media (max-width: $mobile-layout-breakpoint-1) {
+				display: block;
+			}
+		}
+
+		.martyr-marquee-wrapper {
+			margin-block: 2rem;
+			font-size: 1.2rem;
+		}
+	}
+</style>
+
+
 <style lang="scss">
 	html:root {
 		color-scheme: $color-scheme-martyr;
@@ -26,17 +64,3 @@ import { Content as MartyrAboutContent } from "./_martyr.mdx"
 	}
 </style>
 
-<style is:global lang="scss">
-	.work-page-martyr {
-		@media (max-width: 340px) {
-			// @media (max-width: $header-contact-breakpoint) {
-			.work-page-title span {
-				display: none;
-			}
-		}
-
-		.work-page-title {
-			font-size: clamp(3em, -6em + 24vw, 6em);
-		}
-	}
-</style>

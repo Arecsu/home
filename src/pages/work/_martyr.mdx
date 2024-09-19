@@ -1,3 +1,7 @@
+import { Image } from "astro:assets"
+import allTornPaperWide from "@media/all-torn-paper-wide.png"
+import allTornPaperMobile from "@media/all-torn-paper-mobile.png"
+import MartyrMarquee2 from "@components/Martyr-Marquee-2.astro"
 
 What began as a journey of self-discovery, martyr⁠— evolved into a digital art supply store with strong focus on experimental, avant-garde graphical assets for artists willing to push the boundaries of today's visual language.
 
@@ -27,6 +31,29 @@ Simplicity and limitations breeds creativity and outstanding results. In our inc
 
 Amateurs obsess over tools. Pros over mastery.
 
+<Image
+   class="full-width all-torn-paper-wide"
+   src={allTornPaperWide}
+   alt=""
+   width="2700"
+   format="avif"
+   quality="58"
+   decoding="async"
+   loading="lazy"
+/>
+
+<Image
+   class="full-width all-torn-paper-mobile"
+   src={allTornPaperMobile}
+   alt=""
+   width="1500"
+   format="avif"
+   quality="58"
+   decoding="async"
+   loading="lazy"
+/>
+
+
 ### details_matter
 
 If you pay attention, the beautiful things we enjoy and draw inspiration from have been thoughtfully crafted. Even an empty wall. Have you tried to create a clean, smooth wall with edges so straight and aligned to a squared grid? There’s a lot going on there. The devil's always in the details.
@@ -36,6 +63,10 @@ Details are often a product of the effort put into achieving a specific purpose.
 Our obsession with details extends to developing unique techniques for creating a particular family of assets. While many of these techniques come from previous experience, new ones arise during the process. The inners and hows are very specific. However, this is the key: as long as there's genuine love for our craft, we will keep finding ways to achieve it. It’s just a matter of time.
 
 There will be times when the concept was flawed from the beginning. No matter how detailed it is, it won't matter. That's fine. It's part of the process to create something meaningful, as painful as it may feel. Sometimes we have to take one step back to take two steps forward.
+
+<div class="martyr-marquee-wrapper full-width">
+   <MartyrMarquee2 linesNumber={3} spanWordsRepeat={10} />
+</div>
 
 ### Straight Edge
 
