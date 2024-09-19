@@ -5,6 +5,7 @@ import notepad from "@media/martyr-hover-notepad.png"
 import mobileTornPaper1 from "@media/mobile-torn-paper-overlay-1.png"
 import mobileTornPaper2 from "@media/mobile-torn-paper-overlay-2.png"
 import mobileTornPaper3 from "@media/mobile-torn-paper-overlay-3.png"
+import MartyrMarquee2 from "@components/Martyr-Marquee-2.astro"
 ---
 
 <script>
@@ -74,15 +75,7 @@ import mobileTornPaper3 from "@media/mobile-torn-paper-overlay-3.png"
 		<span>martyr—martyr—martyr—martyr—</span>
 	</div>
 	<div class="martyr-marquee-mobile-container">
-		{
-			Array.from({ length: 4 }, () => (
-				<div class="inter-display martyr-marquee">
-					<span>martyr—martyr—martyr—martyr—</span>
-					<span>martyr—martyr—martyr—martyr—</span>
-					<span>martyr—martyr—martyr—martyr—</span>
-				</div>
-			))
-		}
+	   <MartyrMarquee2 linesNumber={3} spanWordsRepeat={5} />
 	</div>
 </div>
 
@@ -258,33 +251,14 @@ import mobileTornPaper3 from "@media/mobile-torn-paper-overlay-3.png"
 			}
 		}
 		&-mobile-container {
-			display: none;
 			position: absolute;
-			flex-flow: column nowrap;
 			top: 1rem;
 			font-size: 1.2rem;
 			grid-column: full-width;
 			grid-row: 1 / -1;
+			display: none;
 			@media (max-width: $mobile-layout-breakpoint-1) {
-				display: flex;
-			}
-			> .martyr-marquee {
-				line-height: 1em;
-				&:nth-child(odd) {
-					span {
-						animation-direction: reverse;
-					}
-				}
-				@for $i from 1 through 4 {
-					&:nth-child(#{$i}) {
-						transform: translateX(-1.5rem * $i);
-						> span {
-							// bugged in chrome, they go out of sync
-							// animation-duration: (random(5) + 3) + s;
-							animation-duration: 5.5s;
-						}
-					}
-				}
+				display: block;
 			}
 		}
 	}

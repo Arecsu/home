@@ -1,0 +1,60 @@
+---
+interface Props {
+	spanWordsRepeat?: number
+	linesNumber?: number
+}
+
+const { spanWordsRepeat = 2, linesNumber = 4 } = Astro.props
+---
+
+<div class="martyr-marquee-2-container">
+   {
+      Array.from({ length: linesNumber }, () => (
+         <div class="inter-display martyr-marquee-2">
+            {
+               Array.from({ length: spanWordsRepeat }, () => (
+                  <span>martyr—martyr—martyr—martyr—martyr—martyr—martyr—martyr—</span>
+               ))
+            }
+         </div>
+      ))
+   }
+</div>
+
+<style lang="scss">
+   .martyr-marquee-2-container {
+      font-size: 1em;
+      display: flex;
+      flex-flow: column nowrap;
+
+      > .martyr-marquee-2 {
+         line-height: 1.1;
+         align-self: center;
+         white-space: nowrap;
+         font-weight: 500;
+         // width: 100%;
+         letter-spacing: -0.01em;
+         display: flex;
+         span {
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-name: martyr-marquee-2;
+            animation-duration: 10s;
+         }
+         &:nth-child(odd) {
+            span {
+               animation-direction: reverse;
+            }
+         }
+      }
+   }
+
+   @keyframes martyr-marquee-2 {
+		from {
+			transform: translateX(0);
+		}
+		to {
+			transform: translateX(-100%);
+		}
+	}
+</style>
