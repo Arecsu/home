@@ -3,23 +3,22 @@ import { defineConfig } from 'astro/config';
 
 import { fileURLToPath } from 'url';
 import path, { dirname } from 'path';
-
+import mdx from "@astrojs/mdx";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+
 // https://astro.build/config
 export default defineConfig({
-
   // integrations: [alpinejs()],
-  site: 'https://arecsu.github.io',
-  base: import.meta.env.DEV ? "" : "/www/",
+  site: 'https://malejandro.com',
+  // base: import.meta.env.DEV ? "" : "/www/",
+  base: import.meta.env.DEV ? "" : "",
   trailingSlash: 'ignore',
-
   prefetch: {
     prefetchAll: true,
     defaultStrategy: 'viewport'
   },
-
   vite: {
     resolve: {
       alias: {
@@ -33,5 +32,6 @@ export default defineConfig({
         }
       }
     }
-  }
-})
+  },
+  integrations: [mdx()]
+});
