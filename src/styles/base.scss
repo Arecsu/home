@@ -45,7 +45,8 @@ a {
 	text-underline-offset: var(--link-underline-offset);
 }
 
-a.no-underline {
+:where(.links-no-underline) a,
+:where(a.no-underline) {
 	text-decoration: none;
 }
 
@@ -64,12 +65,20 @@ a[href^="http"] {
 }
 
 @media (hover: hover) {
-	a:not(.disable-default-a-hover):hover,
+	$shadow-size: 0.2em;
+	
+	:where(a, button):not(.disable-default-a-hover):hover,
 	.about-authentic:hover {
-		//    text-decoration-thickness: 0.12em;
 		background: var(--link-background-color-hover);
 		color: var(--link-color-hover);
-		outline: 0.2em solid var(--link-background-color-hover);
+		box-shadow: 
+		  -$shadow-size 0 0 $shadow-size var(--link-background-color-hover),
+			$shadow-size 0 0 $shadow-size var(--link-background-color-hover);
+	}
+
+	p > :where(a, button):not(.disable-default-a-hover):hover {
+		box-shadow: 
+			0 0 0 $shadow-size var(--link-background-color-hover);
 	}
 }
 
@@ -81,6 +90,10 @@ img {
 ul.unstyled-list {
 	list-style-type: none;
  	padding: 0;
+}
+
+nav ul li > * {
+	display: inline-block;
 }
 
 .content-title-offset,
