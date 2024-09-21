@@ -66,20 +66,21 @@ a[href^="http"] {
 }
 
 @media (hover: hover) {
-	$shadow-size: 0.2em;
+	$shadow-size-vertical: 0.12em;
+	$shadow-size-horizontal: 0.2em;
 	
 	:where(a, button):not(.disable-default-a-hover):hover,
 	.about-authentic:hover {
 		background: var(--link-background-color-hover);
 		color: var(--link-color-hover);
 		box-shadow: 
-		  -$shadow-size 0 0 $shadow-size var(--link-background-color-hover),
-			$shadow-size 0 0 $shadow-size var(--link-background-color-hover);
+		  -$shadow-size-horizontal 0 0 $shadow-size-vertical var(--link-background-color-hover),
+			$shadow-size-horizontal 0 0 $shadow-size-vertical var(--link-background-color-hover);
 	}
 
-	p > :where(a, button):not(.disable-default-a-hover):hover {
+	:where(p, li):not(nav li) > :where(a, button):not(.disable-default-a-hover):hover {
 		box-shadow: 
-			0 0 0 $shadow-size var(--link-background-color-hover);
+			0 0 0 $shadow-size-vertical var(--link-background-color-hover);
 	}
 }
 
