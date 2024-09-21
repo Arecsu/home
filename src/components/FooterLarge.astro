@@ -1,0 +1,163 @@
+---
+import FooterArrow from "@components/FooterArrow.astro"
+import Contact from "@components/Contact.astro"
+---
+
+<footer class="footer-large">
+   <div class="footer-top-empty-space"><div class="footer-top-line"></div></div>
+   <section class="footer-text-content links-no-underline">
+      <a href="/" class="footer-title">alejandro r.</a>
+      <nav class="main-nav">
+         <ul>
+           <li><a href="/">home</a></li>
+         </ul>
+       </nav>
+       <section class="footer-contact">
+         <Contact />
+       </section>
+       <button 
+         class="footer-back-to-top"
+         onclick="window.scrollTo({ top: 0, behavior: 'instant' });"
+         >back to top ↑</button>
+       <div class="footer-arrow-wrapper">
+          <FooterArrow />
+       </div>
+   </section>
+   <div class="footer-first-block" aria-hidden="true"></div>
+   <div class="footer-gradient-lines" aria-hidden="true"></div>
+   <div class="footer-last-block" aria-hidden="true"></div>
+ </footer>
+
+
+<style lang="scss">
+   .footer-large {
+      display: flex;
+      flex-direction: column;
+   }
+
+   .footer-top-empty-space {
+      height: 6rem;
+      padding-inline: $margin-page-1;
+      background-color: var(--footer-top-color, black);
+   }
+
+   .footer-top-line {
+      height: 100%;
+      border-bottom: 1px solid var(--footer-fg-color, white);
+   }
+
+   .footer-text-content {
+      --link-background-color-hover: #fff;
+      --link-color-hover: #000;
+      padding-inline: $margin-page-1;
+      padding-block: 2rem 2rem;
+      grid-area: content;
+      display: grid;
+      grid-template-areas:
+         "title  .  main-nav  .   back-to-top"
+         ".      .  contact   .   ."
+         ".      .  .         .   ."
+         ".      .  .         .   arrow";
+      row-gap: 0.4rem;
+      grid-template-columns: min-content ($header-gap) auto 1fr auto;
+      grid-template-rows: min-content auto 8rem auto;
+      background-color: black;
+      color: var(--footer-fg-color, white);
+		@media (max-width: $mobile-layout-breakpoint-1) {
+         grid-template-areas:
+            "title     .         back-to-top"
+            ".         .         ."
+            "main-nav  .         ."
+            "contact   contact   contact"
+            ".         .         ."
+            ".         .         arrow";
+         grid-template-columns: max-content 1fr auto;
+         grid-template-rows: auto 2rem auto auto 4rem auto;
+         row-gap: $header-gap-row
+      }
+   }
+
+   .footer-title {
+      grid-area: title;
+      white-space: nowrap;
+   }
+
+   .main-nav {
+      grid-area: main-nav;
+      ul {
+         display: flex;
+         gap: 1rem;
+         list-style-type: none;
+         padding: 0;
+         margin: 0;
+      }
+   }
+
+   .footer-arrow-wrapper {
+      grid-area: arrow;
+      justify-self: end;
+   }
+
+   .footer-contact {
+      grid-area: contact;
+      @media (max-width: $mobile-layout-breakpoint-1) {
+         width: min(80%, 30rem);
+      }
+   }
+
+   .footer-back-to-top {
+      grid-area: back-to-top;
+      justify-self: end;
+   }
+
+
+   @function ease-in($t) {
+      // @return $t * $t;
+      @return $t;
+      // @return $t*(2-$t);
+      // @return if($t < 0.5, 2 * $t * $t, -1 + (4 - 2 * $t) * $t);
+   }
+
+   @function generate-gradient-t($initialColor, $finishColor, $steps) {
+      $gradient: ();
+      $normalize_steps: calc(1 / $steps);
+
+      @for $i from 1 through ($steps) {
+
+         $position1: ($i - 1) * $normalize_steps;
+         $position2: ease-in($normalize_steps * $i) * $normalize_steps + $position1;
+         $position3: $position1 + $normalize_steps;
+
+         $gradient: append($gradient, $finishColor #{$position1 * 100%} #{$position2 * 100%}, comma);
+         $gradient: append($gradient, $initialColor #{$position2 * 100%} #{$position3 * 100%}, comma);
+      }
+
+      @return linear-gradient(to bottom, $gradient...);
+   }
+
+   /*
+   .footer-gradient-lines {
+      $steps: 20;
+      $step-size: 20px;
+      background: generate-gradient-linear(black, white, $steps, $step-size);
+      height: $step-size * $steps;
+   }
+   */
+   .footer-first-block {
+      height: 1rem;
+      background-color: var(--footer-top-color, black);
+   }
+
+   .footer-gradient-lines {
+      $steps: 22;
+      background: generate-gradient-t(var(--footer-top-color, black), var(--footer-bottom-color, white), $steps);
+      height: $steps * 24px;
+   }
+
+   .footer-last-block {
+      height: 4.2rem;
+      background-color: var(--footer-bottom-color, white);
+   }
+
+
+</style>

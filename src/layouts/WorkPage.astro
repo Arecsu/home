@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "@layouts/Base.astro"
 import Header from "@components/Header.astro"
+import FooterLarge from "@components/FooterLarge.astro"
 
 interface Props {
 	title: string
@@ -19,12 +20,14 @@ const { title, workPageClass } = Astro.props
 			<slot />
 		</main>
 	</div>
+	<FooterLarge />
 </BaseLayout>
 
 <style is:global lang="scss">
 	.work-page-wrapper main {
 		$space-between-h2-sections: 0.9rem;
 		$space-between-h2-sections-mobile: 0.4rem;
+		overflow-x: hidden;
 
 		h2 {
 			grid-column: heading;
@@ -44,7 +47,7 @@ const { title, workPageClass } = Astro.props
 				}
 			}			
 		}
-		> *:not(h1, h1 *, h2) { 
+		> :where(:not(h1, h1 *, h2)) { 
 			grid-column: main-content;
 			@include inter-text;
 			max-width: 75ch;
@@ -69,7 +72,7 @@ const { title, workPageClass } = Astro.props
 			// font-size: 1.4em;
 		}
 
-		.full-width {
+		:where(.full-width) {
 			grid-column: 1 / -1;
 			max-width: 100%;
 		}
