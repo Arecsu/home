@@ -1,0 +1,55 @@
+<nav class="contact">
+   <ul>
+      <li><a href="mailto:alejandro@martyr.shop">email</a></li>
+      <li><a href="https://github.com/arecsu" target="_blank">github</a></li>
+      <li><a href="https://instagram.com/malejand_ro" target="_blank">instagram</a></li>
+      <!-- <li><span>//</span></li>
+      <li><a href="https://www.last.fm/user/alejandro9r" target="_blank">last.fm</a></li> -->
+   </ul>
+</nav>
+
+<style lang="scss">
+   .contact ul {
+      // width: 100%;
+      display: flex;
+      column-gap: $header-gap-column;
+      row-gap: $header-gap-row;
+      flex-wrap: wrap;
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+         white-space: nowrap;
+      
+         &:not(:first-child)::before {
+            content: "//";
+            margin-right: $header-gap-column;
+         }
+      }
+
+      a {
+         text-decoration: none;
+      }
+   }
+
+   :global(.header-contact) {
+      .contact ul {
+         @media (max-width: $mobile-layout-breakpoint-1) {
+            justify-content: end;
+         }
+      }
+
+      /*
+      .contact-break {
+         @media (max-width: $header-contact-breakpoint) {
+            display: block;
+            flex-basis: 100%;
+            height: 0;
+         }
+      }
+      */
+   }
+   
+</style>
+
