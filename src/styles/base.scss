@@ -89,13 +89,25 @@ img {
 	height: auto;
 }
 
-ul.unstyled-list {
+ul {
 	list-style-type: none;
  	padding: 0;
 }
 
 nav ul li > * {
 	display: inline-block;
+}
+
+:where(ul):not(nav ul) > li {
+	&:not(:last-child) {
+		margin-bottom: 0.3em;
+	}
+	&:not(ul.unstyled-list li)::before {
+		content: '·';
+		display: inline-block;
+		margin-right: 0.5em;
+		// margin-left: -1em;
+	}
 }
 
 .content-title-offset,
