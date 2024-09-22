@@ -1,25 +1,15 @@
 ---
 interface Props {
-   iconPath: string,
    size?: string,
    color?: string,
    marginInline?: string
 }
 
-const { iconPath, size = '1em', color = 'currentColor', marginInline = '0' } = Astro.props;
-const fullPath = `/src/media/svg/${iconPath}.svg`
-
-const icons = import.meta.glob('/src/media/svg/*.svg', { as: 'raw' })
-
-// Ensure the fullPath exists in the icons object
-if (!(fullPath in icons)) {
-  throw new Error(`Icon not found: ${fullPath}`);
-}
-
-const iconContent = await icons[fullPath]()
+const { size = '1em', color = 'currentColor', marginInline = '0' } = Astro.props;
 ---
+
 <span class="icon" style={`width: ${size}; height: ${size}; color: ${color}; margin-inline: ${marginInline}`}>
-  <Fragment set:html={iconContent} />
+  <slot />
 </span>
 
 <style>

@@ -21,5 +21,10 @@
     "sass": "^1.79.1",
     "sharp": "^0.33.5",
     "typescript": "^5.6.2"
+  },
+  "devDependencies": {
+    "@iconify-json/mdi": "^1.2.0",
+    "@iconify-json/ri": "^1.2.0",
+    "unplugin-icons": "^0.19.3"
   }
 }

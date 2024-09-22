@@ -4,6 +4,7 @@ import { defineConfig } from 'astro/config';
 import { fileURLToPath } from 'url';
 import path, { dirname } from 'path';
 import mdx from "@astrojs/mdx";
+import Icons from 'unplugin-icons/vite'
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -31,7 +32,13 @@ export default defineConfig({
           additionalData: `@import "@/styles/vars.scss";`
         }
       }
-    }
+    },
+    plugins: [
+      Icons({
+        compiler: 'astro',
+        autoInstall: true, // experimental
+      }),
+    ],
   },
   integrations: [mdx()]
 });

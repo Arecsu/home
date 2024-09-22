@@ -8,6 +8,9 @@
       "@styles/*": ["src/styles/*"],
       "@scripts/*": ["src/scripts/*"],
       "@media/*": ["src/media/*"]
-    }
+    },
+    "types": [
+      "unplugin-icons/types/astro",
+    ]
   }
 }
