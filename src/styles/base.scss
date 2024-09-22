@@ -27,13 +27,17 @@
 	color-scheme: light;
 	--padding-page: 2rem;
 	
+	--color-fg-1: #000;
 	--color-fg-2: #bbb;
 	--link-underline-offset: 0.13em;
 	--link-color-hover: #fff;
 	--link-background-color-hover: #101010;
+	--footer-top-color: #fff;
+	--footer-bottom-color: #000;
 }
 
 body {
+	color: var(--color-fg-1, #000);
 	overflow-x: hidden;
 }
 
