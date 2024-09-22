@@ -1,0 +1,76 @@
+---
+import Icon from "@components/Icon.astro"
+import IconMail from "~icons/ri/mail-line"
+import IconClose from "~icons/ri/close-line"
+
+// encode mail to base64
+const encodedEmail = btoa(btoa('alejandro@martyr.shop'))
+
+---
+
+<dialog class="email-dialog">
+   <div class="dialog-content">
+      <span class="email" data-email={encodedEmail}>hellobots@notreal.com</span>
+      <a href="" class="no-underline send-mail">
+         <Icon size="0.95em" marginInline="0 0.1em"><IconMail /></Icon> send mail
+      </a>
+      <form method="dialog">
+         <button class="close" formmethod="dialog">
+            <Icon size="0.95em" marginInline="0 0.1em"><IconClose /></Icon>
+         </button>
+      </form>
+   </div>
+</dialog>
+
+<script>
+   const emailDialog = document.querySelector<HTMLDialogElement>('.email-dialog')
+
+   emailDialog!.addEventListener('click', (e) => {
+      if (e.target === emailDialog) {
+         emailDialog!.close()
+      }
+   })
+</script>
+
+<style>
+   
+   dialog::backdrop {
+      background-color: color-mix(in sRGB, var(--page-color-background, white), transparent 10%);
+      backdrop-filter: blur(4px);
+   }	
+
+   .email-dialog {
+      // position: absolute;
+      // margin: 5rem 0 0 calc($header-gap + $margin-page-1 + 4rem);
+      margin: max(5rem, 20vh) auto 0 auto;
+      background: var(--page-color-background, white);
+      color: var(--page-color-foreground, black);
+      border: 1px solid var(--page-color-foreground, black);
+
+   }
+
+   .dialog-content {
+      display: grid;
+      grid-template-areas:
+         "email email"
+         "close send";
+      gap: 1rem;
+      padding: 1.5rem 2rem;
+
+      .email {
+         grid-area: email;
+      }
+
+      a, button {
+         border: 1px solid var(--page-color-foreground, black);
+      }
+
+      .send-mail {
+         grid-area: send;
+      }
+
+      .close {
+         grid-area: close;
+      }
+   }
+</style>

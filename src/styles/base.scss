@@ -29,15 +29,18 @@
 	
 	--color-fg-1: #000;
 	--color-fg-2: #bbb;
+	--page-color-background: #fff;
+	--page-color-foreground: #000;
 	--link-underline-offset: 0.13em;
-	--link-color-hover: #fff;
+	--link-color-hover: var(--page-color-background);
 	--link-background-color-hover: #101010;
-	--footer-top-color: #fff;
-	--footer-bottom-color: #000;
+	--footer-top-color: var(--page-color-background);
+	--footer-bottom-color: var(--color-fg-1);
 }
 
 body {
-	color: var(--color-fg-1, #000);
+	color: var(--page-color-foreground, #000);
+	background: var(--page-color-background, #fff);
 	overflow-x: hidden;
 }
 
@@ -96,10 +99,6 @@ img {
 ul {
 	list-style-type: none;
  	padding: 0;
-}
-
-nav ul li > * {
-	display: inline-block;
 }
 
 :where(ul):not(nav ul) > li {

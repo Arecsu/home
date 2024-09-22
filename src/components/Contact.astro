@@ -1,12 +1,6 @@
 <nav class="contact">
    <ul>
-      <li class="email-dialog-wrapper">
-         <button class="email-dialog-button">email</button>
-         <dialog class="email-dialog">
-            <span>alejandro@martyr.shop</span>
-            <button class="email-dialog-send-mail" onclick="window.location.href='mailto:alejandro@martyr.shop'">send mail</button>
-         </dialog>
-      </li>
+      <li><button class="email-dialog-button">email</button></li>
       <li><a href="https://github.com/arecsu" target="_blank">github</a></li>
       <li><a href="https://instagram.com/malejand_ro" target="_blank">instagram</a></li>
       <!-- <li><span>//</span></li>
@@ -15,13 +9,18 @@
 </nav>
 
 <script>
-   const emailDialogButton = document.querySelector<HTMLElement>('.email-dialog-button')
+   const emailDialogButton = document.querySelectorAll<HTMLButtonElement>('.email-dialog-button')
    const emailDialog = document.querySelector<HTMLDialogElement>('.email-dialog')
-
-   emailDialogButton!.addEventListener('click', () => {
-      emailDialog!.showModal()
-   })
-
+   const emailSpan = document.querySelector<HTMLSpanElement>('.email-dialog .email') 
+   const emailDialogSendMail = document.querySelector<HTMLAnchorElement>('.email-dialog .send-mail')
+      
+   emailDialogButton!.forEach(button => {
+      button.addEventListener('click', () => {
+         emailSpan!.textContent = atob(atob(emailSpan!.getAttribute('data-email')!.toString()))
+         emailDialogSendMail!.href = 'mailto:' + emailSpan!.textContent
+         emailDialog!.showModal()
+      })
+   })  
 </script>
 
 <style lang="scss">
@@ -66,41 +65,4 @@
       }
       */
    }
-
-   .email-dialog-wrapper {
-      position: relative;
-   }
-
-   .email-dialog {
-      position: absolute;
-      visibility: hidden;
-      top: 2rem;
-      left: 0;
-      background: var(--footer-top-color, white);
-      display: flex;
-      gap: 1rem;
-      flex-direction: column;
-      padding: 2.5rem 2.2rem;
-      color: var(--footer-fg-color, black);
-      z-index: 1;
-      cursor: zoom-in;
-      border: 1px solid var(--footer-fg-color, black);
-      @media (max-width: $mobile-layout-breakpoint-1) {
-         right: 0;
-         left: unset;
-      }
-   }
-   .email-dialog.visible {
-      visibility: visible;
-   }
-   .email-dialog-send-mail {
-      border: 1px solid var(--footer-fg-color, black);
-   }
 </style>
-
-<style is:global lang="scss">
-   :root:has(.email-dialog.visible) {
-      --color-fg-1: #ccc;
-   }
-</style>
-
