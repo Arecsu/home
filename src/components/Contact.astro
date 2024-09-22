@@ -1,6 +1,6 @@
 <nav class="contact">
    <ul>
-      <li><button class="email-dialog-button">email</button></li>
+      <li><button class="email-dialog-open-button">email</button></li>
       <li><a href="https://github.com/arecsu" target="_blank">github</a></li>
       <li><a href="https://instagram.com/malejand_ro" target="_blank">instagram</a></li>
       <!-- <li><span>//</span></li>
@@ -9,16 +9,13 @@
 </nav>
 
 <script>
-   const emailDialogButton = document.querySelectorAll<HTMLButtonElement>('.email-dialog-button')
-   const emailDialog = document.querySelector<HTMLDialogElement>('.email-dialog')
-   const emailSpan = document.querySelector<HTMLSpanElement>('.email-dialog .email') 
-   const emailDialogSendMail = document.querySelector<HTMLAnchorElement>('.email-dialog .send-mail')
+   const emailDialog = document.querySelector<EmailModalElement>('.email-dialog')!
+   const emailDialogOpenButton = document.querySelectorAll<HTMLButtonElement>('.email-dialog-open-button')!
+
       
-   emailDialogButton!.forEach(button => {
+   emailDialogOpenButton.forEach(button => {
       button.addEventListener('click', () => {
-         emailSpan!.textContent = atob(atob(emailSpan!.getAttribute('data-email')!.toString()))
-         emailDialogSendMail!.href = 'mailto:' + emailSpan!.textContent
-         emailDialog!.showModal()
+         emailDialog.init()
       })
    })  
 </script>

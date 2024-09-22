@@ -3,8 +3,8 @@ import Icon from "@components/Icon.astro"
 import IconMail from "~icons/ri/mail-line"
 import IconClose from "~icons/ri/close-line"
 
-// encode mail to base64
-const encodedEmail = btoa(btoa('alejandro@martyr.shop'))
+// base64 x2
+const encodedEmail = "WVd4bGFtRnVaSEp2UUcxaGNuUjVjaTV6YUc5dw=="
 
 ---
 
@@ -23,11 +23,26 @@ const encodedEmail = btoa(btoa('alejandro@martyr.shop'))
 </dialog>
 
 <script>
-   const emailDialog = document.querySelector<HTMLDialogElement>('.email-dialog')
+   declare global {
+     interface EmailModalElement extends HTMLDialogElement {
+       init: () => void;
+     }
+   }
 
-   emailDialog!.addEventListener('click', (e) => {
+   const emailDialog = document.querySelector<EmailModalElement>('.email-dialog')!
+   const emailSpan = document.querySelector<HTMLSpanElement>('.email-dialog .email')!
+   const sendMail = document.querySelector<HTMLAnchorElement>('.email-dialog .send-mail')!
+
+
+   emailDialog.init = () => {
+      emailSpan.textContent = atob(atob(emailSpan!.getAttribute('data-email')!.toString()))
+      sendMail.href = 'mailto:' + emailSpan!.textContent
+      emailDialog.showModal()
+   }
+
+   emailDialog.addEventListener('click', (e) => {
       if (e.target === emailDialog) {
-         emailDialog!.close()
+         emailDialog.close()
       }
    })
 </script>
