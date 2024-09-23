@@ -72,12 +72,17 @@ a[href^="http"] {
 	}
 }
 
-@media (hover: hover) {
+:where(button) {
+	border: 1px solid var(--page-color-foreground);
+}
+
+@media (hover: hover) and (pointer: fine) {
 	$shadow-size-vertical: 0.12em;
 	$shadow-size-horizontal: 0.2em;
 	
-	:where(a, button):not(.disable-default-a-hover):hover,
+	:where(a, button:where(.btn-anchor)):not(.disable-default-a-hover):hover,
 	.about-authentic:hover {
+		border: 0;
 		background: var(--link-background-color-hover);
 		color: var(--link-color-hover);
 		box-shadow: 
@@ -85,7 +90,7 @@ a[href^="http"] {
 			$shadow-size-horizontal 0 0 $shadow-size-vertical var(--link-background-color-hover);
 	}
 
-	:where(p, li):not(nav li) > :where(a, button):not(.disable-default-a-hover):hover {
+	:where(p, li):not(nav li) > :where(a, button:where(.btn-anchor)):not(.disable-default-a-hover):hover {
 		box-shadow: 
 			0 0 0 $shadow-size-vertical var(--link-background-color-hover);
 	}
@@ -101,6 +106,10 @@ ul {
  	padding: 0;
 }
 
+nav > ul > li > a {
+	display: inline-block;
+}
+
 :where(ul):not(nav ul) > li {
 	&:not(:last-child) {
 		margin-bottom: 0.3em;
@@ -112,6 +121,7 @@ ul {
 		// margin-left: -1em;
 	}
 }
+
 
 .content-title-offset,
 .work-page-wrapper h2 {
