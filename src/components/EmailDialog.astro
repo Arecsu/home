@@ -8,43 +8,53 @@ const encodedEmail = "WVd4bGFtRnVaSEp2UUcxaGNuUjVjaTV6YUc5dw=="
 
 ---
 
-<dialog class="email-dialog">
+<dialog is="email-dialog" class="email-dialog">
    <div class="dialog-content">
-      <span class="email" data-email={encodedEmail}>hellobots@notreal.com</span>
-      <a href="" class="no-underline send-mail">
-         <Icon size="0.95em" marginInline="0 0.1em"><IconMail /></Icon> send mail
-      </a>
       <form method="dialog">
-         <button class="close" formmethod="dialog">
+         <button class="close " formmethod="dialog">
             <Icon size="0.95em" marginInline="0 0.1em"><IconClose /></Icon>
          </button>
       </form>
+      <div class="email-wrapper">
+         <h4>email</h4>
+         <span class="email" data-email={encodedEmail}>hellobots@notreal.com</span>
+      </div>
+      <a href="" class="no-underline send-mail btn-style-1">
+         <Icon size="0.95em" marginInline="0 0.1em"><IconMail /></Icon> send mail
+      </a>
    </div>
 </dialog>
 
 <script>
    declare global {
-     interface EmailModalElement extends HTMLDialogElement {
-       init: () => void;
+     interface EmailDialog extends HTMLDialogElement {
+       init: () => void
      }
    }
 
-   const emailDialog = document.querySelector<EmailModalElement>('.email-dialog')!
-   const emailSpan = document.querySelector<HTMLSpanElement>('.email-dialog .email')!
-   const sendMail = document.querySelector<HTMLAnchorElement>('.email-dialog .send-mail')!
+   class EmailDialog extends HTMLDialogElement {
+      private emailSpan: HTMLSpanElement
+      private sendMail: HTMLAnchorElement
 
+      constructor() {
+         super()
+         this.emailSpan = this.querySelector<HTMLSpanElement>('.email')!
+         this.sendMail = this.querySelector<HTMLAnchorElement>('.send-mail')!
+         this.addEventListener('click', (e) => {
+            if (e.target === this) {
+               this.close()
+            }
+         })
+      }
 
-   emailDialog.init = () => {
-      emailSpan.textContent = atob(atob(emailSpan!.getAttribute('data-email')!.toString()))
-      sendMail.href = 'mailto:' + emailSpan!.textContent
-      emailDialog.showModal()
+      init() {
+         this.emailSpan.textContent = atob(atob(this.emailSpan.getAttribute('data-email')!.toString()))
+         this.sendMail.href = 'mailto:' + this.emailSpan.textContent
+         this.showModal()
+      }
    }
 
-   emailDialog.addEventListener('click', (e) => {
-      if (e.target === emailDialog) {
-         emailDialog.close()
-      }
-   })
+   customElements.define('email-dialog', EmailDialog, { extends: 'dialog' })
 </script>
 
 <style>
@@ -67,21 +77,19 @@ const encodedEmail = "WVd4bGFtRnVaSEp2UUcxaGNuUjVjaTV6YUc5dw=="
    .dialog-content {
       display: grid;
       grid-template-areas:
-         "email email"
-         "close send";
-      gap: 1rem;
-      padding: 1.5rem 2rem;
+         "close"
+         "email"
+         "send";
+      padding: 0.8rem;
 
-      .email {
+      .email-wrapper {
          grid-area: email;
-      }
-
-      a, button {
-         border: 1px solid var(--page-color-foreground, black);
+         margin-block: 1em 1.3em;
       }
 
       .send-mail {
          grid-area: send;
+         justify-self: end;
       }
 
       .close {

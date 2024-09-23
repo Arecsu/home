@@ -80,7 +80,7 @@ a[href^="http"] {
 	$shadow-size-vertical: 0.12em;
 	$shadow-size-horizontal: 0.2em;
 	
-	:where(a, button:where(.btn-anchor)):not(.disable-default-a-hover):hover,
+	:where(a, button):not(.disable-default-a-hover, .btn-style-1):hover,
 	.about-authentic:hover {
 		border: 0;
 		background: var(--link-background-color-hover);
@@ -90,9 +90,20 @@ a[href^="http"] {
 			$shadow-size-horizontal 0 0 $shadow-size-vertical var(--link-background-color-hover);
 	}
 
-	:where(p, li):not(nav li) > :where(a, button:where(.btn-anchor)):not(.disable-default-a-hover):hover {
+	:where(p, li):not(nav li) > :where(a, button):not(.disable-default-a-hover, .btn-style-1):hover {
 		box-shadow: 
 			0 0 0 $shadow-size-vertical var(--link-background-color-hover);
+	}
+}
+
+.btn-style-1 {
+	border: 1px solid var(--page-color-foreground);
+	padding: 0.2em 0.4em;
+	background: var(--page-color-background);
+	&:hover {
+		box-shadow: none;
+		background: var(--link-background-color-hover);
+		color: var(--link-color-hover);
 	}
 }
 
