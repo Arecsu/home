@@ -97,6 +97,8 @@ a[href^="http"] {
 }
 
 .btn-style-1 {
+	font-size: 0.86em;
+	text-transform: uppercase;
 	border: 1px solid var(--page-color-foreground);
 	padding: 0.2em 0.4em;
 	background: var(--page-color-background);

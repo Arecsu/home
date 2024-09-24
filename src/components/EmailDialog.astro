@@ -2,13 +2,14 @@
 import Icon from "@components/Icon.astro"
 import IconMail from "~icons/ri/mail-line"
 import IconClose from "~icons/ri/close-line"
-
+import IconCopy from "~icons/ri/file-copy-2-line"
+import IconCheck from "~icons/ri/checkbox-circle-fill"
 // base64 x2
 const encodedEmail = "WVd4bGFtRnVaSEp2UUcxaGNuUjVjaTV6YUc5dw=="
 
 ---
 
-<dialog is="email-dialog" class="email-dialog">
+<dialog class="email-dialog">
    <div class="dialog-content">
       <form method="dialog">
          <button class="close " formmethod="dialog">
@@ -17,8 +18,18 @@ const encodedEmail = "WVd4bGFtRnVaSEp2UUcxaGNuUjVjaTV6YUc5dw=="
       </form>
       <div class="email-wrapper">
          <h4>email</h4>
-         <span class="email" data-email={encodedEmail}>hellobots@notreal.com</span>
+         <div>
+            <span class="email" data-email={encodedEmail}>hellobots@notreal.com</span>
+         </div>
       </div>
+      <button class="copy-email btn-style-1">
+         <span class="copy-text">
+            <Icon size="0.95em"><IconCopy /></Icon> copy
+         </span>
+         <span class="copied-text">
+            <Icon size="1em"><IconCheck /></Icon>
+         </span>
+      </button>
       <a href="" class="no-underline send-mail btn-style-1">
          <Icon size="0.95em" marginInline="0 0.1em"><IconMail /></Icon> send mail
       </a>
@@ -32,32 +43,47 @@ const encodedEmail = "WVd4bGFtRnVaSEp2UUcxaGNuUjVjaTV6YUc5dw=="
      }
    }
 
-   class EmailDialog extends HTMLDialogElement {
-      private emailSpan: HTMLSpanElement
-      private sendMail: HTMLAnchorElement
+   const emailDialog = document.querySelector<EmailDialog>('.email-dialog')!
+   
+   emailDialog.init = () => {
+      const emailSpan = emailDialog.querySelector<HTMLSpanElement>('.email')!
+      const sendMail = emailDialog.querySelector<HTMLAnchorElement>('.send-mail')!
 
-      constructor() {
-         super()
-         this.emailSpan = this.querySelector<HTMLSpanElement>('.email')!
-         this.sendMail = this.querySelector<HTMLAnchorElement>('.send-mail')!
-         this.addEventListener('click', (e) => {
-            if (e.target === this) {
-               this.close()
-            }
-         })
+      if (!emailSpan.dataset.emailDecoded) {
+         emailSpan.dataset.emailDecoded = atob(atob(emailSpan.dataset.email!.toString()))
+         emailSpan.textContent = emailSpan.dataset.emailDecoded
       }
-
-      init() {
-         this.emailSpan.textContent = atob(atob(this.emailSpan.getAttribute('data-email')!.toString()))
-         this.sendMail.href = 'mailto:' + this.emailSpan.textContent
-         this.showModal()
-      }
+      sendMail.href = 'mailto:' + emailSpan.dataset.emailDecoded
+      emailDialog.showModal()
    }
 
-   customElements.define('email-dialog', EmailDialog, { extends: 'dialog' })
+   emailDialog.addEventListener('click', (e) => {
+      if (e.target === emailDialog) {
+         emailDialog.close()
+      }
+   })
+
+   const copyEmail = () => {
+      const emailSpan = emailDialog.querySelector<HTMLSpanElement>('.email')!
+      const copyEmailButton = emailDialog.querySelector<HTMLButtonElement>('.copy-email')!
+
+      navigator.clipboard.writeText(emailSpan.dataset.emailDecoded!)
+      copyEmailButton.disabled = true
+      copyEmailButton.querySelector<HTMLSpanElement>('.copy-text')!.style.visibility = 'hidden'
+      copyEmailButton.querySelector<HTMLSpanElement>('.copied-text')!.style.visibility = 'visible'
+      
+      setTimeout(() => {
+         copyEmailButton.disabled = false
+         copyEmailButton.querySelector<HTMLSpanElement>('.copy-text')!.style.visibility = 'visible'
+         copyEmailButton.querySelector<HTMLSpanElement>('.copied-text')!.style.visibility = 'hidden'
+      }, 500)
+   }
+
+   emailDialog.querySelector<HTMLButtonElement>('.copy-email')!.addEventListener('click', copyEmail)
+
 </script>
 
-<style>
+<style lang="scss">
    
    dialog::backdrop {
       background-color: color-mix(in sRGB, var(--page-color-background, white), transparent 10%);
@@ -77,14 +103,14 @@ const encodedEmail = "WVd4bGFtRnVaSEp2UUcxaGNuUjVjaTV6YUc5dw=="
    .dialog-content {
       display: grid;
       grid-template-areas:
-         "close"
-         "email"
-         "send";
-      padding: 0.8rem;
+         "close close"
+         "email email"
+         "copy send";
+      padding: 0.8rem 0.8rem;
 
       .email-wrapper {
          grid-area: email;
-         margin-block: 1em 1.3em;
+         margin-block: 1em 1.6em;
       }
 
       .send-mail {
@@ -95,5 +121,23 @@ const encodedEmail = "WVd4bGFtRnVaSEp2UUcxaGNuUjVjaTV6YUc5dw=="
       .close {
          grid-area: close;
       }
+
+      .copy-email {
+         grid-area: copy;
+         display: grid;
+         margin-left: 3em;
+         margin-right: 1em;
+
+         > * {
+            grid-area: 1/1/-1/-1;
+            place-self: center;
+         }
+         
+         .copied-text {
+            visibility: hidden;
+         }
+      }
    }
+
+      
 </style>
