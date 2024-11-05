@@ -1,1 +1,0 @@
-import"./hoisted.BZ34fi6l.js";let o,t;const i=()=>{o.init()},a=()=>{o=document.querySelector(".email-dialog"),t=document.querySelectorAll(".email-dialog-open-button"),t.forEach(e=>{e.addEventListener("click",i)})};document.addEventListener("astro:page-load",()=>{a()});document.addEventListener("astro:before-preparation",()=>{t.forEach(e=>{e.removeEventListener("click",i)})});
