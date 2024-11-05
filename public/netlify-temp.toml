@@ -1,0 +1,13 @@
+[[headers]]
+   for = "/*.html"
+   [headers.values]
+   cache-control = '''
+   public,
+   max-age=600'''
+
+[[headers]]
+   for = "*.html"
+   [headers.values]
+   cache-control = '''
+   public,
+   max-age=600'''
