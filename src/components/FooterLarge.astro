@@ -30,6 +30,8 @@ import Contact from "@components/Contact.astro"
 
 
 <style lang="scss">
+   @use 'sass:list';
+   
    .footer-large {
       display: flex;
       flex-direction: column;
@@ -128,8 +130,8 @@ import Contact from "@components/Contact.astro"
          $position2: ease-in($normalize_steps * $i) * $normalize_steps + $position1;
          $position3: $position1 + $normalize_steps;
 
-         $gradient: append($gradient, $finishColor #{$position1 * 100%} #{$position2 * 100%}, comma);
-         $gradient: append($gradient, $initialColor #{$position2 * 100%} #{$position3 * 100%}, comma);
+         $gradient: list.append($gradient, $finishColor #{$position1 * 100%} #{$position2 * 100%}, comma);
+         $gradient: list.append($gradient, $initialColor #{$position2 * 100%} #{$position3 * 100%}, comma);
       }
 
       @return linear-gradient(to bottom, $gradient...);
