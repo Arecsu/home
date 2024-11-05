@@ -1,5 +1,4 @@
 import { defineConfig } from 'astro/config';
-// import alpinejs from "@astrojs/alpinejs";
 
 import { fileURLToPath } from 'url';
 import path, { dirname } from 'path';
@@ -17,12 +16,10 @@ export default defineConfig({
   // base: import.meta.env.DEV ? "" : "/www/",
   base: import.meta.env.DEV ? "" : "",
   trailingSlash: 'ignore',
-  /*
   prefetch: {
     prefetchAll: true,
-    defaultStrategy: 'viewport'
+    defaultStrategy: 'load'
   },
-  */
   vite: {
     resolve: {
       alias: {
@@ -45,5 +42,6 @@ export default defineConfig({
       }),
     ],
   },
-  integrations: [mdx(), svelte()]
+  // integrations: [mdx(), svelte()]
+  integrations: [mdx()]
 });
