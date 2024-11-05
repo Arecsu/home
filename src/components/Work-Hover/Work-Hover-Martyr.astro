@@ -11,8 +11,10 @@ import MartyrMarquee2 from "@components/Martyr-Marquee-2.astro"
 <script>
 	import { setClassInElementWhenImagesLoad } from "@scripts/helpers"
 
-	const martyrGridElement = document.querySelector(".martyr-on-hover-grid-overlay")
-	setClassInElementWhenImagesLoad(martyrGridElement, "images-loaded")
+	document.addEventListener('astro:page-load', () => {
+		const martyrGridElement = document.querySelector(".martyr-on-hover-grid-overlay")
+		if (martyrGridElement) setClassInElementWhenImagesLoad(martyrGridElement, "images-loaded")
+	})
 </script>
 
 <div class="martyr-on-hover-grid-overlay pointer-events-none">

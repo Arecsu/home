@@ -9,15 +9,30 @@
 </nav>
 
 <script>
-   const emailDialog = document.querySelector<EmailDialog>('.email-dialog')!
-   const emailDialogOpenButton = document.querySelectorAll<HTMLButtonElement>('.email-dialog-open-button')!
+   let emailDialog: EmailDialog
+   let emailDialogOpenButtons: NodeListOf<HTMLButtonElement>
 
-      
-   emailDialogOpenButton.forEach(button => {
-      button.addEventListener('click', () => {
-         emailDialog.init()
+   const initEmailDialog = () => {
+      emailDialog.init()
+   }
+
+   const setupEmailDialogOpenButton = () => {
+      emailDialog = document.querySelector<EmailDialog>('.email-dialog')!
+      emailDialogOpenButtons = document.querySelectorAll<HTMLButtonElement>('.email-dialog-open-button')
+      emailDialogOpenButtons.forEach(button => {
+         button.addEventListener('click', initEmailDialog)
       })
-   })  
+   }
+
+   document.addEventListener('astro:page-load', () => {
+      setupEmailDialogOpenButton()
+   })
+
+   document.addEventListener('astro:before-preparation', () => {
+      emailDialogOpenButtons.forEach(button => {
+         button.removeEventListener('click', initEmailDialog)
+      })
+   })
 </script>
 
 <style lang="scss">

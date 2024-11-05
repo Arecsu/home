@@ -15,6 +15,10 @@
 	// src: url("/inter-4.0/InterVariable-Italic.woff2") format("woff2");
 }
 
+::view-transition-group(root) {
+	animation: none;
+ }
+
 :root {
 	font-optical-sizing: auto;
 	font-variation-settings: "opsz" 22;

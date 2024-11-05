@@ -17,10 +17,12 @@ export default defineConfig({
   // base: import.meta.env.DEV ? "" : "/www/",
   base: import.meta.env.DEV ? "" : "",
   trailingSlash: 'ignore',
+  /*
   prefetch: {
     prefetchAll: true,
     defaultStrategy: 'viewport'
   },
+  */
   vite: {
     resolve: {
       alias: {

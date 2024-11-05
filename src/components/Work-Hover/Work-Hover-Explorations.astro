@@ -4,8 +4,10 @@ import explorationsImage from "@media/explorations-color-8bit.avif";
 <script>
 	import { setClassInElementWhenImagesLoad } from "@scripts/helpers"
 
-	const explorationsGridElement = document.querySelector(".explorations-on-hover-grid-overlay")
-	setClassInElementWhenImagesLoad(explorationsGridElement, "images-loaded")
+	document.addEventListener('astro:page-load', () => {
+		const explorationsGridElement = document.querySelector(".explorations-on-hover-grid-overlay")
+		if (explorationsGridElement) setClassInElementWhenImagesLoad(explorationsGridElement, "images-loaded")
+	})
 </script>
 
 <div class="explorations-on-hover-grid-overlay pointer-events-none">

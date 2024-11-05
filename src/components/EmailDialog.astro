@@ -43,26 +43,9 @@ const encodedEmail = "WVd4bGFtRnVaSEp2UUcxaGNuUjVjaTV6YUc5dw=="
      }
    }
 
-   const emailDialog = document.querySelector<EmailDialog>('.email-dialog')!
+   let emailDialog: EmailDialog
+
    
-   emailDialog.init = () => {
-      const emailSpan = emailDialog.querySelector<HTMLSpanElement>('.email')!
-      const sendMail = emailDialog.querySelector<HTMLAnchorElement>('.send-mail')!
-
-      if (!emailSpan.dataset.emailDecoded) {
-         emailSpan.dataset.emailDecoded = atob(atob(emailSpan.dataset.email!.toString()))
-         emailSpan.textContent = emailSpan.dataset.emailDecoded
-      }
-      sendMail.href = 'mailto:' + emailSpan.dataset.emailDecoded
-      emailDialog.showModal()
-   }
-
-   emailDialog.addEventListener('click', (e) => {
-      if (e.target === emailDialog) {
-         emailDialog.close()
-      }
-   })
-
    const copyEmail = () => {
       const emailSpan = emailDialog.querySelector<HTMLSpanElement>('.email')!
       const copyEmailButton = emailDialog.querySelector<HTMLButtonElement>('.copy-email')!
@@ -79,8 +62,34 @@ const encodedEmail = "WVd4bGFtRnVaSEp2UUcxaGNuUjVjaTV6YUc5dw=="
       }, 500)
    }
 
-   emailDialog.querySelector<HTMLButtonElement>('.copy-email')!.addEventListener('click', copyEmail)
+   document.addEventListener('astro:page-load', () => {
+      emailDialog = document.querySelector<EmailDialog>('.email-dialog')!
 
+      emailDialog.init = () => {
+         emailDialog.querySelector<HTMLButtonElement>('.copy-email')!.addEventListener('click', copyEmail)
+
+         const emailSpan = emailDialog.querySelector<HTMLSpanElement>('.email')!
+         const sendMail = emailDialog.querySelector<HTMLAnchorElement>('.send-mail')!
+
+         if (!emailSpan.dataset.emailDecoded) {
+            emailSpan.dataset.emailDecoded = atob(atob(emailSpan.dataset.email!.toString()))
+            emailSpan.textContent = emailSpan.dataset.emailDecoded
+         }
+         sendMail.href = 'mailto:' + emailSpan.dataset.emailDecoded
+         emailDialog.showModal()
+      }
+
+      emailDialog.addEventListener('click', (e) => {
+         if (e.target === emailDialog) {
+            emailDialog.close()
+            emailDialog.querySelector<HTMLButtonElement>('.copy-email')!.removeEventListener('click', copyEmail)
+         }
+      })
+   })
+
+   document.addEventListener('astro:before-preparation', () => {
+      emailDialog.querySelector<HTMLButtonElement>('.copy-email')!.removeEventListener('click', copyEmail)
+   })
 </script>
 
 <style lang="scss">

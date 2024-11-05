@@ -10,10 +10,15 @@ const decodeImageEvent = (e) => {
 
 const supportsHoverAndFinePointer = () => window.matchMedia('(hover: hover) and (pointer: fine)').matches
 
-document.querySelectorAll("img").forEach((img) => {
-	if (!supportsHoverAndFinePointer()) return
-	// if (!(screen.orientation.type == "landscape-primary" || screen.orientation.type == "landscape-secondary")) return
-	const isLoaded = img.complete && img.naturalHeight !== 0
-	// isLoaded ? img.decode().then(messageDecode(img)) : img.addEventListener("load", decodeImageEvent)
-	isLoaded ? img.decode() : img.addEventListener("load", decodeImageEvent)
+const decodeImages = () => { document.querySelectorAll("img").forEach((img) => {
+		if (!supportsHoverAndFinePointer()) return
+		// if (!(screen.orientation.type == "landscape-primary" || screen.orientation.type == "landscape-secondary")) return
+		const isLoaded = img.complete && img.naturalHeight !== 0
+		// isLoaded ? img.decode().then(messageDecode(img)) : img.addEventListener("load", decodeImageEvent)
+		isLoaded ? img.decode() : img.addEventListener("load", decodeImageEvent)
+	})
+}
+
+document.addEventListener('astro:page-load', () => {
+	if (window.location.pathname === "/") decodeImages()
 })

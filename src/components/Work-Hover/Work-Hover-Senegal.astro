@@ -10,8 +10,10 @@ import iylPeperina from "@media/iyl-peperina.jpg"
 <script>
 	import { setClassInElementWhenImagesLoad } from "@scripts/helpers"
 
-	const senegalGridElement = document.querySelector(".senegal-on-hover-grid-overlay")
-	setClassInElementWhenImagesLoad(senegalGridElement, "images-loaded")
+	document.addEventListener('astro:page-load', () => {
+		const senegalGridElement = document.querySelector(".senegal-on-hover-grid-overlay")
+		if (senegalGridElement) setClassInElementWhenImagesLoad(senegalGridElement, "images-loaded")
+	})
 </script>
 
 <div class="senegal-on-hover-grid-overlay pointer-events-none">
