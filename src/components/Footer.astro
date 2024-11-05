@@ -1,12 +1,20 @@
 ---
 import FooterArrow from "@components/FooterArrow.astro"
+// import NowListening from "@components/NowListening.svelte"
 ---
 
 <footer>
-   <FooterArrow />
+   <!-- <NowListening client:only="svelte" /> -->
+   <span class="footer-arrow">
+      <FooterArrow />
+   </span>
 </footer>
 
 <style lang="scss">
+   .now-listening {
+      display: none;
+   }
+
    footer {
       display: grid;
       grid-area: footer;

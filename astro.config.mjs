@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url';
 import path, { dirname } from 'path';
 import mdx from "@astrojs/mdx";
 import Icons from 'unplugin-icons/vite'
+import svelte from '@astrojs/svelte';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -41,5 +42,5 @@ export default defineConfig({
       }),
     ],
   },
-  integrations: [mdx()]
+  integrations: [mdx(), svelte()]
 });
