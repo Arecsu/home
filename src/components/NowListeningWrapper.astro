@@ -66,6 +66,7 @@ import IconCompactDisk from "~icons/mage/compact-disk"
       overflow: hidden;
       margin-inline: $link-shadow-size-horizontal (-$link-shadow-size-horizontal);
       padding-inline: $link-shadow-size-horizontal;
+      visibility: hidden;
    }
 
    .footer-arrow {
@@ -82,12 +83,14 @@ import IconCompactDisk from "~icons/mage/compact-disk"
          opacity: 1;
          translate: 0 0;
          transition-delay: $np-animation-delay;
+         visibility: visible;
       }
       .footer-arrow {
          // animation: swipe-right-hide $np-animation-duration ease forwards;
          translate: 1rem 0;
          opacity: 0;
          transition-delay: 0s;
+         visibility: hidden;
       }
    }
 </style>
