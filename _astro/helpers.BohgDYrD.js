@@ -1,1 +1,0 @@
-const l=async a=>{const o=a.querySelectorAll("img"),n=[],t=e=>new Promise(s=>{e.complete&&e.naturalHeight!==0?s():e.addEventListener("load",function r(){e.removeEventListener("load",r),s()})});return o.forEach(e=>{n.push(t(e))}),await Promise.all(n),!0},c=(a,o)=>{l(a).then(()=>{a.classList.add(o)}).catch(n=>{console.error("Error while loading images:",n)})};export{c as s};
