@@ -43,6 +43,7 @@ async function getNowListening(): NowListeningPromise {
 }
 
 async function updateNowPlaying() {
+   if (document.hidden) return
    try {
       const nowPlayingData = await getNowListening()
       // Only update if the data has actually changed
