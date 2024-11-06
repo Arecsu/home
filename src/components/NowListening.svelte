@@ -71,7 +71,7 @@
 
 {#if !isLoading && musicData}
 	<div class="now-listening" class:is-playing={isCurrentlyPlaying}>
-		<span class="listening-to">↓ right now, in my hears</span>
+		<span class="listening-to">in my ears now ↙</span>
 		<a
 			class="no-underline disable-link-arrow"
 			href="https://www.last.fm/user/Alejandro9R/"
