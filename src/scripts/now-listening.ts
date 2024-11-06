@@ -2,6 +2,7 @@ import { atom } from 'nanostores';
 
 export const musicData = atom<NowListening | null>(null)
 export const isCurrentlyPlaying = atom(false)
+let cronUpdateNowPlaying: ReturnType<typeof setInterval> | null
 
 const cleanTrack = (track: string) => {
    if (track.includes("-")) {
@@ -43,7 +44,11 @@ async function getNowListening(): NowListeningPromise {
 }
 
 async function updateNowPlaying() {
-   if (document.hidden) return
+   if (document.hidden) {
+      clearInterval(cronUpdateNowPlaying!)
+      cronUpdateNowPlaying = null
+      return
+   }
    try {
       const nowPlayingData = await getNowListening()
       // Only update if the data has actually changed
@@ -56,14 +61,22 @@ async function updateNowPlaying() {
    } 
 }
 
-let cronUpdateNowPlaying: ReturnType<typeof setInterval>
-
 export function initCronUpdateNowPlaying() {
    updateNowPlaying()
    cronUpdateNowPlaying = setInterval(updateNowPlaying, 10 * 1000)
+   document.addEventListener('visibilitychange', handleVisibilityChange)
 }
 
 export function stopCronUpdateNowPlaying() {
    if(!cronUpdateNowPlaying) return
    clearInterval(cronUpdateNowPlaying)
+   cronUpdateNowPlaying = null
+   document.removeEventListener('visibilitychange', handleVisibilityChange)
+}
+
+function handleVisibilityChange() {
+   if (!document.hidden && !cronUpdateNowPlaying) {
+      updateNowPlaying()
+      cronUpdateNowPlaying = setInterval(updateNowPlaying, 10 * 1000)
+   }
 }
