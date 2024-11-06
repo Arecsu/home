@@ -3,17 +3,17 @@
 	font-style: normal;
 	font-weight: 100 900;
 	font-display: swap;
-	src: url("/inter-4.0/subset/InterVariable-subset.woff2") format("woff2");
-	// src: url("/inter-4.0/InterVariable.woff2") format("woff2");
-}
-@font-face {
+	src: url("@InterVariable-Subset") format("woff2");
+ }
+ 
+ @font-face {
 	font-family: InterVariable;
 	font-style: italic;
 	font-weight: 100 900;
 	font-display: swap;
-	src: url("/inter-4.0/subset/InterVariable-Italic-subset.woff2") format("woff2");
-	// src: url("/inter-4.0/InterVariable-Italic.woff2") format("woff2");
-}
+	src: url("@InterVariable-Italic-Subset") format("woff2");
+ }
+ 
 
 ::view-transition-group(root) {
 	animation: none;
