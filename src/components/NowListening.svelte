@@ -29,7 +29,9 @@
 	.now-listening {
 		display: flex;
 		align-items: end;
-		gap: 0.1rem;
+		gap: var(--_gap);
+		line-height: var(--_line-height);
+		font-size: var(--_font-size);
 		flex-direction: column;
 	}
 

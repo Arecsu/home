@@ -1,6 +1,6 @@
 ---
-import FooterArrow from "@components/FooterArrow.astro"
 import Contact from "@components/Contact.astro"
+import NowListeningWrapper from "./NowListeningWrapper.astro"
 ---
 
 <footer class="footer-large">
@@ -19,8 +19,8 @@ import Contact from "@components/Contact.astro"
          class="footer-back-to-top "
          onclick="window.scrollTo({ top: 0, behavior: 'instant' });"
          >back to top ↑</button>
-       <div class="footer-arrow-wrapper">
-          <FooterArrow />
+       <div class="footer-now-listening">
+          <NowListeningWrapper />
        </div>
    </section>
    <div class="footer-first-block" aria-hidden="true"></div>
@@ -59,7 +59,7 @@ import Contact from "@components/Contact.astro"
          "title  .  main-nav  .   back-to-top"
          ".      .  contact   .   ."
          ".      .  .         .   ."
-         ".      .  .         .   arrow";
+         ".      .  .         .   now-listening";
       row-gap: 0.4rem;
       grid-template-columns: min-content ($header-gap) auto 1fr auto;
       grid-template-rows: min-content auto 8rem auto;
@@ -72,7 +72,7 @@ import Contact from "@components/Contact.astro"
             "main-nav  .         ."
             "contact   contact   contact"
             ".         .         ."
-            ".         .         arrow";
+            ".         .         now-listening";
          grid-template-columns: max-content 1fr auto;
          grid-template-rows: auto 2rem auto auto 4rem auto;
          row-gap: $header-gap-row
@@ -95,8 +95,8 @@ import Contact from "@components/Contact.astro"
       }
    }
 
-   .footer-arrow-wrapper {
-      grid-area: arrow;
+   .footer-now-listening {
+      grid-area: now-listening;
       justify-self: end;
    }
 
