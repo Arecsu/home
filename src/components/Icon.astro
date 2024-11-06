@@ -2,13 +2,16 @@
 interface Props {
    size?: string,
    color?: string,
-   marginInline?: string
+   marginInline?: string,
+   class?: string
 }
 
-const { size = '1em', color = 'currentColor', marginInline = '0' } = Astro.props;
+const { size = '1em', color = 'currentColor', marginInline = '0', class: className = '' } = Astro.props;
 ---
 
-<span class="icon" style={`width: ${size}; height: ${size}; color: ${color}; margin-inline: ${marginInline}`}>
+<span 
+  class:list={['icon', className]}
+  style={`width: ${size}; height: ${size}; color: ${color}; margin-inline: ${marginInline}`}>
   <slot />
 </span>
 

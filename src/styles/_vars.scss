@@ -12,6 +12,9 @@ $margin-page-2: min(2.5rem, 5vw + 0.5rem);
 $header-gap: 7rem;
 $content-title-offset-gap: 4rem;
 
+$link-shadow-size-vertical: 0.12em;
+$link-shadow-size-horizontal: 0.2em;
+
 @mixin inter-display {
 	font-variation-settings: "opsz" 32;
 }

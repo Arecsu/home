@@ -1,23 +1,83 @@
 ---
 import FooterArrow from "@components/FooterArrow.astro"
-// import NowListening from "@components/NowListening.svelte"
+import NowListening from "@components/NowListening.svelte"
+import Icon from "@components/Icon.astro"
+import IconCompactDisk from "~icons/mage/compact-disk"
 ---
 
 <footer>
-   <!-- <NowListening client:only="svelte" /> -->
+   <div class="now-listening-component-wrapper">
+      <NowListening client:only="svelte">
+         <Icon class="now-listening-icon" slot="icon" size="1em" marginInline="0 0.1em">
+            <IconCompactDisk />
+         </Icon>      
+      </NowListening>
+   </div>
    <span class="footer-arrow">
       <FooterArrow />
    </span>
 </footer>
 
 <style lang="scss">
-   .now-listening {
-      display: none;
+   @keyframes disk-spin-infinite {
+      from {
+         transform: rotate(0deg);
+      }
+      to {
+         transform: rotate(360deg);
+      }
+   }
+
+   :global(.now-listening-icon) svg {
+      animation: disk-spin-infinite 1.5s linear infinite;
+      shape-rendering: crispedges;
    }
 
    footer {
       display: grid;
       grid-area: footer;
       place-self: end;
+      place-items: end;
+   }
+
+   footer > * {
+      grid-area: 1 / 1 / -1 / -1;
+   }
+
+   $np-animation-duration: 0.3s;
+   $np-animation-delay: 0.4s;
+
+   .now-listening-component-wrapper {
+      // animation: swipe-right-hide $np-animation-duration ease forwards;
+      transition: all $np-animation-duration;
+      transition-delay: 0s;
+      opacity: 0;
+      translate: 1rem 0;
+      max-width: 100%;
+      overflow: hidden;
+      margin-inline: $link-shadow-size-horizontal (-$link-shadow-size-horizontal);
+      padding-inline: $link-shadow-size-horizontal;
+   }
+   .footer-arrow {
+      // animation: show-element-1 $np-animation-duration $np-animation-delay ease forwards;
+      transition: all $np-animation-duration;
+      opacity: 1;
+      translate: 0 0;
+      transition-delay: $np-animation-delay;
+   }
+
+   footer:has(.now-listening.is-playing) {
+      .now-listening-component-wrapper {
+         // animation: show-element-1 $np-animation-duration $np-animation-delay ease forwards;
+         opacity: 1;
+         translate: 0 0;
+         transition-delay: $np-animation-delay;
+      }
+      .footer-arrow {
+         // animation: swipe-right-hide $np-animation-duration ease forwards;
+         translate: 1rem 0;
+         opacity: 0;
+         transition-delay: 0s;
+      }
    }
 </style>

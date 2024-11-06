@@ -1,5 +1,4 @@
 import { defineConfig } from 'astro/config';
-
 import { fileURLToPath } from 'url';
 import path, { dirname } from 'path';
 import mdx from "@astrojs/mdx";
@@ -42,6 +41,6 @@ export default defineConfig({
       }),
     ],
   },
-  // integrations: [mdx(), svelte()]
-  integrations: [mdx()]
+  integrations: [mdx(), svelte()]
+  // integrations: [mdx()]
 });

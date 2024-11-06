@@ -64,7 +64,7 @@ a {
 
 a[target="_blank"],
 a[href^="http"] {
-	&::after {
+	&:not(.disable-link-arrow)::after {
 		display: inline-block;
 		content: "↗";
 		position: relative;
@@ -80,23 +80,20 @@ a[href^="http"] {
 	border: 1px solid var(--page-color-foreground);
 }
 
-@media (hover: hover) and (pointer: fine) {
-	$shadow-size-vertical: 0.12em;
-	$shadow-size-horizontal: 0.2em;
-	
+@media (hover: hover) and (pointer: fine) {	
 	:where(a, button):not(.disable-default-a-hover, .btn-style-1):hover,
 	.about-authentic:hover {
 		border: 0;
 		background: var(--link-background-color-hover);
 		color: var(--link-color-hover);
 		box-shadow: 
-		  -$shadow-size-horizontal 0 0 $shadow-size-vertical var(--link-background-color-hover),
-			$shadow-size-horizontal 0 0 $shadow-size-vertical var(--link-background-color-hover);
+		  -$link-shadow-size-horizontal 0 0 $link-shadow-size-vertical var(--link-background-color-hover),
+			$link-shadow-size-horizontal 0 0 $link-shadow-size-vertical var(--link-background-color-hover);
 	}
 
 	:where(p, li):not(nav li) > :where(a, button):not(.disable-default-a-hover, .btn-style-1):hover {
 		box-shadow: 
-			0 0 0 $shadow-size-vertical var(--link-background-color-hover);
+			0 0 0 $link-shadow-size-vertical var(--link-background-color-hover);
 	}
 }
 
