@@ -2,7 +2,7 @@
 import FooterArrow from "@components/FooterArrow.astro"
 import NowListening from "@components/NowListening.svelte"
 import Icon from "@components/Icon.astro"
-import IconCompactDisk from "~icons/mage/compact-disk"
+import IconCompactDisk from "@media/svg/MageCompactDisk.svg?raw"
 ---
 
 <script src="@scripts/now-listening"></script>
@@ -11,7 +11,7 @@ import IconCompactDisk from "~icons/mage/compact-disk"
    <div class="now-listening-component">
       <NowListening client:only="svelte">
          <Icon class="now-listening-icon" slot="icon" size="1em" marginInline="0 0.1em">
-            <IconCompactDisk />
+            <Fragment set:html={ IconCompactDisk } />
          </Icon>      
       </NowListening>
    </div>
@@ -39,7 +39,7 @@ import IconCompactDisk from "~icons/mage/compact-disk"
       }
    }
 
-   :global(.now-listening-icon) svg {
+   :global(.now-listening-icon svg) {
       animation: disk-spin-infinite 1.5s linear infinite;
       // shape-rendering: crispedges;
    }
