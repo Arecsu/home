@@ -10,8 +10,8 @@
 	}
 }
 
-$martyr-blackflag-svg-height: 12px;
-$martyr-blackflag-svg-width: 46px;
+$martyr-blackflag-svg-height: 0.75rem;
+$martyr-blackflag-svg-width: 2.875rem;
 $martyr-blackflag-animation-duration-X: 2.5s;
 $martyr-blackflag-animation-duration-Y: 0.3s;
 
@@ -87,10 +87,10 @@ body {
 	.flag-interior:after {
 		position: absolute;
 		color: black;
-		font-size: 10px;
+		font-size: 0.625rem;
 		white-space: pre;
-		line-height: 12px;
-		padding-left: 1px;
+		line-height: 1.2em;
+		padding-left: 0.0625rem;
 		font-weight: 400;
 		font-variation-settings: "opsz" 14;
 		letter-spacing: -0.02em;

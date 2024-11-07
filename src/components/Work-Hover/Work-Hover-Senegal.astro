@@ -75,9 +75,9 @@ import iylPeperina from "@media/iyl-peperina.jpg"
 		position: absolute;
 		right: clamp(1%, -20rem + 27vw, 10%);
 		bottom: clamp(4%, -22rem + 50%, 12%);
-		width: clamp(500px, min(112vh, 46vw), 1300px);
+		width: clamp(31rem, min(112vh, 46vw), 81rem);
 		@media (max-width: $work-astro-breakpoint) {
-			width: clamp(300px, 40vw, 800px);
+			width: clamp(18.75rem, 40vw, 50rem);
 			right: $senegal-box-translate;
 			bottom: 0;
 			grid-row: 1 / footer-end;
@@ -87,7 +87,7 @@ import iylPeperina from "@media/iyl-peperina.jpg"
 			grid-row: about;
 			right: auto;
 			bottom: 0;
-			width: min(78%, 450px);
+			width: min(78%, 28rem);
 		}
 		> * {
 			grid-column: 1 / -1;
@@ -126,14 +126,14 @@ import iylPeperina from "@media/iyl-peperina.jpg"
 		&:before {
 			content: "";
 			position: absolute;
-			top: -20px;
+			top: (-$senegal-box-translate);
 			display: block;
 			left: 0;
-			height: ($senegal-box-translate + 4px);
+			height: ($senegal-box-translate + 0.25rem);
 			background: var(--senegal-background-box);
-			clip-path: polygon(100% -4px, 100% 100%, -4px 100%);
-			width: ($senegal-box-translate + 4px);
-			transform-origin: left calc(100% - 4px);
+			clip-path: polygon(100% -0.25rem, 100% 100%, -0.25rem 100%);
+			width: ($senegal-box-translate + 0.25rem);
+			transform-origin: left calc(100% - 0.25rem);
 			scale: 0;
 		}
 		&:after {
@@ -142,11 +142,11 @@ import iylPeperina from "@media/iyl-peperina.jpg"
 			bottom: 0;
 			display: block;
 			right: (-$senegal-box-translate);
-			height: ($senegal-box-translate + 4px);
+			height: ($senegal-box-translate + 0.25rem);
 			background: var(--senegal-background-box);
-			clip-path: polygon(0% 0%, calc(100% + 4px) 0%, 0% calc(100% + 5px));
-			width: ($senegal-box-translate + 4px);
-			transform-origin: 4px bottom;
+			clip-path: polygon(0% 0%, calc(100% + 0.25rem) 0%, 0% calc(100% + 0.375rem));
+			width: ($senegal-box-translate + 0.25rem);
+			transform-origin: 0.25rem bottom;
 			scale: 0;
 		}
 	}

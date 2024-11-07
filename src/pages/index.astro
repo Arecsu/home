@@ -134,7 +134,7 @@ import Footer from "@components/Footer.astro";
 		}
 	}
 
-	@media (min-width: 460px) and (max-width: $mobile-layout-breakpoint-1) {
+	@media (min-width: 29rem) and (max-width: $mobile-layout-breakpoint-1) {
 		.symbol-small {
 			display: block;
 			grid-row: about;
@@ -173,7 +173,7 @@ import Footer from "@components/Footer.astro";
 		font-size: 1rem;
 		// font-weight: 400;
 		line-height: 0.55;
-		@media (min-width: ($mobile-layout-breakpoint-2 + 1px)) and (max-width: $mobile-layout-breakpoint-1) {
+		@media (min-width: $mobile-layout-breakpoint-2) and (max-width: $mobile-layout-breakpoint-1) {
 			display: block;
 		}
 	}

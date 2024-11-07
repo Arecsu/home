@@ -45,7 +45,7 @@ import NowListeningWrapper from "./NowListeningWrapper.astro"
 
    .footer-top-line {
       height: 100%;
-      border-bottom: 1px solid var(--footer-fg-color, white);
+      border-bottom: 0.0625em solid var(--footer-fg-color, white);
    }
 
    .footer-text-content {
@@ -153,7 +153,7 @@ import NowListeningWrapper from "./NowListeningWrapper.astro"
    .footer-gradient-lines {
       $steps: 22;
       background: generate-gradient-t(var(--footer-top-color, black), var(--footer-bottom-color, white), $steps);
-      height: $steps * 24px;
+      height: $steps * 1.5rem;
    }
 
    .footer-last-block {
