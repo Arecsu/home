@@ -9,3 +9,10 @@
    [headers.values]
    cache-control = "public, max-age=60, stale-while-revalidate=120"
    Netlify-CDN-Cache-Control = "public, max-age=60, stale-while-revalidate=120"
+
+   
+[[headers]]
+   for = "*.svg"
+   [headers.values]
+   cache-control = "public, max-age=60, stale-while-revalidate=120"
+   Netlify-CDN-Cache-Control = "public, max-age=60, stale-while-revalidate=120"

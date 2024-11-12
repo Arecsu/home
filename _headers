@@ -6,3 +6,4 @@
 
 /*.html
   Cache-Control: public, max-age=600
+  Netlify-CDN-Cache-Control = "public, max-age=60, stale-while-revalidate=120"
