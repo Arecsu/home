@@ -1,13 +1,11 @@
 [[headers]]
    for = "/*.html"
    [headers.values]
-   cache-control = '''
-   public,
-   max-age=600'''
+   cache-control = "public, max-age=60, stale-while-revalidate=120"
+   Netlify-CDN-Cache-Control = "public, max-age=60, stale-while-revalidate=120"
 
 [[headers]]
    for = "*.html"
    [headers.values]
-   cache-control = '''
-   public,
-   max-age=600'''
+   cache-control = "public, max-age=60, stale-while-revalidate=120"
+   Netlify-CDN-Cache-Control = "public, max-age=60, stale-while-revalidate=120"
