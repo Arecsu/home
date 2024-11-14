@@ -49,8 +49,8 @@ import NowListeningWrapper from "./NowListeningWrapper.astro"
    }
 
    .footer-text-content {
-      --link-background-color-hover: #fff;
-      --link-color-hover: #000;
+      --link-background-color-hover: var(--footer-fg-color, white);
+      --link-color-hover: var(--footer-bg-color, black);
       padding-inline: $margin-page-1;
       padding-block: 2rem 2rem;
       grid-area: content;
