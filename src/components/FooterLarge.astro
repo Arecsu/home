@@ -63,7 +63,7 @@ import NowListeningWrapper from "./NowListeningWrapper.astro"
       row-gap: 0.4rem;
       grid-template-columns: min-content ($header-gap) auto 1fr auto;
       grid-template-rows: min-content auto 8rem auto;
-      background-color: black;
+      background-color: var(--footer-bg-color, black);
       color: var(--footer-fg-color, white);
 		@media (max-width: $mobile-layout-breakpoint-1) {
          grid-template-areas:
