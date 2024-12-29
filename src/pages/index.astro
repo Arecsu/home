@@ -1,10 +1,10 @@
 ---
 import BaseLayout from "@layouts/Base.astro";
-import Header from "@components/Header.astro";
 import About from "@components/About.astro";
-import BlackFlag from "@components/BlackFlag.astro";
 import Work from "@components/Work.astro";
-import Footer from "@components/Footer.astro";
+import Reflections from "@components/Reflections.astro";
+import TheField from "@components/TheField.astro";
+import Edge from "@components/Edge.astro";
 // import WorkHoverMartyr from "@components/Work-Hover/Work-Hover-Martyr.astro";
 // import WorkHoverMonk from "@components/Work-Hover/Work-Hover-Monk.astro";
 // import WorkHoverSenegal from "@components/Work-Hover/Work-Hover-Senegal.astro";
@@ -16,165 +16,96 @@ import Footer from "@components/Footer.astro";
 
 <BaseLayout title="Alejandro Romano">
 	<main>
-		<div class="index-1">
-			<Header contactVisible={true} />
-			<span class="arrow-before-work inter-display">↘</span>
-			<span class="arrow-southwest inter-display">↙</span>
+      <span class="arrow-before-work">↘</span>
+      <!-- <span class="arrow-southwest inter-display">↙</span> -->
+		<h2 class="index-section-title">Work</h2>
+		<section class="index-section">
+			<span>↓</span>
 			<Work />
-			<span class="symbol-small">~\</span>
+		</section>
+      <!-- <span class="symbol-small">~\</span> -->
+      <!-- <About /> -->
+		<h2 class="index-section-title reflections-section-title">Reflections</h2>
+		<section class="index-section">
+			<Reflections />
+		</section>
+		<h2 class="index-section-title about-section-title">In the Field</h2>
+		<section class="index-section">
+			<span>↓</span>
+			<TheField />
+		</section>
+		<h2 class="index-section-title about-section-title">Edge</h2>
+		<section class="index-section">
+			<span>↓</span>
+			<Edge />
+		</section>
+      <!-- <Footer /> -->
+		<h2 class="index-section-title about-section-title">About</h2>
+		<section class="index-section about-section">
+			<span>↓</span>
 			<About />
-			<!-- <WorkHoverSenegal /> -->
-			<!-- <WorkHoverMonk /> -->
-			<!-- <WorkHoverMartyr /> -->
-		</div>
-		<div class="index-2">
-			<BlackFlag />
-			<Footer />
-		</div>
-		<!-- <WorkHoverExplorations /> -->
+		</section>
 	</main>
 </BaseLayout>
 
 <style lang="scss">
-	.index-1,
-	.index-2 {
-		display: grid;
-		grid-template-rows: subgrid;
-		grid-template-columns: subgrid;
-		grid-column: 1 / -1;
-		grid-row: 1 / -1;
-		pointer-events: none;
-		> :global(*):not(.pointer-events-none) {
-			pointer-events: auto;
-		}
-	}
-
-	.symbol-small {
-		display: none;
-	}
-
 	main {
-		font-size: 1rem;
-		// min-height: 800px;
-		min-height: 100dvh;
-		width: 100%;
 		display: grid;
-		grid-template-columns:
-			[full-width-start] $margin-page-1
-			[header-start header-title-start work-section-start content-title-start about-start] min-content
-			[header-title-end] ($header-gap - $content-title-offset-gap)
-			[content-title-end] $content-title-offset-gap
-			[header-contact-start content-blocks-start] auto
-			/*
-         [about-end footer-start] auto
-         [contact-end header-end work-section-end content-blocks-end] 5em
-         */
-			[about-end footer-start header-contact-end header-end work-section-end content-blocks-end] 5em
-			[blackflag-start] minmax(auto, min(40em, 30%))
-			[blackflag-end footer-end] 2em
-			[full-width-end];
-		grid-template-rows:
-			2rem
-			[header-start header-contact-start blackflag-start] auto
-			[header-end header-contact-end arrow-start] auto
-			[arrow-end work-section-start] auto
-			[work-section-end reflections-section-start] 4rem 1fr
-			[reflections-section-end about-start] auto
-			[blackflag-end] 10rem
-			[footer-start] 2rem
-			[about-end footer-end]
-			$margin-page-1;
+		grid-template-columns: subgrid;
+		grid-column: full-width;
+		grid-row: main-content;
+		grid-auto-rows: min-content;
+		// grid-templare-rows: 
+		// place-items: start;
 	}
 
-	@media (max-width: $mobile-layout-breakpoint-1) {
-		main {
-			// min-height: 100dvh;
-			// height: auto;
-			min-height: unset;
-			grid-template-columns:
-				[full-width-start]
-				$margin-page-1
-				[header-start header-title-start work-section-start content-title-start about-start
-				blackflag-start content-title-end content-blocks-start footer-start]
-				min-content
-				[header-title-end header-contact-start]
-				auto
-				[about-end]
-				1fr
-				[header-end header-contact-end
-				work-section-end content-blocks-end blackflag-end footer-end]
-				$margin-page-1
-				[full-width-end];
-			grid-template-rows:
-				minmax(100svh, auto)
-				auto;
-		}
-		.index-1 {
-			grid-template-rows:
-				$margin-page-1
-				[header-start header-title-start header-contact-start] auto
-				[arrow-start header-title-end] auto
-				[arrow-end header-end header-contact-end] auto
-				[work-section-start] auto auto
-				[work-section-end reflections-section-start] 2rem
-				1fr
-				[reflections-section-end about-start] auto
-				[about-end]
-				$margin-page-2;
-			grid-row: 1 / 2;
-		}
-		.index-2 {
-			grid-template-rows:
-				[blackflag-start] auto
-				[blackflag-end] 6rem
-				[footer-start] 2rem
-				[footer-end]
-				$margin-page-2;
-			grid-row: 2 / 3;
+	h2 {
+		grid-column: heading;
+		// grid-row: work-section;
+		justify-self: end;
+		text-transform: uppercase;
+		font-variation-settings: "opsz" 32;
+    	font-weight: 500;
+    	letter-spacing: .02em;
+		line-height: 1;
+		font-size: 1em;
+		@media (max-width: $mobile-layout-breakpoint-1) {
+			justify-self: start;
+			line-height: initial;
+			margin-bottom: 1.4em;
 		}
 	}
 
-	@media (min-width: 29rem) and (max-width: $mobile-layout-breakpoint-1) {
-		.symbol-small {
-			display: block;
-			grid-row: about;
-			grid-column: about-end;
-			place-self: end;
-		}
+	:where(:not(h1, h1 *, h2)) { 
+			grid-column: main-content;
+			width: 100%;
 	}
 
 	.arrow-before-work {
-		grid-row: arrow;
-		grid-column: header-start;
-		font-size: 2.2em;
-		font-weight: 330;
-		line-height: 1em;
-		margin-block: clamp(0em, -0.4em + 3vmin, .6em) clamp(.4em, 3vmin, .8em);
-		// box-sizing: content-box;
-		// padding-block: 0.3rem;
-		@media (max-width: $mobile-layout-breakpoint-1) {
-			// display: none;
-			opacity: 0;
-			font-size: 1em;
-			// height: 0.4rem;
-			margin-block: 0;
-		}
+		grid-column: heading;
+    	font-weight: 350;
+		font-size: 2em;
+		margin-block: 0.8em 0em;
+		line-height: 1;
+	}
 
-		@media (max-width: $header-contact-breakpoint) {
-			// display: none;
+	.index-section-title {
+		margin-block: 2em;
+	}
+
+	.index-section {
+		grid-column: main-content;
+		margin-block: 2em;
+		> span {
+			display: block;
+			margin-bottom: 1em;
+			line-height: 1.1;
+			font-weight: 500;
 		}
 	}
 
-	.arrow-southwest {
-		display: none;
-		grid-row: work-section-start;
-		grid-column-end: header-end;
-		justify-self: end;
-		font-size: 1rem;
-		// font-weight: 400;
-		line-height: 0.55;
-		@media (min-width: $mobile-layout-breakpoint-2) and (max-width: $mobile-layout-breakpoint-1) {
-			display: block;
-		}
+	.about-section > span {
+		margin-bottom: 1.8em;
+		
 	}
 </style>

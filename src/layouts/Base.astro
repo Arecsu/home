@@ -2,6 +2,7 @@
 import '@styles/reset.scss'
 import '@styles/base.scss'
 import EmailDialog from '@components/EmailDialog.astro'
+import Header from "@components/Header.astro"
 
 import { ClientRouter } from 'astro:transitions';
 
@@ -32,11 +33,59 @@ const { title } = Astro.props
       <ClientRouter />
    </head>
    <body>
+      <Header contactVisible={true} />
       <slot />
       <EmailDialog />
    </body>
 </html>
 
+
+<script>
+   /* 
+      avoids "Install PWA" automatic modal on Chrome's Android (and possibly
+      other browsers as well) because of /site.webmanifest, while still having 
+      the functionality in Chrome's menu.
+
+      source: https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeinstallprompt_event 
+   */
+   window.addEventListener("beforeinstallprompt", (event) => {
+      event.preventDefault()
+   })
+</script>
+
 <style lang="scss">
-   
+	body {
+		font-size: 1rem;
+		// min-height: 800px;
+		min-height: 100dvh;
+		width: 100%;
+		display: grid;
+		grid-template-columns:
+			[full-width-start footer-large-start] $margin-page-1
+			[header-start header-title-start heading-start] min-content
+			[header-title-end] ($header-gap - $content-title-offset-gap)
+			[heading-end] $content-title-offset-gap
+			[header-contact-start main-content-start] auto
+			[header-contact-end header-end] 1fr
+			[main-content-end]
+			$margin-page-1 [full-width-end footer-large-end];
+		grid-template-rows:
+			$margin-page-1
+			[header-start] min-content
+			[header-end main-content-start page-title-start] min-content
+			[page-title-end] auto
+			[main-content-end] $margin-page-1
+         [footer-large-start] auto
+         [footer-large-end];
+
+		@media (max-width: $mobile-layout-breakpoint-1) {
+			grid-template-columns:
+				[full-width-start footer-large-start] $margin-page-1
+				[header-start header-title-start heading-start main-content-start] auto
+				[header-title-end header-contact-start] 1fr
+				[main-content-end header-contact-end header-end heading-end]
+				$margin-page-1 [full-width-end footer-large-end];
+		}
+	}
 </style>
+

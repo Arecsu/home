@@ -16,7 +16,13 @@
 	// src: url("@InterVariable-Italic-Subset") format("woff2");
 	src: url("/inter-4.0/InterVariable-Italic.woff2") format("woff2");
  }
- 
+
+ @font-face {
+	font-family: 'Roboto Mono';
+	font-style: normal;
+	font-weight: 400 900;
+	src: url(https://fonts.gstatic.com/l/font?kit=L0xTDF4xlVMF-BfR8bXMIhJHg45mwgGEFl0_3vrtSM1J-gEPT5Ese6hmLSpmuPURar4ppabwTpYHH7N9yzdjtkWT2LWbA8Q-SjnSJXQTyAqb0g&skey=7b92570108d40690&v=v23) format('woff2');
+ }
 
 ::view-transition-group(root) {
 	animation: none;
@@ -45,6 +51,16 @@
 	--footer-bottom-color: var(--color-fg-1);
 	--footer-bg-color: var(--page-color-background);
 	--footer-fg-color: var(--color-fg-1);
+
+	// added later
+	color-scheme: $color-scheme-martyr;
+	--link-background-color-hover: #{$color-fg-1-martyr};
+	--link-color-hover: #{$color-bg-1-martyr};
+	--footer-top-color: #{$color-fg-1-martyr};
+	--footer-bottom-color: #{$color-bg-1-martyr};
+	--footer-fg-color: #{$color-bg-1-martyr};
+	--page-color-background: #{$color-bg-1-martyr};
+	--page-color-foreground: #{$color-fg-1-martyr};
 }
 
 body {
@@ -87,7 +103,7 @@ a[href^="http"] {
 
 @media (hover: hover) and (pointer: fine) {	
 	:where(a, button):not(.disable-default-a-hover, .btn-style-1):hover,
-	.about-authentic:hover {
+	.about-aauthentic:hover {
 		border: 0;
 		background: var(--link-background-color-hover);
 		color: var(--link-color-hover);

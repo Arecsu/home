@@ -31,10 +31,13 @@ import NowListeningWrapper from "./NowListeningWrapper.astro"
 
 <style lang="scss">
    @use 'sass:list';
-   
+
    .footer-large {
       display: flex;
       flex-direction: column;
+      grid-area: footer-large;
+      // place-content: space-between;
+      width: 100%;
    }
 
    .footer-top-empty-space {

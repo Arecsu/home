@@ -1,5 +1,5 @@
-<section class="about">
-   <header class="inter-display">
+<section class="about inter-text">
+   <header>
       <p>
          Web engineer & Visual artist<br />Founder of <a
             href="http://martyr.shop"
@@ -8,41 +8,47 @@
          >
       </p>
    </header>
-   <div class="inter-text about-textblock">
+   <div class="about-textblock">
       <!-- <p style="text-indent: 3.8em;"> -->
       <p>
          Based in argentina. Born in 1994. Exploring the intersection between technology and human interaction.
       </p>
       <p>Amidst the chaos that surrounds us, how does beauty and simplicity come to light?</p>
       <p>My work is a lifelong, continuous journey to find the answer.</p>
-      <p class="about-authentic">For authentic people. by authentic people. <span class="about-last-arrow">←</span></p>
+      <p class="about-authentic">For authentic people.<br>By authentic people. <span class="about-last-arrow">←</span></p>
    </div>
 </section>
 
 <style lang="scss">
    .about {
-      grid-area: about;
-      align-self: end;
-      max-width: 34ch;
-      line-height: 1.4em;
+      max-width: 32ch;
+      font-size: clamp(2.2em, 4vw, 2.8em);
+      font-feature-settings: "cv08", "cv10";
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      line-height: 1.18;
+      text-wrap-style: balance;
    }
 
    header {
-      font-weight: 500;
-      padding-bottom: 0.8rem;
-      margin-bottom: 1rem;
-      border-bottom: 0.09375rem dashed;
+      padding-bottom: 0.6em;
+      margin-bottom: 0.7em;
+      border-bottom: 3px solid;
+      border-bottom: max(0.15rem, 0.06em) solid;
       border-color: inherit;
       text-transform: uppercase;
-      letter-spacing: 0.01em;
+      a {
+         text-decoration: none;
+         display: inline-block;
+      }
    }
 
    .about-textblock {
       p {
-         text-align: justify;
-         text-transform: lowercase;
+         // text-align: justify;
+         text-transform: uppercase;
          &:not(:last-child) {
-            margin-bottom: 1rem;
+            margin-bottom: 0.5em;
          }
       }
    }
@@ -50,7 +56,9 @@
       float: right;
       position: relative;
       right: -0.05em;
-      @media (min-width: 17.5em) and (max-width: 25.6em) {
+      // padding-left: 2em;
+      // @media screen and (max-width: 50em) {
+      @media screen and (max-width: 70em) {
          display: none;
       }
    }
@@ -63,12 +71,6 @@
    }
    */
 
-   @media (max-width: 28.6em) {
-      .about {
-         grid-column: about-start / work-section-end;
-         max-width: 100%;
-      }
-   }
 </style>
 
 <!-- 

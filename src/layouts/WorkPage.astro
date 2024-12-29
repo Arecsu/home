@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "@layouts/Base.astro"
-import Header from "@components/Header.astro"
 import FooterLarge from "@components/FooterLarge.astro"
+
 
 interface Props {
 	title: string
@@ -12,23 +12,20 @@ const { title, workPageClass } = Astro.props
 ---
 
 <BaseLayout title={title}>
-	<div class:list={["work-page-wrapper", workPageClass]} >
-		<Header contactVisible={true} />
-		<main>
-			<h1 class="inter-display work-page-title">{title} 
-				<span>↙</span></h1>
-			<slot />
-		</main>
-	</div>
+	<main class:list={["work-page-wrapper", workPageClass]} >
+		<h1 class="inter-display work-page-title">{title} 
+			<span>↙</span></h1>
+		<slot />
+	</main>
 	<FooterLarge />
 </BaseLayout>
 
 <style is:global lang="scss">
-	.work-page-wrapper main {
+	.work-page-wrapper {
 		$space-between-h2-sections: 0.9rem;
 		$space-between-h2-sections-mobile: 0.4rem;
 		overflow-x: hidden;
-
+		
 		h2 {
 			grid-column: heading;
 			text-transform: uppercase;
@@ -98,39 +95,6 @@ const { title, workPageClass } = Astro.props
 </style>
 
 <style lang="scss">
-	.work-page-wrapper {
-		font-size: 1rem;
-		// min-height: 800px;
-		min-height: 100dvh;
-		width: 100%;
-		display: grid;
-		grid-template-columns:
-			[full-width-start] $margin-page-1
-			[header-start header-title-start heading-start] min-content
-			[header-title-end] ($header-gap - $content-title-offset-gap)
-			[heading-end] $content-title-offset-gap
-			[header-contact-start main-content-start] auto
-			[header-contact-end header-end] 1fr
-			[main-content-end]
-			$margin-page-1 [full-width-end];
-		grid-template-rows:
-			$margin-page-1
-			[header-start] min-content
-			[header-end main-content-start page-title-start] min-content
-			[page-title-end] auto
-			[main-content-end]
-			$margin-page-1;
-
-		@media (max-width: $mobile-layout-breakpoint-1) {
-			grid-template-columns:
-				[full-width-start] $margin-page-1
-				[header-start header-title-start heading-start main-content-start] auto
-				[header-title-end header-contact-start] 1fr
-				[main-content-end header-contact-end header-end heading-end]
-				$margin-page-1 [full-width-end];
-		}
-	}
-
 	main {
 		display: grid;
 		grid-template-columns: subgrid;
