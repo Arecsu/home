@@ -8,7 +8,7 @@ export const NOTES_LANGUAGES = {
   es: {
     label: 'ES',
     name: 'Español',
-    locale: 'es-AR',
+    locale: 'es-ES',
     htmlLangClass: 'lang-es'
   }
 } as const;
