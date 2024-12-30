@@ -9,7 +9,9 @@
       "@layouts/*": ["src/layouts/*"],
       "@styles/*": ["src/styles/*"],
       "@scripts/*": ["src/scripts/*"],
-      "@media/*": ["src/media/*"]
+      "@media/*": ["src/media/*"],
+      "@config/*": ["src/config/*"],
+      "@/*": ["src/*"],
     },
     "types": [
       "unplugin-icons/types/astro",

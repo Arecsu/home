@@ -1,0 +1,69 @@
+---
+import { getCollection } from "astro:content"
+import NotesList from "../NotesList.astro"
+import { NOTES_LANGUAGES, type SupportedNotesLang } from "@/languages.ts"
+
+// Get all notes
+const allNotes = await getCollection("notes");
+
+const langNotes = Object.keys(NOTES_LANGUAGES).reduce((acc, lang) => {
+  const typedLang = lang as SupportedNotesLang; // Assert the type explicitly
+  acc[typedLang] = allNotes.filter((note) => note.id.startsWith(`${typedLang}/`));
+  return acc;
+}, {} as Record<SupportedNotesLang, typeof allNotes>);
+---
+
+<div class="container">
+	<div class="language">
+		<span>↓</span>
+		<button id="reflections-button-lang-es">ES</button>
+		<span>/</span>
+		<button id="reflections-button-lang-en">EN</button>
+	</div>
+	<div class="list-container">
+		{Object.keys(langNotes).map((lang) => (
+			<NotesList 
+				notes={langNotes[lang as SupportedNotesLang]} 
+				locale={NOTES_LANGUAGES[lang as SupportedNotesLang].locale} 
+				langClass={NOTES_LANGUAGES[lang as SupportedNotesLang].htmlLangClass} 
+			/>
+		))}
+	</div>
+</div>
+
+<script>
+	document.getElementById("reflections-button-lang-es")!.addEventListener("click", () => window.setLang("lang-es"))
+	document.getElementById("reflections-button-lang-en")!.addEventListener("click", () => window.setLang("lang-en"))
+</script>
+
+<style lang="scss">
+	$padding-block-buttons: 0.2em;
+
+	.language {
+		display: flex;
+		gap: 0.8em;
+		line-height: 1;
+		margin-bottom: 1em;
+		align-items: center;
+		margin-top: -$padding-block-buttons;
+
+		span:first-child {
+			margin-right: 1.2em;
+		}
+	}
+
+	.language button {
+		width: 1.5em;
+		padding-block: $padding-block-buttons;
+	}
+
+	:global(html.lang-es) #reflections-button-lang-es,
+	:global(html.lang-en) #reflections-button-lang-en {
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
+		font-weight: 600;
+		&:hover {
+			text-decoration: none;
+		}
+	}
+</style>
