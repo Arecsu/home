@@ -1,8 +1,8 @@
 // 1. Import utilities from `astro:content`
 import { z, defineCollection } from 'astro:content';
 
-// Define the schema for notes
-const notesSchema = z.object({
+// Define the schema for reflections
+const reflectionsSchema = z.object({
   title: z.string(),
   description: z.optional(z.string()),
   date: z.date().default(new Date()),
@@ -11,12 +11,12 @@ const notesSchema = z.object({
 });
 
 // Define the collection
-const notesCollection = defineCollection({
+const reflectionsCollection = defineCollection({
   type: 'content',
-  schema: notesSchema,
+  schema: reflectionsSchema,
 });
 
 // Export collections object
 export const collections = {
-  'notes': notesCollection, // This will handle all content under the notes directory
+  'reflections': reflectionsCollection, // This will handle all content under the reflections directory
 };

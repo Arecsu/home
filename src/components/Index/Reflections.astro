@@ -1,16 +1,16 @@
 ---
 import { getCollection } from "astro:content"
-import NotesList from "../NotesList.astro"
-import { NOTES_LANGUAGES, type SupportedNotesLang } from "@/languages.ts"
+import ReflectionsList from "./ReflectionsList.astro"
+import { REFLECTIONS_LANGUAGES, type SupportedReflectionsLang } from "@/languages.ts"
 
-// Get all notes
-const allNotes = await getCollection("notes");
+// Get all reflections
+const allreflections = await getCollection("reflections");
 
-const langNotes = Object.keys(NOTES_LANGUAGES).reduce((acc, lang) => {
-  const typedLang = lang as SupportedNotesLang; // Assert the type explicitly
-  acc[typedLang] = allNotes.filter((note) => note.id.startsWith(`${typedLang}/`));
+const langreflections = Object.keys(REFLECTIONS_LANGUAGES).reduce((acc, lang) => {
+  const typedLang = lang as SupportedReflectionsLang; // Assert the type explicitly
+  acc[typedLang] = allreflections.filter((reflections) => reflections.id.startsWith(`${typedLang}/`));
   return acc;
-}, {} as Record<SupportedNotesLang, typeof allNotes>);
+}, {} as Record<SupportedReflectionsLang, typeof allreflections>);
 ---
 
 <div class="container">
@@ -21,11 +21,11 @@ const langNotes = Object.keys(NOTES_LANGUAGES).reduce((acc, lang) => {
 		<button id="reflections-button-lang-en">EN</button>
 	</div>
 	<div class="list-container">
-		{Object.keys(langNotes).map((lang) => (
-			<NotesList 
-				notes={langNotes[lang as SupportedNotesLang]} 
-				locale={NOTES_LANGUAGES[lang as SupportedNotesLang].locale} 
-				langClass={NOTES_LANGUAGES[lang as SupportedNotesLang].htmlLangClass} 
+		{Object.keys(langreflections).map((lang) => (
+			<ReflectionsList 
+				reflections={langreflections[lang as SupportedReflectionsLang]} 
+				locale={REFLECTIONS_LANGUAGES[lang as SupportedReflectionsLang].locale} 
+				langClass={REFLECTIONS_LANGUAGES[lang as SupportedReflectionsLang].htmlLangClass} 
 			/>
 		))}
 	</div>

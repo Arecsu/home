@@ -1,4 +1,4 @@
-import { type SupportedNotesLang } from "@/languages"
+import { type SupportedReflectionsLang } from "@/languages.ts"
 
 interface NowListening {
    track: string
@@ -8,7 +8,7 @@ type NowListeningPromise = Promise<NowListening | null>
 
 declare global {
    interface Window {
-      setLang: (lang: SupportedNotesLang) => void;
+      setLang: (lang: SupportedReflectionsLang) => void;
       setPreferredLang: (document: DocumentType) => void;
    }
 }

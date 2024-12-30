@@ -1,4 +1,4 @@
-export const NOTES_LANGUAGES = {
+export const REFLECTIONS_LANGUAGES = {
   en: {
     label: 'EN',
     name: 'English',
@@ -13,4 +13,4 @@ export const NOTES_LANGUAGES = {
   }
 } as const;
 
-export type SupportedNotesLang = keyof typeof NOTES_LANGUAGES; 
+export type SupportedReflectionsLang = keyof typeof REFLECTIONS_LANGUAGES;

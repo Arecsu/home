@@ -1,23 +1,23 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { NOTES_LANGUAGES, type SupportedNotesLang } from "@/languages.ts"
+import { REFLECTIONS_LANGUAGES, type SupportedReflectionsLang } from "@/languages.ts"
 
 interface Props {
-  notes: CollectionEntry<'notes'>[];
-  locale: typeof NOTES_LANGUAGES[SupportedNotesLang]['locale']; // Dynamically infer locale types
-  langClass: typeof NOTES_LANGUAGES[SupportedNotesLang]['htmlLangClass']; // Dynamically infer langClass types
+  reflections: CollectionEntry<'reflections'>[];
+  locale: typeof REFLECTIONS_LANGUAGES[SupportedReflectionsLang]['locale']; // Dynamically infer locale types
+  langClass: typeof REFLECTIONS_LANGUAGES[SupportedReflectionsLang]['htmlLangClass']; // Dynamically infer langClass types
 }
 
-const { notes, locale, langClass } = Astro.props;
+const { reflections, locale, langClass } = Astro.props;
 ---
 
 <ul class={`unstyled-list links-no-underline ${langClass}`}>
-  {notes.map((note) => (
+  {reflections.map((reflections) => (
     <li>
-      <a href={`/notes/${note.slug}`}>
-        <span>{note.data.title}</span>
+      <a href={`/reflections/${reflections.slug}`}>
+        <span>{reflections.data.title}</span>
         <time>
-          {note.data.date?.toLocaleDateString(locale, { 
+          {reflections.data.date?.toLocaleDateString(locale, { 
             day: '2-digit', 
             month: 'short', 
             year: 'numeric' 
