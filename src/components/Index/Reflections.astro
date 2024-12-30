@@ -32,8 +32,10 @@ const langNotes = Object.keys(NOTES_LANGUAGES).reduce((acc, lang) => {
 </div>
 
 <script>
-	document.getElementById("reflections-button-lang-es")!.addEventListener("click", () => window.setLang("lang-es"))
-	document.getElementById("reflections-button-lang-en")!.addEventListener("click", () => window.setLang("lang-en"))
+	document.addEventListener('astro:page-load', () => {
+		document.getElementById("reflections-button-lang-es")!.addEventListener("click", () => window.setLang("es"))
+		document.getElementById("reflections-button-lang-en")!.addEventListener("click", () => window.setLang("en"))
+	})
 </script>
 
 <style lang="scss">
@@ -57,8 +59,8 @@ const langNotes = Object.keys(NOTES_LANGUAGES).reduce((acc, lang) => {
 		padding-block: $padding-block-buttons;
 	}
 
-	:global(html.lang-es) #reflections-button-lang-es,
-	:global(html.lang-en) #reflections-button-lang-en {
+	:global(html[data-lang="es"]) #reflections-button-lang-es,
+	:global(html[data-lang="en"]) #reflections-button-lang-en {
 		text-decoration: underline;
 		text-underline-offset: 0.2em;
 		font-weight: 600;

@@ -1,13 +1,13 @@
 ---
-import '@styles/reset.scss'
-import '@styles/base.scss'
-import EmailDialog from '@components/EmailDialog.astro'
+import "@styles/reset.scss"
+import "@styles/base.scss"
+import EmailDialog from "@components/EmailDialog.astro"
 import Header from "@components/Header.astro"
 
-import { ClientRouter } from 'astro:transitions';
+import { ClientRouter } from "astro:transitions"
 
 interface Props {
-   title: string
+	title: string
 }
 
 const { title } = Astro.props
@@ -15,43 +15,47 @@ const { title } = Astro.props
 
 <!doctype html>
 <html lang="en">
-   <head>
-      <meta charset="UTF-8" />
-      <meta name="description" content="Astro description" />
-      <meta name="viewport" content="width=device-width" />
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
 
-      <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-      <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-      <link rel="shortcut icon" href="/favicon.ico" sizes="32x32" />
-      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-      <meta name="apple-mobile-web-app-title" content="alejandro r." />
-      <link rel="manifest" href="/site.webmanifest" />
+		<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="shortcut icon" href="/favicon.ico" sizes="32x32" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+		<meta name="apple-mobile-web-app-title" content="alejandro r." />
+		<link rel="manifest" href="/site.webmanifest" />
 
-      <meta name="generator" content={Astro.generator} />
-      <title>{title}</title>
-      <base href={import.meta.env.BASE_URL} />
-      <script is:inline src="/lang.js"></script>
-      <ClientRouter />
-   </head>
-   <body>
-      <Header contactVisible={true} />
-      <slot />
-      <EmailDialog />
-   </body>
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<base href={import.meta.env.BASE_URL} />
+		<script is:inline src="/lang.js"></script>
+		<ClientRouter />
+	</head>
+	<body>
+		<Header transition:persist contactVisible={true} />
+		<slot />
+		<EmailDialog />
+	</body>
 </html>
 
-
 <script>
-   /* 
+	/* 
       avoids "Install PWA" automatic modal on Chrome's Android (and possibly
       other browsers as well) because of /site.webmanifest, while still having 
       the functionality in Chrome's menu.
 
       source: https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeinstallprompt_event 
    */
-   window.addEventListener("beforeinstallprompt", (event) => {
-      event.preventDefault()
-   })
+	window.addEventListener("beforeinstallprompt", (event) => {
+		event.preventDefault()
+	})
+
+	document.addEventListener("astro:before-swap", (event) => {
+		// Pass the incoming document to set the preferred language on it
+		window.setPreferredLang(event.newDocument)
+	})
 </script>
 
 <style lang="scss">
@@ -64,8 +68,7 @@ const { title } = Astro.props
 		grid-template-columns:
 			[full-width-start footer-large-start] $margin-page-1
 			[header-start header-title-start heading-start] min-content
-			[header-title-end] ($header-gap - $content-title-offset-gap)
-			[heading-end] $content-title-offset-gap
+			[header-title-end] ($header-gap - $content-title-offset-gap) [heading-end] $content-title-offset-gap
 			[header-contact-start main-content-start] auto
 			[header-contact-end header-end] 1fr
 			[main-content-end]
@@ -76,8 +79,8 @@ const { title } = Astro.props
 			[header-end main-content-start page-title-start] min-content
 			[page-title-end] auto
 			[main-content-end] $margin-page-1
-         [footer-large-start] auto
-         [footer-large-end];
+			[footer-large-start] auto
+			[footer-large-end];
 
 		@media (max-width: $mobile-layout-breakpoint-1) {
 			grid-template-columns:
@@ -89,4 +92,3 @@ const { title } = Astro.props
 		}
 	}
 </style>
-

@@ -1,22 +1,20 @@
 const LANG_LOCAL_STORAGE_KEY = 'preferredLang';
 
-// Determine the preferred language
 function getPreferredLanguage() {
-  const storedLang = localStorage.getItem(LANG_LOCAL_STORAGE_KEY);
-  if (storedLang) return storedLang;
-
-  const browserLang = navigator.language;
-  if (browserLang.startsWith('es')) return 'lang-es';
-
-  return 'lang-en';
+  return localStorage.getItem(LANG_LOCAL_STORAGE_KEY) || 
+         (navigator.language.startsWith('es') ? 'es' : 'en');
 }
 
-// Initialize language class
-document.documentElement.classList.add(getPreferredLanguage());
-
-// Export the public function
-window.setLang = function(lang) {
+function setLang(lang) {
   localStorage.setItem(LANG_LOCAL_STORAGE_KEY, lang);
-  document.documentElement.classList.remove('lang-en', 'lang-es');
-  document.documentElement.classList.add(lang);
+  document.documentElement.dataset.lang = lang;
 }
+
+function setPreferredLang(document) {
+  document.documentElement.dataset.lang = getPreferredLanguage();
+}
+
+setPreferredLang(document);
+
+window.setLang = setLang;
+window.setPreferredLang = setPreferredLang;

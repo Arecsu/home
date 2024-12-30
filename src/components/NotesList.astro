@@ -63,8 +63,8 @@ const { notes, locale, langClass } = Astro.props;
 		display: none;
 	}
 
-	:global(html.lang-es) .lang-es,
-	:global(html.lang-en) .lang-en {
+	:global(html[data-lang="es"]) .lang-es,
+	:global(html[data-lang="en"]) .lang-en {
 		display: block;
 	}
 </style> 
