@@ -1,7 +1,8 @@
 ---
 import { getCollection } from "astro:content"
-import WorkPageLayout from "@layouts/WorkPage.astro"
+import ReflectionsArticleLayout from "@layouts/ReflectionsArticle.astro"
 import { REFLECTIONS_LANGUAGES, type SupportedReflectionsLang } from "@/languages.ts"
+import { undefined } from "astro:schema"
 
 export async function getStaticPaths() {
 	const allreflections = await getCollection("reflections")
@@ -37,12 +38,12 @@ const { lang, slug } = Astro.params as { lang: SupportedReflectionsLang; slug: s
 const alternateLang = Object.keys(REFLECTIONS_LANGUAGES).find((l) => l !== lang) as SupportedReflectionsLang
 ---
 
-<WorkPageLayout title={entry.data.title}>
-	{
-		hasAlternateVersion && (
-			<a href={`/reflections/${alternateLang}/${slug}`}>Read in {REFLECTIONS_LANGUAGES[alternateLang].label}</a>
-		)
-	}
-	<Content />
-</WorkPageLayout>
-
+<ReflectionsArticleLayout 
+   title={entry.data.title}
+   hasAlternateVersion={hasAlternateVersion}
+   alternateLang={alternateLang}
+   alternateSlug={slug}
+   alternateLabel={REFLECTIONS_LANGUAGES[alternateLang].articleSwitchLabel ?? undefined}
+>
+   <Content />
+</ReflectionsArticleLayout>

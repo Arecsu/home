@@ -21,7 +21,8 @@ $link-shadow-size-horizontal: 0.2em;
 
 @mixin inter-text {
 	font-variation-settings: "opsz" 14;
-	letter-spacing: -0.010em;
+	letter-spacing: -0.005em;
+	// letter-spacing: 0;
 }
 
 @mixin inter-monospace-numbers {

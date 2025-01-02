@@ -46,5 +46,9 @@ const { contactVisible = false } = Astro.props
          margin-left: 4rem;
       }
    }
+
+   :global(body:has(.reflections-page-wrapper)) .header-contact {
+      visibility: hidden;
+   }
    
 </style>

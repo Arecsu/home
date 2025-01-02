@@ -4,6 +4,7 @@
   "exclude": ["dist"],
   "compilerOptions": {
     "baseUrl": ".",
+    "target": "es2020", // Or "es2015", "es2020", "esnext", etc
     "paths": {
       "@components/*": ["src/components/*"],
       "@layouts/*": ["src/layouts/*"],
