@@ -1,0 +1,28 @@
+---
+import { REFLECTIONS_LANGUAGES, type SupportedReflectionsLang } from "@/languages.ts"
+
+interface Props {
+  locale: typeof REFLECTIONS_LANGUAGES[SupportedReflectionsLang]['locale']; // Dynamically infer locale types
+  date: Date;
+}
+
+const { locale, date } = Astro.props;
+---
+
+<time>
+   {date.toLocaleDateString(locale, { 
+      day: '2-digit', 
+      month: 'short', 
+      year: 'numeric' 
+    })}
+</time>
+
+<style lang="scss">
+  time {
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    @include inter-monospace-numbers;
+    text-wrap: nowrap;
+    font-size: 0.86em;
+  }
+</style>

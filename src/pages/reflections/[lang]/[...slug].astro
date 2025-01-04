@@ -40,6 +40,8 @@ const alternateLang = Object.keys(REFLECTIONS_LANGUAGES).find((l) => l !== lang)
 
 <ReflectionsArticleLayout 
    title={entry.data.title}
+	date={entry.data.date}
+	locale={REFLECTIONS_LANGUAGES[lang].locale}
    hasAlternateVersion={hasAlternateVersion}
    alternateLang={alternateLang}
    alternateSlug={slug}

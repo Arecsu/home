@@ -1,9 +1,14 @@
 ---
 import BaseLayout from "@layouts/Base.astro"
 import FooterLarge from "@components/FooterLarge.astro"
+import ReflectionsDate from '@components/ReflectionsDate.astro'
+import { REFLECTIONS_LANGUAGES, type SupportedReflectionsLang } from "@/languages.ts"
+
 
 interface Props {
    title: string
+	date: Date
+	locale: typeof REFLECTIONS_LANGUAGES[SupportedReflectionsLang]['locale'];
    hasAlternateVersion?: boolean
    alternateLang?: string
    alternateSlug?: string
@@ -12,6 +17,8 @@ interface Props {
 
 const { 
    title, 
+	date,
+	locale,
    hasAlternateVersion, 
    alternateLang, 
    alternateSlug,
@@ -19,6 +26,14 @@ const {
 } = Astro.props
 ---
 <BaseLayout title={title}>
+	{ date && (
+		<span class="date-desktop">
+		  <ReflectionsDate 
+			 locale={locale} 
+			 date={date}
+		  />
+		</span>
+	 )}
 	{hasAlternateVersion && (
 		<div class="article-language">
 				<a 
@@ -28,26 +43,76 @@ const {
 		</div>
 	)}
    <main class="reflections-page-wrapper">
-      <h1 class="reflections-page-title">{title}</h1>
-      <slot />
+		<div class="empty-space"></div>
+		 <article>
+			{ date && (
+				<span class="date-mobile">
+				  <ReflectionsDate 
+					 locale={locale} 
+					 date={date}
+				  />
+				</span>
+			 )}
+			 <h1 class="reflections-page-title">{title}</h1>
+			 <slot />
+		 </article>
+		 <div class="empty-space"></div>
    </main>
    <FooterLarge />
 </BaseLayout>
 
 <style lang="scss">
 	main {
-		display: grid;
+		display: flex;
 		pointer-events: none;
 		// grid-template-columns: subgrid;
 		grid-column: 2 / -2;
 		// grid-row: main-content;
 		// grid-row: 1 / -1;
 		grid-row: header / main-content;
-		grid-auto-rows: min-content;
-		grid-template-columns: 1fr min(70ch, 100%) 1fr;
 		min-height: calc(100vh - $margin-page-1);
 		align-content: center;
 		justify-items: center;
+		flex-direction: column;
+	}
+
+	main > * {
+		flex-basis: min-content;
+		flex-grow: 1;
+		flex-shrink: 1;
+	}
+
+	.empty-space {
+		// flex-grow: 0;
+		// flex-shrink: 1;
+
+		&:first-child {
+		}
+	}
+
+	article {
+		flex-shrink: 0;
+		display: grid;
+		grid-auto-rows: min-content;
+		pointer-events: none;
+		grid-template-columns: 1fr min(70ch, 100%) 1fr;
+	}
+
+	
+	.date-desktop {
+		grid-column: header;
+		grid-row: main-content-start;
+		margin-top: 1.4em;
+	}
+
+	.date-mobile {
+		display: none;
+		padding-bottom: 1em;
+		padding-right: 4em;
+		margin-bottom: 2.6em;
+		border-bottom: 0.0625em solid var(--page-color-foreground);
+		width: auto;
+		justify-self: start;
 	}
 
 	.article-language {
@@ -55,9 +120,9 @@ const {
 		grid-column: header-contact-start / main-content-end;
 		justify-self: end;
 		display: flex;
-		gap: 0.8em;
-		font-size: 0.9rem;
-		text-transform: uppercase;
+		// font-size: 0.9rem;
+		// text-transform: uppercase;
+		text-transform: lowercase;
 	}
 
 	.reflections-page-title {
@@ -68,9 +133,11 @@ const {
 		// letter-spacing: -.01em;
 		margin-left: -0.055em;
 		place-self: normal;
-		margin-bottom: 1rem;
+		margin-bottom: 1.5rem;
 		text-wrap-style: balance;
 		text-align: center;
+		// width: auto;
+  		// justify-self: center;
 		span {
 			float: right;
 		}
@@ -78,10 +145,30 @@ const {
 			// margin-bottom: -0.5rem;
 		}
 	}
+
+	@media (max-width: 70em) {
+		.date-desktop {
+			display: none;
+		}
+		.date-mobile {
+			display: block
+		}
+		main {
+			grid-row: main-content;
+			$main-margin-top: 2.6em;
+			margin-top: $main-margin-top;
+			min-height: calc(100vh - $margin-page-1 - $main-margin-top);
+		}
+		.reflections-page-title {
+			text-align: left;
+		}
+	}
+
+
 </style>
 
 <style is:global lang="scss">
-	.reflections-page-wrapper {
+	.reflections-page-wrapper article {
 		$space-between-h2-sections: 0.9rem;
 		$space-between-h2-sections-mobile: 0.4rem;
 		overflow-x: hidden;
@@ -112,7 +199,7 @@ const {
 			pointer-events: auto;
 		}
 		> *:last-child { 
-			margin-bottom: clamp(5rem, min(10vh, 20%), 7rem);
+			// margin-bottom: clamp(8rem, min(10vh, 20%), 7rem);
 			// margin-bottom: 15vh;
 			// margin-bottom: 20%;
 		}
@@ -122,11 +209,11 @@ const {
 
 		p, ul {
 			// text-wrap: pretty;
-			margin-block: 0em .6em;
+			margin-block: 0em 1.6em;
 			// letter-spacing: -0.010em;
   			line-height: 1.65;
 			@media (max-width: $mobile-layout-breakpoint-1) {
-				margin-block: .3em .6em;
+				margin-block: .3em 1.6em;
 			}
 		}
 		h3 {

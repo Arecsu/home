@@ -1,11 +1,12 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import { REFLECTIONS_LANGUAGES, type SupportedReflectionsLang } from "@/languages.ts"
+import ReflectionsDate from '@components/ReflectionsDate.astro'
 
 interface Props {
   reflections: CollectionEntry<'reflections'>[];
-  locale: typeof REFLECTIONS_LANGUAGES[SupportedReflectionsLang]['locale']; // Dynamically infer locale types
-  langClass: typeof REFLECTIONS_LANGUAGES[SupportedReflectionsLang]['htmlLangClass']; // Dynamically infer langClass types
+  locale: typeof REFLECTIONS_LANGUAGES[SupportedReflectionsLang]['locale'];
+  langClass: typeof REFLECTIONS_LANGUAGES[SupportedReflectionsLang]['htmlLangClass'];
 }
 
 const { reflections, locale, langClass } = Astro.props;
@@ -15,14 +16,13 @@ const { reflections, locale, langClass } = Astro.props;
   {reflections.map((reflections) => (
     <li>
       <a href={`/reflections/${reflections.slug}`}>
-        <span>{reflections.data.title}</span>
-        <time>
-          {reflections.data.date?.toLocaleDateString(locale, { 
-            day: '2-digit', 
-            month: 'short', 
-            year: 'numeric' 
-          })}
-        </time>
+        <span class="title">{reflections.data.title}</span>
+        { reflections.data.date && (
+          <ReflectionsDate 
+            locale={locale} 
+            date={reflections.data.date}
+          />
+        )}
       </a>
     </li>
   ))}
@@ -40,7 +40,7 @@ const { reflections, locale, langClass } = Astro.props;
     align-items: center;
     line-height: 2;
 
-    span {
+    span.title {
       display: inline-block;
       overflow: hidden;
       white-space: nowrap;
@@ -48,12 +48,8 @@ const { reflections, locale, langClass } = Astro.props;
       flex-grow: 1;
     }
 
-    time {
-      text-transform: uppercase;
-      letter-spacing: 0.02em;
-      @include inter-monospace-numbers;
-      font-size: 0.86em;
-      text-wrap: nowrap;
+    span.date {
+      // font-size: 0.86em;
     }
   }
 
