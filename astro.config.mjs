@@ -39,16 +39,6 @@ export default defineConfig({
     defaultStrategy: "load",
   },
   vite: {
-    build: {
-      lib: {
-        entry: "src/scripts/lang.ts",
-        formats: ["iife"],
-        name: "lang",
-        fileName: () => "lang.js",
-      },
-      outDir: "public",
-      emptyOutDir: false, // Important! Prevents clearing the public directory
-    },
     resolve: {
       alias: {
         "@/": `${path.resolve(__dirname, "src")}/`,
