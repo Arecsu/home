@@ -8,7 +8,8 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "deploy": "astro check && astro build && gh-pages --dotfiles --nojekyll -d dist"
+    "deploy": "astro check && astro build && gh-pages --dotfiles --nojekyll -d dist",
+    "deploy-draft": "astro check && astro build && gh-pages --dotfiles --nojekyll -d dist -b deploy-draft"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
