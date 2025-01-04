@@ -2,7 +2,6 @@
 import { getCollection } from "astro:content"
 import ReflectionsArticleLayout from "@layouts/ReflectionsArticle.astro"
 import { REFLECTIONS_LANGUAGES, type SupportedReflectionsLang } from "@/languages.ts"
-import { undefined } from "astro:schema"
 
 export async function getStaticPaths() {
 	const allreflections = await getCollection("reflections")
