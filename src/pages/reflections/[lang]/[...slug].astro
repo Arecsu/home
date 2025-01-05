@@ -4,16 +4,20 @@ import ReflectionsArticleLayout from "@layouts/ReflectionsArticle.astro"
 import { REFLECTIONS_LANGUAGES, type SupportedReflectionsLang } from "@/languages.ts"
 
 export async function getStaticPaths() {
-	const allreflections = await getCollection("reflections")
+	const allReflections = await getCollection("reflections")
 	const supportedLanguages = Object.keys(REFLECTIONS_LANGUAGES)
 
-	return allreflections
+	const filteredReflections = allReflections.filter((entry) => {
+		return import.meta.env.PROD ? entry.data.published : entry.data.draftDev
+	})
+
+	return filteredReflections
 		.map((entry) => {
 			const [lang, slug] = entry.slug.split("/")
 
 			if (supportedLanguages.includes(lang as SupportedReflectionsLang)) {
 				const otherLang = Object.keys(REFLECTIONS_LANGUAGES).find((l) => l !== lang)
-				const alternatereflections = allreflections.find((reflections) => reflections.slug === `${otherLang}/${slug}`)
+				const alternateReflection = filteredReflections.find((reflection) => reflection.slug === `${otherLang}/${slug}`)
 
 				return {
 					params: {
@@ -22,7 +26,7 @@ export async function getStaticPaths() {
 					},
 					props: {
 						entry,
-						hasAlternateVersion: !!alternatereflections,
+						hasAlternateVersion: !!alternateReflection,
 					},
 				}
 			}
@@ -31,20 +35,27 @@ export async function getStaticPaths() {
 }
 
 const { entry, hasAlternateVersion } = Astro.props
+
+// SSR
+/*
+if (!entry || (entry.data.draft && import.meta.env.PROD)) {
+	return Astro.redirect("/404")
+}
+*/
+
 const { Content } = await entry.render()
 const { lang, slug } = Astro.params as { lang: SupportedReflectionsLang; slug: string }
-
 const alternateLang = Object.keys(REFLECTIONS_LANGUAGES).find((l) => l !== lang) as SupportedReflectionsLang
 ---
 
-<ReflectionsArticleLayout 
-   title={entry.data.title}
+<ReflectionsArticleLayout
+	title={entry.data.title}
 	date={entry.data.date}
 	locale={REFLECTIONS_LANGUAGES[lang].locale}
-   hasAlternateVersion={hasAlternateVersion}
-   alternateLang={alternateLang}
-   alternateSlug={slug}
-   alternateLabel={REFLECTIONS_LANGUAGES[alternateLang].articleSwitchLabel ?? undefined}
+	hasAlternateVersion={hasAlternateVersion}
+	alternateLang={alternateLang}
+	alternateSlug={slug}
+	alternateLabel={REFLECTIONS_LANGUAGES[alternateLang].articleSwitchLabel ?? undefined}
 >
-   <Content />
+	<Content />
 </ReflectionsArticleLayout>

@@ -6,6 +6,9 @@ const reflectionsSchema = z.object({
   title: z.string(),
   description: z.optional(z.string()),
   date: z.date().default(new Date()),
+  published: z.boolean().default(false),
+  draftDev: z.boolean().default(true),
+
   // tags: z.array(z.string()),
   // image: z.string().optional(),
 });

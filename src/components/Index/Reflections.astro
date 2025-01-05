@@ -3,14 +3,18 @@ import { getCollection } from "astro:content"
 import ReflectionsList from "./ReflectionsList.astro"
 import { REFLECTIONS_LANGUAGES, type SupportedReflectionsLang } from "@/languages.ts"
 
-// Get all reflections
-const allreflections = await getCollection("reflections");
+const allReflections = await getCollection("reflections", ({ data }) => {
+	return import.meta.env.PROD ? data.published : data.draftDev
+})
 
-const langreflections = Object.keys(REFLECTIONS_LANGUAGES).reduce((acc, lang) => {
-  const typedLang = lang as SupportedReflectionsLang; // Assert the type explicitly
-  acc[typedLang] = allreflections.filter((reflections) => reflections.id.startsWith(`${typedLang}/`));
-  return acc;
-}, {} as Record<SupportedReflectionsLang, typeof allreflections>);
+const langreflections = Object.keys(REFLECTIONS_LANGUAGES).reduce(
+	(acc, lang) => {
+		const typedLang = lang as SupportedReflectionsLang // Assert the type explicitly
+		acc[typedLang] = allReflections.filter((reflections) => reflections.id.startsWith(`${typedLang}/`))
+		return acc
+	},
+	{} as Record<SupportedReflectionsLang, typeof allReflections>,
+)
 ---
 
 <div class="container">
@@ -21,18 +25,20 @@ const langreflections = Object.keys(REFLECTIONS_LANGUAGES).reduce((acc, lang) =>
 		<button id="reflections-button-lang-en">EN</button>
 	</div>
 	<div class="list-container">
-		{Object.keys(langreflections).map((lang) => (
-			<ReflectionsList 
-				reflections={langreflections[lang as SupportedReflectionsLang]} 
-				locale={REFLECTIONS_LANGUAGES[lang as SupportedReflectionsLang].locale} 
-				langClass={REFLECTIONS_LANGUAGES[lang as SupportedReflectionsLang].htmlLangClass} 
-			/>
-		))}
+		{
+			Object.keys(langreflections).map((lang) => (
+				<ReflectionsList
+					reflections={langreflections[lang as SupportedReflectionsLang]}
+					locale={REFLECTIONS_LANGUAGES[lang as SupportedReflectionsLang].locale}
+					langClass={REFLECTIONS_LANGUAGES[lang as SupportedReflectionsLang].htmlLangClass}
+				/>
+			))
+		}
 	</div>
 </div>
 
 <script>
-	document.addEventListener('astro:page-load', () => {
+	document.addEventListener("astro:page-load", () => {
 		document.getElementById("reflections-button-lang-es")?.addEventListener("click", () => window.setLang("es"))
 		document.getElementById("reflections-button-lang-en")?.addEventListener("click", () => window.setLang("en"))
 	})
