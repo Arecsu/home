@@ -1,10 +1,10 @@
 ---
-import BaseLayout from "@layouts/Base.astro";
-import About from "@components/Index/About.astro";
-import Work from "@components/Index/Work.astro";
-import Reflections from "@components/Index/Reflections.astro";
-import TheField from "@components/Index/TheField.astro";
-import Edge from "@components/Index/Edge.astro";
+import BaseLayout from "@layouts/Base.astro"
+import About from "@components/Index/About.astro"
+import Work from "@components/Index/Work.astro"
+import Reflections from "@components/Index/Reflections.astro"
+import TheField from "@components/Index/TheField.astro"
+import Edge from "@components/Index/Edge.astro"
 // import WorkHoverMartyr from "@components/Work-Hover/Work-Hover-Martyr.astro";
 // import WorkHoverMonk from "@components/Work-Hover/Work-Hover-Monk.astro";
 // import WorkHoverSenegal from "@components/Work-Hover/Work-Hover-Senegal.astro";
@@ -13,34 +13,33 @@ import Edge from "@components/Index/Edge.astro";
 ---
 
 <!-- <script src="@scripts/decode-images.js"></script> -->
-
 <BaseLayout title="Alejandro Romano">
 	<main>
-      <span class="arrow-before-work">↘</span>
-      <!-- <span class="arrow-southwest inter-display">↙</span> -->
-		<h2 class="index-section-title">Work</h2>
+		<span class="arrow-before-work">↘</span>
+		<!-- <span class="arrow-southwest inter-display">↙</span> -->
+		<h2 class="index-section-title work-section-title">Work</h2>
 		<section class="index-section">
-			<span>↓</span>
+			<span class="arrow">↓</span>
 			<Work />
 		</section>
-      <!-- <span class="symbol-small">~\</span> -->
-      <!-- <About /> -->
+		<!-- <span class="symbol-small">~\</span> -->
+		<!-- <About /> -->
 		<h2 class="index-section-title reflections-section-title">Reflections</h2>
 		<section class="index-section">
 			<Reflections />
 		</section>
-		<h2 class="index-section-title about-section-title">In the Field</h2>
+		<!-- <h2 class="index-section-title about-section-title">In the Field</h2>
 		<section class="index-section">
 			<TheField />
 		</section>
 		<h2 class="index-section-title about-section-title">Edge</h2>
 		<section class="index-section">
 			<Edge />
-		</section>
-      <!-- <Footer /> -->
+		</section> -->
+		<!-- <Footer /> -->
 		<h2 class="index-section-title about-section-title">About</h2>
 		<section class="index-section about-section">
-			<span>↓</span>
+			<span class="arrow">↓</span>
 			<About />
 		</section>
 	</main>
@@ -53,7 +52,7 @@ import Edge from "@components/Index/Edge.astro";
 		grid-column: full-width;
 		grid-row: main-content;
 		grid-auto-rows: min-content;
-		// grid-templare-rows: 
+		// grid-templare-rows:
 		// place-items: start;
 	}
 
@@ -63,8 +62,8 @@ import Edge from "@components/Index/Edge.astro";
 		justify-self: end;
 		text-transform: uppercase;
 		font-variation-settings: "opsz" 32;
-    	font-weight: 500;
-    	letter-spacing: .02em;
+		font-weight: 500;
+		letter-spacing: 0.02em;
 		line-height: 1;
 		font-size: 1em;
 		@media (max-width: $mobile-layout-breakpoint-1) {
@@ -74,14 +73,14 @@ import Edge from "@components/Index/Edge.astro";
 		}
 	}
 
-	:where(:not(h1, h1 *, h2)) { 
-			grid-column: main-content;
-			width: 100%;
+	:where(:not(h1, h1 *, h2)) {
+		grid-column: main-content;
+		width: 100%;
 	}
 
 	.arrow-before-work {
 		grid-column: heading;
-    	font-weight: 350;
+		font-weight: 350;
 		font-size: 2em;
 		margin-block: 0.8em 0em;
 		line-height: 1;
@@ -89,21 +88,46 @@ import Edge from "@components/Index/Edge.astro";
 
 	.index-section-title {
 		margin-block: 2em;
+		@media (max-width: $mobile-layout-breakpoint-1) {
+			margin-block: 1em 0;
+		}
 	}
 
 	.index-section {
 		grid-column: main-content;
 		margin-block: 2em;
-		> span {
+		@media (max-width: $mobile-layout-breakpoint-1) {
+			margin-block: 1em 2.5em;
+		}
+		> .arrow {
 			display: block;
 			margin-bottom: 1em;
 			line-height: 1.1;
 			font-weight: 500;
+			@media (max-width: $mobile-layout-breakpoint-1) {
+				display: none;
+			}
 		}
 	}
 
-	.about-section > span {
+	@media (max-width: $mobile-layout-breakpoint-1) {
+		.reflections-section-title {
+			margin-bottom: 0.3em;
+		}
+
+		.work-section-title {
+			margin-block: 1.8em 0.3em;
+		}
+
+		.about-section-title {
+			margin-bottom: 0.3em;
+		}
+	}
+
+	.about-section > .arrow {
 		margin-bottom: 1.8em;
-		
+	}
+
+	.arrow {
 	}
 </style>
