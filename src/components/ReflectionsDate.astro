@@ -9,7 +9,7 @@ interface Props {
 const { locale, date } = Astro.props;
 ---
 
-<time>
+<time datetime={date.toISOString()}>
    {date.toLocaleDateString(locale, { 
       day: '2-digit', 
       month: 'short', 
