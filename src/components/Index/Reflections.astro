@@ -7,6 +7,8 @@ const allReflections = await getCollection("reflections", ({ data }) => {
 	return import.meta.env.PROD ? data.published : data.draftDev
 })
 
+allReflections.sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+
 const langreflections = Object.keys(REFLECTIONS_LANGUAGES).reduce(
 	(acc, lang) => {
 		const typedLang = lang as SupportedReflectionsLang // Assert the type explicitly
