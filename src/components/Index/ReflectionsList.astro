@@ -15,7 +15,7 @@ const { reflections, locale, langClass } = Astro.props;
 <ul class={`unstyled-list links-no-underline ${langClass}`}>
   {reflections.map((reflections) => (
     <li>
-      <a href={`/reflections/${reflections.slug}`}>
+      <a href={`reflections/${reflections.slug}/`}>
         <span class="title">{reflections.data.title}</span>
         { reflections.data.date && (
           <ReflectionsDate 
