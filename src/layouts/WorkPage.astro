@@ -24,6 +24,7 @@ const { title, workPageClass } = Astro.props
 	.work-page-wrapper {
 		$space-between-h2-sections: 0.9rem;
 		$space-between-h2-sections-mobile: 0.4rem;
+		$p-line-height: 1.55;
 		overflow-x: hidden;
 		
 		h2 {
@@ -31,6 +32,7 @@ const { title, workPageClass } = Astro.props
 			text-transform: uppercase;
 			justify-self: end;
 			margin-block: $space-between-h2-sections 0;
+			line-height: $p-line-height;
 		
 			@media (max-width: $mobile-layout-breakpoint-1) {
 				justify-self: start;
@@ -54,7 +56,7 @@ const { title, workPageClass } = Astro.props
 			text-wrap: pretty;
 			margin-block: 0em .6em;
 			// letter-spacing: -0.010em;
-  			line-height: 1.55;
+  			line-height: $p-line-height;
 			@media (max-width: $mobile-layout-breakpoint-1) {
 				margin-block: .3em .6em;
 			}
