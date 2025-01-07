@@ -38,10 +38,11 @@ const langreflections = Object.keys(REFLECTIONS_LANGUAGES).reduce(
 </div>
 
 <script>
-	document.addEventListener("astro:page-load", () => {
+	// https://github.com/withastro/astro/issues/12804
+	// document.addEventListener("astro:page-load", () => {
 		document.getElementById("reflections-button-lang-es")?.addEventListener("click", () => window.setLang("es"))
 		document.getElementById("reflections-button-lang-en")?.addEventListener("click", () => window.setLang("en"))
-	})
+	// })
 </script>
 
 <style lang="scss">
